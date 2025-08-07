@@ -15,13 +15,14 @@ function Hero() {
               <a href="https://www.youtube.com/watch?v=91QYV47fsBA" target='_blank' className= "glightbox btn-watch-video d-flex align-items-center underline"><i  className= "bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
-          <div  className= "col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-            <img src={{banner}}  className= "img-fluid animated" alt=""/>
+          <div  className= "col-lg-5 order-1 order-lg-2 hero-img">
+            <img src={banner}  className= "img-fluid animated" alt=""/>
           </div>
         </div>
       </div>
 
     </section>
+
     </>
   )
 }
