@@ -13,6 +13,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Footer from './component/Footer';
 import Contact from './component/Contact';
 import PotatoToFlakes from './component/PotatoToFlakes';
+import Hero from './component/Hero';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route exact path='/'element={
         <React.Fragment>
+          <Hero/>
           <PotatoToFlakes/>
         </React.Fragment>
         } />

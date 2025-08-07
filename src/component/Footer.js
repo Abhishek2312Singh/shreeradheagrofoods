@@ -11,8 +11,8 @@ function Footer() {
           <i className="bi bi-geo-alt icon"></i>
           <div className="address">
             <h4>Address</h4>
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
+            <p>C282 Vijay Nagar</p>
+            <p>Ghaziabad, 201009</p>
             <p></p>
           </div>
 
@@ -23,8 +23,8 @@ function Footer() {
           <div>
             <h4>Contact</h4>
             <p>
-              <strong>Phone:</strong> <span>+1 5589 55488 55</span><br/>
-              <strong>Email:</strong> <span>info@example.com</span><br/>
+              <strong>Phone:</strong> <span>+91 7701933308</span><br/>
+              <strong>Email:</strong> <span>info@gmail.com</span><br/>
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ function Footer() {
           <div>
             <h4>Opening Hours</h4>
             <p>
-              <strong>Mon-Sat:</strong> <span>11AM - 23PM</span><br/>
+              <strong>Mon-Sat:</strong> <span>09AM - 09PM</span><br/>
               <strong>Sunday</strong>: <span>Closed</span>
             </p>
           </div>
@@ -54,10 +54,7 @@ function Footer() {
     </div>
 
     <div className="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong className="px-1 sitename">Yummy</strong> <span>All Rights Reserved</span></p>
-      <div className="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-      </div>
+      <p>© <span>Copyright</span> <strong className="px-1 sitename"></strong> <span>All Rights Reserved</span></p>
     </div>
 
   </footer>

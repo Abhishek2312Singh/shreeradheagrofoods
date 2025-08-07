@@ -1,5 +1,5 @@
 import React from 'react'
-import dish1 from '../assets/img/menu/menu-item-1.png'
+import dish1 from '../assets/img/menu/freshpotato_round.png'
 import dish2 from '../assets/img/menu/menu-item-2.png'
 import dish3 from '../assets/img/menu/menu-item-3.png'
 import dish4 from '../assets/img/menu/menu-item-4.png'
@@ -10,60 +10,26 @@ function PotatoToFlakes() {
   return (
     <><section id="menu" className="menu section">
 
-      <div className="container section-title"  >
-        <h2>Our Menu</h2>
-        <p><span>Check Our</span> <span className="description-title">Yummy Menu</span></p>
-      </div>
-
+      
       <div className="container">
 
-        <ul className="nav nav-tabs d-flex justify-content-center">
-
-          <li className="nav-item">
-            <a className="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-              <h4>Starters</h4>
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-              <h4>Breakfast</h4>
-            </a>
-
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
-              <h4>Lunch</h4>
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
-              <h4>Dinner</h4>
-            </a>
-          </li>
-
-        </ul>
+         
 
         <div className="tab-content" >
 
           <div className="tab-pane fade active show" id="menu-starters">
 
             <div className="tab-header text-center">
-              <p>Menu</p>
-              <h3>Starters</h3>
+              <h3>Manufacturing Process</h3>
             </div>
 
             <div className="row gy-5">
 
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-1.png" className="glightbox"><img src={dish1} className="menu-img img-fluid" alt=""/></a>
-                <h4>Magnam Tiste</h4>
+                <a href="assets/img/menu/freshpotato_round.png" className="glightbox"><img src={dish1} className="menu-img img-fluid" alt=""/></a>
+                <h4>Fresh Potato</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
-                </p>
-                <p className="price">
-                  $5.95
                 </p>
               </div>
 
@@ -89,6 +55,16 @@ function PotatoToFlakes() {
                 </p>
               </div>
 
+              <div className="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-4.png" className="glightbox"><img src={dish4} className="menu-img img-fluid" alt=""/></a>
+                <h4>Eos Luibusdam</h4>
+                <p className="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p className="price">
+                  $12.95
+                </p>
+              </div>
               <div className="col-lg-4 menu-item">
                 <a href="assets/img/menu/menu-item-4.png" className="glightbox"><img src={dish4} className="menu-img img-fluid" alt=""/></a>
                 <h4>Eos Luibusdam</h4>
