@@ -39,7 +39,7 @@ function Header(props) {
         <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a className="btn-getstarted" href="index.html#book-a-table">+91 7701933308</a>
+      <a className="btn-getstarted underline" href="index.html#book-a-table">+91 7701933308</a>
 
     </div>
   </header>
