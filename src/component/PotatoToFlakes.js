@@ -1,10 +1,12 @@
 import React from 'react'
 import dish1 from '../assets/img/menu/freshpotato_round.png'
-import dish2 from '../assets/img/menu/menu-item-2.png'
-import dish3 from '../assets/img/menu/menu-item-3.png'
-import dish4 from '../assets/img/menu/menu-item-4.png'
-import dish5 from '../assets/img/menu/menu-item-5.png'
-import dish6 from '../assets/img/menu/menu-item-6.png'
+import dish2 from '../assets/img/menu/washing.png'
+import dish3 from '../assets/img/menu/peeling.png'
+import dish4 from '../assets/img/menu/cooking.png'
+import dish5 from '../assets/img/menu/mashing.png'
+import dish6 from '../assets/img/menu/drying.png'
+import dish7 from '../assets/img/menu/flakes.png'
+import dish8 from '../assets/img/menu/drying.png'
 
 function PotatoToFlakes() {
   return (
@@ -34,67 +36,56 @@ function PotatoToFlakes() {
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-2.png" className="glightbox"><img src={dish2} className="menu-img img-fluid" alt=""/></a>
-                <h4>Aut Luia</h4>
+                <a href="assets/img/menu/washing.png" className="glightbox"><img src={dish2} className="menu-img img-fluid" alt=""/></a>
+                <h4>Washing</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
-                </p>
-                <p className="price">
-                  $14.95
                 </p>
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-3.png" className="glightbox"><img src={dish3} className="menu-img img-fluid" alt=""/></a>
-                <h4>Est Eligendi</h4>
+                <a href="assets/img/peeling.jpg" className="glightbox"><img src={dish3} className="menu-img img-fluid" alt=""/></a>
+                <h4>Peeling</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
-                </p>
-                <p className="price">
-                  $8.95
                 </p>
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-4.png" className="glightbox"><img src={dish4} className="menu-img img-fluid" alt=""/></a>
-                <h4>Eos Luibusdam</h4>
+                <a href="assets/img/menu/cooking.png" className="glightbox"><img src={dish4} className="menu-img img-fluid" alt=""/></a>
+                <h4>Cooking</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
-                </p>
-                <p className="price">
-                  $12.95
                 </p>
               </div>
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-4.png" className="glightbox"><img src={dish4} className="menu-img img-fluid" alt=""/></a>
-                <h4>Eos Luibusdam</h4>
+                <a href="assets/img/menu/mashing.png" className="glightbox"><img src={dish5} className="menu-img img-fluid" alt=""/></a>
+                <h4>Mashing</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
-                </p>
-                <p className="price">
-                  $12.95
                 </p>
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-5.png" className="glightbox"><img src={dish5} className="menu-img img-fluid" alt=""/></a>
-                <h4>Eos Luibusdam</h4>
+                <a href="assets/img/menu/drying.png" className="glightbox"><img src={dish6} className="menu-img img-fluid" alt=""/></a>
+                <h4>Drying</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
-                </p>
-                <p className="price">
-                  $12.95
                 </p>
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-6.png" className="glightbox"><img src={dish6} className="menu-img img-fluid" alt=""/></a>
-                <h4>Laboriosam Direva</h4>
+                <a href="assets/img/menu/flakes.png" className="glightbox"><img src={dish7} className="menu-img img-fluid" alt=""/></a>
+                <h4>Potato Flakes</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
                 </p>
-                <p className="price">
-                  $9.95
+              </div>
+              <div className="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-6.png" className="glightbox"><img src={dish7} className="menu-img img-fluid" alt=""/></a>
+                <h4>Milling</h4>
+                <p className="ingredients">
+                  Lorem, deren, trataro, filede, nerada
                 </p>
               </div>
 
