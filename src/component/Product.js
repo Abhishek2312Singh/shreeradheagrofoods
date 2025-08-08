@@ -4,10 +4,10 @@ import product2 from '../assets/img/menu/milled_potato.webp'
 
 export default function Product() {
     return (
-        <div className='container'>
+        <div className='container'  style={{width: '800px'}}>
             <h3 style={{ textAlign: 'center' }}>Find Out the Most Popular Product</h3>
             <div class="card-group">
-                <div class="card">
+                <div class="card mx-5 my-4">
                     <a href='assests/img/menu/potato-flakes'><img src={product1} class="card-img-top" alt="..." /></a>
 
                     <div class="card-body">
@@ -16,7 +16,7 @@ export default function Product() {
                         <a href="#" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card my-4">
                      <a href='assests/img/menu/milled-potato'><img src={product2} class="card-img-top" alt="..." /></a>
                     <div class="card-body">
                         <h5 class="card-title">Milled Products</h5>
