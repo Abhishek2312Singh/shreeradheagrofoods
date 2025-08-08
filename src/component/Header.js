@@ -16,7 +16,9 @@ function Header(props) {
       <nav id="navmenu" className="navmenu">
         <ul>
           <li><Link to="/" className={isActive === '/' ? 'active':''}style={style} onClick={()=>{setActive('/')}}>Home</Link></li>
-          <li><Link to="about" className={isActive === 'about' ? 'active':''}style={style} onClick={()=>{setActive('about')}}>About</Link></li>
+
+          <li><Link to="aboutus" className={isActive === 'aboutus' ? 'active':''}style={style} onClick={()=>{setActive('aboutus')}}>About</Link></li>
+
           <li><Link to="/contact" className={isActive === 'contact' ? 'active':''}style={style} onClick={()=>{setActive('contact')}}>Contact</Link></li>
           <li className="dropdown"><Link to="#" className='underline'><span>Dropdown</span> <i className="bi bi-chevron-down toggle-dropdown"></i></Link>
             <ul>

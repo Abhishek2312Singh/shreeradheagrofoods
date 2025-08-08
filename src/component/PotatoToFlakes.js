@@ -9,6 +9,7 @@ import dish7 from '../assets/img/menu/flakes.png'
 import dish8 from '../assets/img/menu/drying.png'
 
 function PotatoToFlakes() {
+  
   return (
     <><section id="menu" className="menu section">
 

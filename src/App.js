@@ -14,6 +14,7 @@ import Footer from './component/Footer';
 import Contact from './component/Contact';
 import PotatoToFlakes from './component/PotatoToFlakes';
 import Hero from './component/Hero';
+import AboutUs from './component/AboutUs';
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
           <PotatoToFlakes/>
         </React.Fragment>
         } />
+        <Route path='aboutus' element={
+          <React.Fragment>
+            <AboutUs/>
+          </React.Fragment>
+        }></Route>
         <Route path='contact' element={
           <React.Fragment>
              <Contact/>
