@@ -15,11 +15,11 @@ import Contact from './component/Contact';
 import PotatoToFlakes from './component/PotatoToFlakes';
 import Hero from './component/Hero';
 import AboutUs from './component/AboutUs';
+import Product from './component/Product';
 
 function App() {
   return (
     <>
-    <></>
     
     <BrowserRouter>
     <Header title = "SRAF - Home"/>
@@ -28,6 +28,7 @@ function App() {
         <React.Fragment>
           <Hero/>
           <PotatoToFlakes/>
+          <Product/>
         </React.Fragment>
         } />
         <Route path='aboutus' element={
