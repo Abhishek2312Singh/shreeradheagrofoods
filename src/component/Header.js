@@ -20,21 +20,10 @@ function Header(props) {
           <li><Link to="aboutus" className={isActive === 'aboutus' ? 'active':''}style={style} onClick={()=>{setActive('aboutus')}}>About</Link></li>
 
           <li><Link to="/contact" className={isActive === 'contact' ? 'active':''}style={style} onClick={()=>{setActive('contact')}}>Contact</Link></li>
-          <li className="dropdown"><Link to="#" className='underline'><span>Dropdown</span> <i className="bi bi-chevron-down toggle-dropdown"></i></Link>
+          <li className="dropdown"><Link to="#" className='underline'><span>Dried Potato Product</span> <i className="bi bi-chevron-down toggle-dropdown"></i></Link>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li className="dropdown"><a href="#"><span>Deep Dropdown</span> <i className="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="#" className='underline'>Potato Flakes</a></li>
+              <li><a href="#" className='underline'>Milled Products</a></li>
             </ul>
           </li>
         </ul>
