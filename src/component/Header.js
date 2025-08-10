@@ -20,10 +20,10 @@ function Header(props) {
           <li><Link to="aboutus" className={isActive === 'aboutus' ? 'active':''}style={style} onClick={()=>{setActive('aboutus')}}>About</Link></li>
 
           <li><Link to="/contact" className={isActive === 'contact' ? 'active':''}style={style} onClick={()=>{setActive('contact')}}>Contact</Link></li>
-          <li className="dropdown"><Link to="#" className='underline'><span>Dried Potato Product</span> <i className="bi bi-chevron-down toggle-dropdown"></i></Link>
+          <li className="dropdown"><Link to="Products" className='underline'><span>Dried Potato Product</span> <i className="bi bi-chevron-down toggle-dropdown"></i></Link>
             <ul>
-              <li><a href="#" className='underline'>Potato Flakes</a></li>
-              <li><a href="#" className='underline'>Milled Products</a></li>
+              <li><Link to="/potatoFlakes" className='underline'>Potato Flakes</Link></li>
+              <li><Link to="/milledProducts" className='underline'>Milled Products</Link></li>
             </ul>
           </li>
         </ul>

@@ -6,7 +6,7 @@ import dish4 from '../assets/img/menu/cooking.png'
 import dish5 from '../assets/img/menu/mashing.png'
 import dish6 from '../assets/img/menu/drying.png'
 import dish7 from '../assets/img/menu/flakes.png'
-import dish8 from '../assets/img/menu/drying.png'
+import dish8 from '../assets/img/menu/flakes.png'
 
 function PotatoToFlakes() {
   
@@ -83,7 +83,7 @@ function PotatoToFlakes() {
                 </p>
               </div>
               <div className="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-6.png" className="glightbox"><img src={dish7} className="menu-img img-fluid" alt=""/></a>
+                <a href="assets/img/menu/menu-item-6.png" className="glightbox"><img src={dish8} className="menu-img img-fluid" alt=""/></a>
                 <h4>Milling</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada

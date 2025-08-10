@@ -16,6 +16,9 @@ import PotatoToFlakes from './component/PotatoToFlakes';
 import Hero from './component/Hero';
 import AboutUs from './component/AboutUs';
 import Product from './component/Product';
+import Products from './component/Products';
+import PotatoFlakes from './component/PotatoFlakes';
+import Milled from './component/Milled';
 
 function App() {
   return (
@@ -39,6 +42,18 @@ function App() {
         <Route path='contact' element={
           <React.Fragment>
              <Contact/>
+          </React.Fragment>}></Route>
+        <Route path='Products' element={
+          <React.Fragment>
+             <Products/>
+          </React.Fragment>}></Route>
+        <Route path='PotatoFlakes' element={
+          <React.Fragment>
+             <PotatoFlakes/>
+          </React.Fragment>}></Route>
+        <Route path='MilledProducts' element={
+          <React.Fragment>
+             <Milled/>
           </React.Fragment>}></Route>
       </Routes>
       <Footer/>

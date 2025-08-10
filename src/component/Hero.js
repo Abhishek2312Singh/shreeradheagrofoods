@@ -8,7 +8,7 @@ function Hero() {
       <div  className= "container">
         <div  className= "row gy-4 justify-content-center justify-content-lg-between">
           <div  className= "col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h1  >Enjoy Your Healthy<br/>Delicious Food</h1>
+            <h1>Enjoy Your Healthy<br/>Delicious Food</h1>
             <p   data-aos-delay="100">Full Discription</p>
             <div  className= "d-flex"   data-aos-delay="200">
               <a href="#manufacture"  className= "btn-get-started underline">Know More</a>
