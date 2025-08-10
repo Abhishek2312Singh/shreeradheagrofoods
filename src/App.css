@@ -36,14 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.card {
-  width: 180px;
-  transition: transform 0.3s ease, width 0.3s ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: scale(1.1); /* increase size smoothly */
-  z-index: 2; /* bring the hovered card above others */
-}
