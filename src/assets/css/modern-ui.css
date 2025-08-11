@@ -148,9 +148,22 @@ p, span, li, a {
   border-bottom: none;
 }
 
+/* Logo styling */
+.modern-header .logo {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
 .modern-header .logo img {
   transition: var(--transition);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  width: 120px !important;
+  height: 90px !important;
+  max-height: none !important;
+  transform: scale(0.9);
 }
 
 .modern-header .logo img:hover {

@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+// <<<<<<< HEAD
 import logo from '../assets/img/menu/logo.png'
+// =======
+// import logo from './logo1.png'
+// >>>>>>> 08883152fe08e36d8d775de26e7b74a8dba68d88
 
 function Header(props) {
   const [isActive, setActive] = useState('/')
