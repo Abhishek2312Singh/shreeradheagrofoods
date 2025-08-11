@@ -1,111 +1,328 @@
 import React, { useEffect } from 'react'
 import about1 from '../assets/img/menu/potato.jpg'
 import about from '../assets/img/about.jpg'
+import about2 from '../assets/img/about-2.jpg'
+
 function AboutUs() {
-    useEffect(()=>{
-document.title = "SRAF - About Us"
+    useEffect(() => {
+        document.title = "SRAF - About Us"
     })
     
-  return (
-    <>
-    <section id="about" class="about section">
-
-      
-      <div class="container section-title"  >
-        <h2>About Us<br/></h2>
-        {/* <p><span>Learn More</span> <span class="description-title">About Us</span></p> */}
-      </div>
-
-      <div class="container">
-
-        <div class="row gy-4">
-          <div class="col-lg-7"   data-aos-delay="100">
-            <img src={about} class="img-fluid mb-4" alt=""/>
-            
-          </div>
-          <div class="col-lg-5"   data-aos-delay="250">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-              </p>
-
-              <div class="position-relative mt-4">
-                <img src={about1} class="img-fluid" alt=""/>
-                <a href="https://www.youtube.com/watch?v=91QYV47fsBA" target='_blank' class="glightbox pulsating-play-btn"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-    <section id="why-us" class="why-us section light-background">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4"   >
-            <div class="why-box">
-              <h3>Why Choose Potato Flakes</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-              </p>
-              <div class="text-center">
-                <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="row gy-4"  >
-
-              <div class="col-xl-4">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+    return (
+        <>
+            {/* Hero Section */}
+            <section className="about-hero modern-hero">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6 fade-in-up">
+                            <h1 className="display-4 fw-bold mb-4">
+                                About <span className="text-warning">SRAF</span>
+                            </h1>
+                            <p className="lead mb-4">
+                                Leading manufacturer of premium dried potato products, serving global markets 
+                                with quality, innovation, and sustainability at our core.
+                            </p>
+                            <div className="d-flex flex-wrap gap-3">
+                                <div className="d-flex align-items-center me-4">
+                                    <i className="bi bi-award text-warning fs-3 me-2"></i>
+                                    <span className="fw-semibold">ISO Certified</span>
+                                </div>
+                                <div className="d-flex align-items-center me-4">
+                                    <i className="bi bi-globe text-info fs-3 me-2"></i>
+                                    <span className="fw-semibold">Global Export</span>
+                                </div>
+                                <div className="d-flex align-items-center">
+                                    <i className="bi bi-shield-check text-success fs-3 me-2"></i>
+                                    <span className="fw-semibold">Quality Assured</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6 text-center">
+                            <div className="fade-in-up" data-aos-delay="100">
+                                <img 
+                                    src={about} 
+                                    className="img-fluid rounded-4 shadow-lg float" 
+                                    alt="About SRAF" 
+                                    style={{ maxHeight: '500px', objectFit: 'contain' }}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </section>
 
-              <div class="col-xl-4"  >
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-gem"></i>
-                  <h4>Ullamco laboris ladore lore pan</h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+            {/* Company Story Section */}
+            <section className="py-5">
+                <div className="container">
+                    <div className="row gy-5 align-items-center">
+                        <div className="col-lg-6">
+                            <div className="slide-in-left">
+                                <h2 className="display-5 fw-bold text-primary mb-4">Our Story</h2>
+                                <p className="lead text-muted mb-4">
+                                    Founded with a vision to revolutionize the potato processing industry, 
+                                    SRAF has grown from a small family business to a leading global supplier 
+                                    of premium dried potato products.
+                                </p>
+                                <p className="mb-4">
+                                    Our journey began with a simple mission: to provide the highest quality 
+                                    potato products while maintaining the nutritional value and authentic taste 
+                                    that consumers love. Today, we serve customers across 50+ countries, 
+                                    maintaining the same commitment to excellence that started our company.
+                                </p>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <div className="d-flex align-items-center mb-3">
+                                            <i className="bi bi-check-circle-fill text-success me-2"></i>
+                                            <span>Premium Quality Products</span>
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="d-flex align-items-center mb-3">
+                                            <i className="bi bi-check-circle-fill text-success me-2"></i>
+                                            <span>Sustainable Practices</span>
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="d-flex align-items-center mb-3">
+                                            <i className="bi bi-check-circle-fill text-success me-2"></i>
+                                            <span>Global Standards</span>
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="d-flex align-items-center mb-3">
+                                            <i className="bi bi-check-circle-fill text-success me-2"></i>
+                                            <span>Innovation Focus</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="slide-in-right">
+                                <img 
+                                    src={about1} 
+                                    className="img-fluid rounded-4 shadow-lg hover-lift" 
+                                    alt="Potato Processing" 
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </section>
 
-              <div class="col-xl-4" >
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-inboxes"></i>
-                  <h4>Labore consequatur incidid dolore</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+            {/* Mission & Vision Section */}
+            <section className="py-5 bg-light">
+                <div className="container">
+                    <div className="row gy-4">
+                        <div className="col-lg-6">
+                            <div className="scale-in stagger-1">
+                                <div className="bg-white p-4 rounded-4 h-100 hover-lift shadow-sm">
+                                    <div className="text-center mb-4">
+                                        <i className="bi bi-bullseye text-primary display-1"></i>
+                                    </div>
+                                    <h3 className="text-center mb-3">Our Mission</h3>
+                                    <p className="text-muted text-center">
+                                        To provide the highest quality dried potato products while maintaining 
+                                        nutritional value, ensuring food safety, and contributing to global 
+                                        food security through sustainable and innovative processing methods.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="scale-in stagger-2">
+                                <div className="bg-white p-4 rounded-4 h-100 hover-lift shadow-sm">
+                                    <div className="text-center mb-4">
+                                        <i className="bi bi-eye text-success display-1"></i>
+                                    </div>
+                                    <h3 className="text-center mb-3">Our Vision</h3>
+                                    <p className="text-muted text-center">
+                                        To become the world's most trusted and innovative supplier of potato 
+                                        products, leading the industry in quality, sustainability, and 
+                                        customer satisfaction while expanding our global footprint.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </section>
 
-            </div>
-          </div>
+            {/* Core Values Section */}
+            <section className="py-5">
+                <div className="container">
+                    <div className="text-center mb-5">
+                        <h2 className="display-4 fw-bold text-primary mb-3">Our Core Values</h2>
+                        <p className="lead text-muted">The principles that guide everything we do</p>
+                    </div>
+                    
+                    <div className="row gy-4">
+                        <div className="col-lg-3 col-md-6">
+                            <div className="text-center scale-in stagger-1 process-step">
+                                <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                                    <i className="bi bi-award text-white fs-2"></i>
+                                </div>
+                                <h5>Quality Excellence</h5>
+                                <p className="text-muted small">Maintaining the highest standards in every product we produce</p>
+                            </div>
+                        </div>
+                        
+                        <div className="col-lg-3 col-md-6">
+                            <div className="text-center scale-in stagger-2 process-step">
+                                <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                                    <i className="bi bi-leaf text-white fs-2"></i>
+                                </div>
+                                <h5>Sustainability</h5>
+                                <p className="text-muted small">Committed to environmental responsibility and sustainable practices</p>
+                            </div>
+                        </div>
+                        
+                        <div className="col-lg-3 col-md-6">
+                            <div className="text-center scale-in stagger-3 process-step">
+                                <div className="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                                    <i className="bi bi-lightbulb text-white fs-2"></i>
+                                </div>
+                                <h5>Innovation</h5>
+                                <p className="text-muted small">Continuously improving our processes and product offerings</p>
+                            </div>
+                        </div>
+                        
+                        <div className="col-lg-3 col-md-6">
+                            <div className="text-center scale-in stagger-4 process-step">
+                                <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                                    <i className="bi bi-people text-white fs-2"></i>
+                                </div>
+                                <h5>Customer Focus</h5>
+                                <p className="text-muted small">Putting our customers' needs at the heart of our business</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        </div>
+            {/* Why Choose Us Section */}
+            <section className="py-5 bg-light">
+                <div className="container">
+                    <div className="row gy-5 align-items-center">
+                        <div className="col-lg-6">
+                            <div className="slide-in-left">
+                                <h2 className="display-5 fw-bold text-primary mb-4">Why Choose SRAF?</h2>
+                                <p className="lead text-muted mb-4">
+                                    We stand out in the industry for our commitment to quality, 
+                                    innovation, and customer satisfaction.
+                                </p>
+                                
+                                <div className="row gy-3">
+                                    <div className="col-12">
+                                        <div className="d-flex align-items-start">
+                                            <i className="bi bi-check-circle-fill text-success fs-4 me-3 mt-1"></i>
+                                            <div>
+                                                <h6 className="fw-semibold">Advanced Technology</h6>
+                                                <p className="text-muted small">State-of-the-art processing facilities with cutting-edge drying technology</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="col-12">
+                                        <div className="d-flex align-items-start">
+                                            <i className="bi bi-check-circle-fill text-success fs-4 me-3 mt-1"></i>
+                                            <div>
+                                                <h6 className="fw-semibold">Quality Assurance</h6>
+                                                <p className="text-muted small">Rigorous quality control processes and international certifications</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="col-12">
+                                        <div className="d-flex align-items-start">
+                                            <i className="bi bi-check-circle-fill text-success fs-4 me-3 mt-1"></i>
+                                            <div>
+                                                <h6 className="fw-semibold">Global Reach</h6>
+                                                <p className="text-muted small">Serving customers worldwide with reliable logistics and support</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="col-12">
+                                        <div className="d-flex align-items-start">
+                                            <i className="bi bi-check-circle-fill text-success fs-4 me-3 mt-1"></i>
+                                            <div>
+                                                <h6 className="fw-semibold">Sustainable Sourcing</h6>
+                                                <p className="text-muted small">Partnering with local farmers and promoting sustainable agriculture</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="slide-in-right">
+                                <img 
+                                    src={about2} 
+                                    className="img-fluid rounded-4 shadow-lg hover-lift" 
+                                    alt="Quality Control" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      </div>
+            {/* Company Statistics */}
+            <section className="py-5">
+                <div className="container">
+                    <div className="row text-center">
+                        <div className="col-md-3 mb-4">
+                            <div className="scale-in stagger-1">
+                                <div className="display-6 fw-bold text-primary mb-2">15+</div>
+                                <p className="text-muted">Years of Excellence</p>
+                            </div>
+                        </div>
+                        <div className="col-md-3 mb-4">
+                            <div className="scale-in stagger-2">
+                                <div className="display-6 fw-bold text-primary mb-2">50+</div>
+                                <p className="text-muted">Countries Served</p>
+                            </div>
+                        </div>
+                        <div className="col-md-3 mb-4">
+                            <div className="scale-in stagger-3">
+                                <div className="display-6 fw-bold text-primary mb-2">1000+</div>
+                                <p className="text-muted">Satisfied Customers</p>
+                            </div>
+                        </div>
+                        <div className="col-md-3 mb-4">
+                            <div className="scale-in stagger-4">
+                                <div className="display-6 fw-bold text-primary mb-2">24/7</div>
+                                <p className="text-muted">Customer Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    </section>
-    </>
-  )
+            {/* Call to Action */}
+            <section className="py-5 bg-primary text-white">
+                <div className="container text-center">
+                    <div className="fade-in-up">
+                        <h2 className="display-5 fw-bold mb-4">Ready to Partner With Us?</h2>
+                        <p className="lead mb-4 opacity-75">
+                            Join thousands of satisfied customers worldwide who trust SRAF for their potato product needs.
+                        </p>
+                        <div className="d-flex flex-wrap gap-3 justify-content-center">
+                            <a href="/contact" className="btn btn-light btn-lg hover-lift">
+                                <i className="bi bi-envelope me-2"></i>
+                                Get in Touch
+                            </a>
+                            <a href="/products" className="btn btn-outline-light btn-lg hover-lift">
+                                <i className="bi bi-box me-2"></i>
+                                View Products
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
+    )
 }
 
 export default AboutUs
