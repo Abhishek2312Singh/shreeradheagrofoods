@@ -13,7 +13,7 @@ document.title = "SRAF - About Us"
       
       <div class="container section-title"  >
         <h2>About Us<br/></h2>
-        <p><span>Learn More</span> <span class="description-title">About Us</span></p>
+        {/* <p><span>Learn More</span> <span class="description-title">About Us</span></p> */}
       </div>
 
       <div class="container">
