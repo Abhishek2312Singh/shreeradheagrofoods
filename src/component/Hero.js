@@ -65,12 +65,12 @@ function Hero() {
             <div className="col-md-8">
               <div className="modern-chairperson-content">
                 <div className="d-flex align-items-center mb-3">
-                  <img 
+                  {/* <img 
                     src={arrow} 
                     className="me-3" 
                     style={{ width: '40px', height: '40px' }} 
                     alt="Arrow" 
-                  />
+                  /> */}
                   <div>
                     <h5 className="modern-chairperson-title mb-1">Chairperson</h5>
                     <p className="modern-chairperson-subtitle">Chairman, SRAF</p>
