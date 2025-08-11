@@ -35,7 +35,7 @@ function Contact() {
   };
 
   useEffect(()=>{
-    document.title="SRAF - Contact"
+            document.title="Shree Radhe Agro Foods - Contact"
   })
   return (
     <><section id="contact" className="contact section">

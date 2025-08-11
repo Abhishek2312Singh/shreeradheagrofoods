@@ -5,7 +5,7 @@ import about2 from '../assets/img/about-2.jpg'
 
 function AboutUs() {
     useEffect(() => {
-        document.title = "SRAF - About Us"
+        document.title = "Shree Radhe Agro Foods - About Us"
     })
     
     return (
@@ -16,7 +16,7 @@ function AboutUs() {
                     <div className="row align-items-center">
                         <div className="col-lg-6 fade-in-up">
                             <h1 className="display-4 fw-bold mb-4">
-                                About <span className="text-warning">SRAF</span>
+                                About <span className="text-warning">Shree Radhe Agro Foods</span>
                             </h1>
                             <p className="lead mb-4">
                                 Leading manufacturer of premium dried potato products, serving global markets 
@@ -42,7 +42,7 @@ function AboutUs() {
                                 <img 
                                     src={about} 
                                     className="img-fluid rounded-4 shadow-lg float" 
-                                    alt="About SRAF" 
+                                    alt="About Shree Radhe Agro Foods" 
                                     style={{ maxHeight: '500px', objectFit: 'contain' }}
                                 />
                             </div>
@@ -60,7 +60,7 @@ function AboutUs() {
                                 <h2 className="display-5 fw-bold text-primary mb-4">Our Story</h2>
                                 <p className="lead text-muted mb-4">
                                     Founded with a vision to revolutionize the potato processing industry, 
-                                    SRAF has grown from a small family business to a leading global supplier 
+                                    Shree Radhe Agro Foods has grown from a small family business to a leading global supplier 
                                     of premium dried potato products.
                                 </p>
                                 <p className="mb-4">
@@ -206,7 +206,7 @@ function AboutUs() {
                     <div className="row gy-5 align-items-center">
                         <div className="col-lg-6">
                             <div className="slide-in-left">
-                                <h2 className="display-5 fw-bold text-primary mb-4">Why Choose SRAF?</h2>
+                                <h2 className="display-5 fw-bold text-primary mb-4">Why Choose Shree Radhe Agro Foods?</h2>
                                 <p className="lead text-muted mb-4">
                                     We stand out in the industry for our commitment to quality, 
                                     innovation, and customer satisfaction.
@@ -306,7 +306,7 @@ function AboutUs() {
                     <div className="fade-in-up">
                         <h2 className="display-5 fw-bold mb-4">Ready to Partner With Us?</h2>
                         <p className="lead mb-4 opacity-75">
-                            Join thousands of satisfied customers worldwide who trust SRAF for their potato product needs.
+                            Join thousands of satisfied customers worldwide who trust Shree Radhe Agro Foods for their potato product needs.
                         </p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center">
                             <a href="/contact" className="btn btn-light btn-lg hover-lift">
