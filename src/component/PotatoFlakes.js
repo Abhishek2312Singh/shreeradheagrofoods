@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import bgImg from '../assets/img/menu/potatoFlakes.jpg'
 import product1 from '../assets/img/menu/product1.png';
 
-export default function PotatoFlakes() {
+export default function PotatoFlakes(props) {
+  useState(()=>{
+    document.title = props.title;
+  })
   return (
     <div>
       <div className='bg-container'  style={{

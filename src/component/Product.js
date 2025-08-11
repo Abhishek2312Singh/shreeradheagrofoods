@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import product1 from '../assets/img/menu/product1.png';
 import product2 from '../assets/img/menu/milled-product.png'
 import './Product.css'
@@ -14,7 +14,7 @@ export default function Product() {
                     <div class="card-body" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center'}}>
                         <h3 class="card-title">Potato Flakes</h3>
                         <p class="card-text"></p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <Link to="potatoFlakes" class="btn btn-primary">Read More</Link>
                     </div>
                 </div>
                 <div class="card my-card my-4"  style={{ border:'none'}}>
@@ -22,7 +22,7 @@ export default function Product() {
                     <div class="card-body" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center'}}>
                         <h3 class="card-title">Milled Products</h3>
                         <p class="card-text"></p>
-                       <a href="#" class="btn btn-primary">Read More</a>
+                       <Link to="milledProducts" class="btn btn-primary">Read More</Link>
                     </div>
                 </div>
             </div>

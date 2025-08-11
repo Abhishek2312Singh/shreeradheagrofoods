@@ -6,7 +6,7 @@ import dish4 from '../assets/img/menu/cooking.png'
 import dish5 from '../assets/img/menu/mashing.png'
 import dish6 from '../assets/img/menu/drying.png'
 import dish7 from '../assets/img/menu/flakes.png'
-import dish8 from '../assets/img/menu/flakes.png'
+import dish8 from '../assets/img/menu/Potato-Powder.jpg'
 
 function PotatoToFlakes() {
   

@@ -43,15 +43,15 @@ function App() {
           <React.Fragment>
              <Contact/>
           </React.Fragment>}></Route>
-        <Route path='Products' element={
+        <Route path='products' element={
           <React.Fragment>
              <Products/>
           </React.Fragment>}></Route>
-        <Route path='PotatoFlakes' element={
+        <Route path='potatoFlakes' element={
           <React.Fragment>
-             <PotatoFlakes/>
+             <PotatoFlakes title="SRAF - Potato Flakes"/>
           </React.Fragment>}></Route>
-        <Route path='MilledProducts' element={
+        <Route path='milledProducts' element={
           <React.Fragment>
              <Milled/>
           </React.Fragment>}></Route>
