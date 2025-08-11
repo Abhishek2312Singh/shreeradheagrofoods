@@ -2,6 +2,7 @@ import './App.css';
 import React  from 'react';
 import Header from './component/Header';
 import './assets/css/main.css'
+import './assets/css/modern-ui.css'
 import './assets/vendor/bootstrap/css/bootstrap.min.css'
 import './assets/vendor/bootstrap-icons/bootstrap-icons.css'
 import './assets/vendor/aos/aos.css'

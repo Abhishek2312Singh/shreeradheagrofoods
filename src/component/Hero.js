@@ -6,42 +6,89 @@ import arrow from '../assets/img/menu/profile-down-arrow.svg'
 function Hero() {
   return (
     <>
-      <section id="hero" className="hero section light-background">
-
+      <section id="hero" className="hero modern-hero">
         <div className="container">
-          <div className="row gy-4 justify-content-center justify-content-lg-between">
-            <div className="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
-              <h1>Enjoy Your Healthy<br />Delicious Food</h1>
-              <p data-aos-delay="100">Full Discription</p>
-              <div className="d-flex" data-aos-delay="200">
-                <a href="#manufacture" className="btn-get-started underline">Know More</a>
-                <a href="https://www.youtube.com/watch?v=91QYV47fsBA" target='_blank' className="glightbox btn-watch-video d-flex align-items-center underline"><i className="bi bi-play-circle"></i><span>Watch Video</span></a>
+          <div className="row gy-4 justify-content-center justify-content-lg-between align-items-center">
+            <div className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <div className="fade-in-up">
+                <h1 className="display-4 fw-bold mb-4">
+                  Premium Quality<br />
+                  <span className="text-warning">Potato Products</span>
+                </h1>
+                <p className="lead mb-4 opacity-75">
+                  Discover our range of high-quality dried potato products, 
+                  carefully processed to maintain nutrition and taste while 
+                  ensuring long shelf life and convenience.
+                </p>
+                <div className="d-flex flex-wrap gap-3" data-aos-delay="200">
+                  <a href="#manufacture" className="modern-btn modern-btn-primary">
+                    <i className="bi bi-info-circle me-2"></i>
+                    Learn More
+                  </a>
+                  <a 
+                    href="https://www.youtube.com/watch?v=91QYV47fsBA" 
+                    target='_blank' 
+                    rel="noopener noreferrer"
+                    className="modern-btn modern-btn-outline"
+                  >
+                    <i className="bi bi-play-circle me-2"></i>
+                    Watch Video
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="col-lg-5 order-1 order-lg-2 hero-img">
-              <img src={banner} className="img-fluid animated" alt="" />
+            <div className="col-lg-6 order-1 order-lg-2 text-center">
+              <div className="fade-in-up" data-aos-delay="100">
+                <img 
+                  src={banner} 
+                  className="img-fluid rounded-4 shadow-lg" 
+                  alt="Fresh Potatoes" 
+                  style={{ maxHeight: '500px', objectFit: 'contain' }}
+                />
+              </div>
             </div>
           </div>
         </div>
-
       </section>
 
-      <div className="card mb-3">
-        <div class="row g-0" >
-          <div class="col-md-4">
-            <img src={photo} class="my-card img-fluid rounded-start" style={{height: '490px', width: '400px',objectFit:'contain'}} alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <img src={arrow} class="img-fluid rounded-start" style={{display: 'block', height: 'auto', maxWidth: '100%'}} alt="..." />
-              <h5 class="card-title" style={{}}>chairperson</h5>
-              <p class="card-text">Chairman, SRAF </p>
-              <button type="button" class="btn btn-outline-secondary">View Profile</button>
+      <div className="container my-5">
+        <div className="modern-chairperson-card">
+          <div className="row g-0">
+            <div className="col-md-4">
+              <img 
+                src={photo} 
+                className="img-fluid h-100" 
+                style={{ height: '400px', objectFit: 'cover' }} 
+                alt="Chairperson" 
+              />
+            </div>
+            <div className="col-md-8">
+              <div className="modern-chairperson-content">
+                <div className="d-flex align-items-center mb-3">
+                  <img 
+                    src={arrow} 
+                    className="me-3" 
+                    style={{ width: '40px', height: '40px' }} 
+                    alt="Arrow" 
+                  />
+                  <div>
+                    <h5 className="modern-chairperson-title mb-1">Chairperson</h5>
+                    <p className="modern-chairperson-subtitle">Chairman, SRAF</p>
+                  </div>
+                </div>
+                <p className="text-muted mb-4">
+                  Leading our company with vision and dedication to provide 
+                  the highest quality potato products to our customers worldwide.
+                </p>
+                <button type="button" className="btn btn-primary modern-btn-primary">
+                  <i className="bi bi-person-circle me-2"></i>
+                  View Profile
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </>
   )
 }

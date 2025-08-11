@@ -5,25 +5,44 @@ import './Product.css'
 
 export default function Product() {
     return (
-        <div className='container'  style={{width: '800px', height: '450px'}}>
-            <h1 style={{ textAlign: 'center'  }}>Find Out the Most Popular Product</h1>
-            <div class="card-group">
-                <div class="card my-card mx-5 my-4" style={{ border:'none'}}>
-                    <Link to='potatoFlakes'><img src={product1} class="card-img-top" style={{width:'200px', display: 'block', margin: '0 auto'}}  alt="..." /></Link>
-
-                    <div class="card-body" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center'}}>
-                        <h3 class="card-title">Potato Flakes</h3>
-                        <p class="card-text"></p>
-                        <Link to="potatoFlakes" class="btn btn-primary">Read More</Link>
-                    </div>
+        <div className="products-section">
+            <div className="modern-product-grid">
+                <div className="modern-product-card">
+                    <Link to='potatoFlakes' className="text-decoration-none h-100 d-block">
+                        <img src={product1} className="card-img-top" alt="Potato Flakes" />
+                        <div className="modern-product-content">
+                            <h3 className="modern-product-title">Potato Flakes</h3>
+                            <p className="modern-product-description">
+                                Premium quality potato flakes perfect for instant mashed potatoes, 
+                                soups, and various culinary applications.
+                            </p>
+                            <div className="d-flex justify-content-between align-items-center mt-auto">
+                                <span className="badge bg-success">Premium Quality</span>
+                                <Link to="potatoFlakes" className="btn btn-primary modern-btn-primary">
+                                    Learn More <i className="bi bi-arrow-right ms-2"></i>
+                                </Link>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
-                <div class="card my-card my-4"  style={{ border:'none'}}>
-                     <Link to='milledProducts'><img src={product2} class="card-img-top" style={{width:'200px', display: 'block', margin: '0 auto'}} alt="..." /></Link>
-                    <div class="card-body" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center'}}>
-                        <h3 class="card-title">Milled Products</h3>
-                        <p class="card-text"></p>
-                       <Link to="milledProducts" class="btn btn-primary">Read More</Link>
-                    </div>
+                
+                <div className="modern-product-card">
+                    <Link to='milledProducts' className="text-decoration-none h-100 d-block">
+                        <img src={product2} className="card-img-top" alt="Milled Products" />
+                        <div className="modern-product-content">
+                            <h3 className="modern-product-title">Milled Products</h3>
+                            <p className="modern-product-description">
+                                Finely milled potato products ideal for baking, 
+                                thickening agents, and industrial applications.
+                            </p>
+                            <div className="d-flex justify-content-between align-items-center mt-auto">
+                                <span className="badge bg-info">Versatile</span>
+                                <Link to="milledProducts" className="btn btn-primary modern-btn-primary">
+                                    Learn More <i className="bi bi-arrow-right ms-2"></i>
+                                </Link>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,10 +1,40 @@
+/* Modern Product Card Styles */
 .my-card {
-  width: 180px;
-  transition: transform 0.3s ease, width 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .my-card:hover {
-  transform: scale(1.1); /* increase size smoothly */
-  z-index: 2; /* bring the hovered card above others */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced card animations */
+.modern-product-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Image hover effects */
+.modern-product-card img {
+  transition: transform 0.3s ease;
+}
+
+.modern-product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Button hover effects */
+.modern-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 195, 74, 0.4);
+}
+
+.modern-btn-outline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }

@@ -1,45 +1,105 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../assets/img/logo.png'
+
 function Header(props) {
-  const [isActive,setActive] = useState('/')
+  const [isActive, setActive] = useState('/')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  
   document.title = props.title
-  const style = {textDecoration:'none'}
+  
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   return (
     <>
-    <header id="header" className="header d-flex align-items-center sticky-top">
-    <div className="container position-relative d-flex align-items-center justify-content-between">
+      <header id="header" className="header modern-header d-flex align-items-center sticky-top">
+        <div className="container position-relative d-flex align-items-center justify-content-between">
+          
+          <Link to="/" className="logo d-flex align-items-center me-auto me-xl-0">
+            <img src={logo} alt="SRAF Logo" style={{ width: "80px", height: "60px", objectFit: "contain" }} />
+            <span className="ms-2 fw-bold text-primary">SRAF</span>
+          </Link>
+          
+          <nav id="navmenu" className={`navmenu modern-nav ${isMobileMenuOpen ? 'show' : ''}`}>
+            <ul className="d-flex align-items-center">
+              <li>
+                <Link 
+                  to="/" 
+                  className={isActive === '/' ? 'active' : ''} 
+                  onClick={() => { setActive('/'); setIsMobileMenuOpen(false) }}
+                >
+                  Home
+                </Link>
+              </li>
 
-      <a href="index.html" className="logo d-flex align-items-center me-auto me-xl-0">
-        <img src="./logo2.png" style={{ width:"100px", height:"200px"}} alt=""/>
-       
-      </a>
-      <nav id="navmenu" className="navmenu">
-        <ul>
-          <li><Link to="/" className={isActive === '/' ? 'active':''}style={style} onClick={()=>{setActive('/')}}>Home</Link></li>
+              <li>
+                <Link 
+                  to="aboutus" 
+                  className={isActive === 'aboutus' ? 'active' : ''} 
+                  onClick={() => { setActive('aboutus'); setIsMobileMenuOpen(false) }}
+                >
+                  About
+                </Link>
+              </li>
 
-          <li><Link to="aboutus" className={isActive === 'aboutus' ? 'active':''}style={style} onClick={()=>{setActive('aboutus')}}>About</Link></li>
-
-          <li><Link to="contact" className={isActive === 'contact' ? 'active':''}style={style} onClick={()=>{setActive('contact')}}>Contact</Link></li>
-          <li className="dropdown"><Link to="products" className={`underline ${isActive ==='potatoFlakes' ? 'active' : ""}`} ><span>Dried Potato Product</span> <i className="bi bi-chevron-down toggle-dropdown"></i></Link>
-            <ul>
-              <li><Link to="potatoFlakes" className='underline' onClick={()=>{
-                setActive('potatoFalkes')
-              }}>Potato Flakes</Link></li>
-              <li><Link to="milledProducts" className='underline' onClick={()=>{
-                setActive('milledProducts')
-              }}>Milled Products</Link></li>
+              <li>
+                <Link 
+                  to="contact" 
+                  className={isActive === 'contact' ? 'active' : ''} 
+                  onClick={() => { setActive('contact'); setIsMobileMenuOpen(false) }}
+                >
+                  Contact
+                </Link>
+              </li>
+              
+              <li className="dropdown">
+                <Link 
+                  to="products" 
+                  className={`${isActive === 'products' ? 'active' : ''}`}
+                  onClick={() => { setActive('products'); setIsMobileMenuOpen(false) }}
+                >
+                  <span>Products</span> 
+                  <i className="bi bi-chevron-down toggle-dropdown ms-1"></i>
+                </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link 
+                      to="potatoFlakes" 
+                      onClick={() => { setActive('potatoFlakes'); setIsMobileMenuOpen(false) }}
+                    >
+                      Potato Flakes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link 
+                      to="milledProducts" 
+                      onClick={() => { setActive('milledProducts'); setIsMobileMenuOpen(false) }}
+                    >
+                      Milled Products
+                    </Link>
+                  </li>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul>
-        <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+          </nav>
 
-      <a className="btn-getstarted underline" href="index.html#book-a-table">+91 7701933308</a>
-
-    </div>
-  </header>
-  
-  </>
+          <div className="d-flex align-items-center gap-3">
+            <a className="btn btn-outline-primary modern-btn-outline" href="tel:+917701933308">
+              <i className="bi bi-telephone-fill me-2"></i>
+              +91 7701933308
+            </a>
+            
+            <button 
+              className="mobile-nav-toggle d-xl-none bi bi-list"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            ></button>
+          </div>
+        </div>
+      </header>
+    </>
   )
 }
 
