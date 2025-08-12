@@ -310,7 +310,7 @@ function AboutUs() {
                         </p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center">
                             <a href="/contact" className="btn btn-primary-light btn-lg hover-lift">
-                                <i className="bi bi-envelope text-white me-2"></i>
+                                <i className="bi bi-envelope text-white me-2" ></i>
                                 Get in Touch
                             </a>
                             <a href="/products" className="btn btn-primary-light btn-lg hover-lift">

@@ -159,7 +159,7 @@ export default function Products() {
         <div className="container">
           <div className="modern-quality-content">
             <div className="text-center mb-5">
-              <h2 className="quality-content display-4 fw-bold text-white mb-3">Quality Control</h2>
+              <h2 className="quality-content display-4 fw-bold text-white mb-3" style={{color: 'white'}}>Quality Control</h2>
               <p className="lead text-white opacity-75">Our commitment to excellence at every step</p>
             </div>
             
