@@ -228,7 +228,7 @@ function Admin() {
 
                       <div className="col-12">
                         <div className="d-flex gap-2">
-                          <button type="submit" className="btn btn-primary btn-lg px-4">
+                          <button type="submit" className="btn btn-warning btn-lg px-4">
                             <i className={`bi ${isEditing ? 'bi-check-circle' : 'bi-plus-circle'} me-2`}></i>
                             {isEditing ? 'Update Activity' : 'Add Activity'}
                           </button>

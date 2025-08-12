@@ -51,7 +51,7 @@ function Hero() {
                 </div>
                 
                 <div className="d-flex flex-wrap gap-3" data-aos-delay="200">
-                  <a href="#manufacture" className="modern-btn modern-btn-primary hover-lift">
+                  <a href="aboutUs" className="modern-btn modern-btn-primary hover-lift">
                     <i className="bi bi-info-circle me-2"></i>
                     Learn More
                   </a>
@@ -144,7 +144,7 @@ function Hero() {
             <div className="col-lg-3 col-md-6">
               <div className="process-card text-center hover-lift">
                 <div className="process-icon mb-3">
-                  <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                  <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
                     <i class="bi bi-tree text-white fs-1"></i>
                   </div>
                 </div>

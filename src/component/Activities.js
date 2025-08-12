@@ -168,7 +168,7 @@ function Activities() {
         <div className="category-filter mb-4">
           <div className="d-flex justify-content-center flex-wrap gap-2">
             <button
-              className={`btn ${selectedCategory === 'all' ? 'btn-primary' : 'btn-outline-primary'}`}
+              className={`btn ${selectedCategory === 'all' ? 'btn-info' : 'btn-outline-info'}`}
               onClick={() => handleCategoryFilter('all')}
             >
               <i className="bi bi-grid me-2"></i>

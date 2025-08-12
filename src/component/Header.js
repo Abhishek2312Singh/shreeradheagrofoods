@@ -176,7 +176,7 @@ function Header(props) {
             <div className="login-header">
               <h4>Admin Login</h4>
               <button 
-                className="btn-close" 
+                className="btn-close"
                 onClick={() => setShowLoginForm(false)}
               ></button>
             </div>
@@ -204,7 +204,7 @@ function Header(props) {
                 />
               </div>
               <div className="d-grid">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary modern-login-btn">
                   <i className="bi bi-box-arrow-in-right me-2"></i>
                   Login
                 </button>

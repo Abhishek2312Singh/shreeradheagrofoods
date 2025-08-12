@@ -110,14 +110,17 @@ export default function Products() {
             <p className="lead text-muted">From farm to finished product</p>
           </div>
           
+                    
           <div className="row">
+            
+
             <div className="col-lg-3 col-md-6 mb-4">
               <div className="text-center scale-in stagger-1 process-step">
-                <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px',backgroundColor: 'blue'}}>
                   <i className="bi bi-basket2-fill text-white fs-2"></i>
                 </div>
                 <h5>Raw Selection</h5>
-                <p className="text-muted small">Carefully selected premium potatoes with optimal starch content</p>
+                <p className="text-muted small">Thorough cleaning and peeling using advanced technology</p>
               </div>
             </div>
             
@@ -155,64 +158,102 @@ export default function Products() {
       </section>
       
       {/* Quality Control Section */}
-      <section className="modern-quality-section">
+      {/* <h1 className="">Our Products</h1> */}
+      <section className="quality-control-section">
+      <h1 className="modern-cover-title text-white" style={{textAlign: 'center', marginBottom: '20px'}}>Quality Control</h1>
         <div className="container">
-          <div className="modern-quality-content">
-            <div className="text-center mb-5">
-              <h2 className="quality-content display-4 fw-bold text-white mb-3" style={{color: 'white'}}>Quality Control</h2>
-              <p className="lead text-white opacity-75">Our commitment to excellence at every step</p>
+          <div className="text-center mb-5">
+            <p className="lead text-white opacity-75">Our commitment to excellence at every step</p>
+          </div>
+          
+          <div className="quality-control-cards">
+            <div className="quality-control-card">
+              <div className="quality-control-icon">
+                <i className="bi bi-search"></i>
+              </div>
+              <h3 className="quality-control-title">Raw Material Quality Control</h3>
+              <p className="quality-control-description">Before processing</p>
+              <ul className="quality-control-features">
+                <li>Variety & maturity → Right potato type with proper starch content</li>
+                <li>Visual inspection → No rot, sprouting, green skin (indicates solanine)</li>
+                <li>Size & uniformity → Helps in even drying</li>
+                <li>Moisture content → Usually 75–80% in fresh potatoes</li>
+                <li>Defect count → Foreign matter, stones, soil, or other plant debris</li>
+              </ul>
             </div>
             
-            <div className="modern-quality-grid">
-              <div className="modern-quality-card hover-lift">
-                <h3>Raw Material Quality Control</h3>
-                <p className="text-white-50 mb-3">Before processing</p>
-                <ul>
-                  <li>Variety & maturity → Right potato type with proper starch content</li>
-                  <li>Visual inspection → No rot, sprouting, green skin (indicates solanine)</li>
-                  <li>Size & uniformity → Helps in even drying</li>
-                  <li>Moisture content → Usually 75–80% in fresh potatoes</li>
-                  <li>Defect count → Foreign matter, stones, soil, or other plant debris</li>
-                </ul>
+            <div className="quality-control-card">
+              <div className="quality-control-icon">
+                <i className="bi bi-gear"></i>
               </div>
-              
-              <div className="modern-quality-card hover-lift">
-                <h3>Process Control</h3>
-                <p className="text-white-50 mb-3">During manufacturing</p>
-                <ul>
-                  <li>Washing & peeling check → No dirt or peel residues</li>
-                  <li>Blanching control → Time/temperature to inactivate enzymes</li>
-                  <li>Drying parameters → Proper temperature and airflow to prevent case hardening</li>
-                  <li>Moisture monitoring → Target final moisture for stability (6–8%)</li>
-                  <li>Hygiene & sanitation → Prevent contamination</li>
-                </ul>
-              </div>
-              
-              <div className="modern-quality-card hover-lift">
-                <h3>Finished Product Testing</h3>
-                <p className="text-white-50 mb-3">After drying</p>
-                <ul>
-                  <li>Moisture content → Low enough to prevent spoilage</li>
-                  <li>Color measurement → L*, a*, b* values for consistency</li>
-                  <li>Flavor & aroma → No burnt, moldy, or foreign tastes</li>
-                  <li>Texture → Crispness for chips, free-flowing powder for granules</li>
-                  <li>Bulk density → Consistency in packing</li>
-                  <li>Microbiological safety → Total plate count, yeast & mold, coliforms</li>
-                  <li>Chemical safety → Residual pesticides, acrylamide level for chips</li>
-                </ul>
-              </div>
-              
-              <div className="modern-quality-card hover-lift">
-                <h3>Packaging & Storage QC</h3>
-                <p className="text-white-50 mb-3">Final quality assurance</p>
-                <ul>
-                  <li>Sealing integrity → No leaks</li>
-                  <li>Oxygen/moisture barrier check → Packaging films</li>
-                  <li>Shelf-life testing → Accelerated and real-time</li>
-                  <li>Label verification → Nutritional facts, batch number, manufacturing date</li>
-                </ul>
-              </div>
+              <h3 className="quality-control-title">Process Control</h3>
+              <p className="quality-control-description">During manufacturing</p>
+              <ul className="quality-control-features">
+                <li>Washing & peeling check → No dirt or peel residues</li>
+                <li>Blanching control → Time/temperature to inactivate enzymes</li>
+                <li>Drying parameters → Proper temperature and airflow to prevent case hardening</li>
+                <li>Moisture monitoring → Target final moisture for stability (6–8%)</li>
+                <li>Hygiene & sanitation → Prevent contamination</li>
+              </ul>
             </div>
+            
+            <div className="quality-control-card">
+              <div className="quality-control-icon">
+                <i className="bi bi-flask"></i>
+              </div>
+              <h3 className="quality-control-title">Finished Product Testing</h3>
+              <p className="quality-control-description">After drying</p>
+              <ul className="quality-control-features">
+                <li>Moisture content → Low enough to prevent spoilage</li>
+                <li>Color measurement → L*, a*, b* values for consistency</li>
+                <li>Flavor & aroma → No burnt, moldy, or foreign tastes</li>
+                <li>Texture → Crispness for chips, free-flowing powder for granules</li>
+                <li>Bulk density → Consistency in packing</li>
+                <li>Microbiological safety → Total plate count, yeast & mold, coliforms</li>
+                <li>Chemical safety → Residual pesticides, acrylamide level for chips</li>
+              </ul>
+            </div>
+            
+            <div className="quality-control-card">
+              <div className="quality-control-icon">
+                <i className="bi bi-box-seam"></i>
+              </div>
+              <h3 className="quality-control-title">Packaging & Storage QC</h3>
+              <p className="quality-control-description">Final quality assurance</p>
+              <ul className="quality-control-features">
+                <li>Sealing integrity → No leaks</li>
+                <li>Oxygen/moisture barrier check → Packaging films</li>
+                <li>Shelf-life testing → Accelerated and real-time</li>
+                <li>Label verification → Nutritional facts, batch number, manufacturing date</li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Quality Control Stats */}
+          <div className="quality-control-stats">
+            <div className="quality-stat">
+              <div className="quality-stat-number">99.9%</div>
+              <div className="quality-stat-label">Quality Assurance</div>
+            </div>
+            <div className="quality-stat">
+              <div className="quality-stat-number">24/7</div>
+              <div className="quality-stat-label">Monitoring</div>
+            </div>
+            <div className="quality-stat">
+              <div className="quality-stat-number">ISO</div>
+              <div className="quality-stat-label">Certified</div>
+            </div>
+            <div className="quality-stat">
+              <div className="quality-stat-number">100%</div>
+              <div className="quality-stat-label">Traceable</div>
+            </div>
+          </div>
+          
+          {/* Quality Control CTA */}
+          <div className="quality-control-cta">
+            <a href="/contact" className="quality-control-btn">
+              Get Quality Report <i className="bi bi-arrow-right ms-2"></i>
+            </a>
           </div>
         </div>
       </section>

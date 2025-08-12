@@ -1,0 +1,336 @@
+/* Quality Control Section - Dedicated CSS File */
+
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Quality Control Section Container */
+.quality-control-section {
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #43a047 100%);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.quality-control-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../img/menu/potato.jpg') center/cover no-repeat;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.quality-control-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Quality Control Heading - Simplified */
+.quality-control-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Quality Control Cards Container */
+.quality-control-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+/* Individual Quality Control Card - Simplified */
+.quality-control-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.quality-control-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Quality Control Card Icon - Simplified */
+.quality-control-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  background: #4caf50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+}
+
+/* Quality Control Card Title - Simplified */
+.quality-control-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+/* Quality Control Card Description - Simplified */
+.quality-control-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* Quality Control Features List - Simplified */
+.quality-control-features {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.quality-control-features h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.quality-control-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.quality-control-features li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.quality-control-features li::before {
+  content: '✓';
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Quality Control Stats - Simplified */
+.quality-control-stats {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.quality-stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.quality-stat-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.quality-stat-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Quality Control CTA - Simplified */
+.quality-control-cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.quality-control-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2e7d32;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.quality-control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  color: #1b5e20;
+  background: #f5f5f5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quality-control-section {
+    padding: 3rem 0;
+  }
+  
+  .quality-control-heading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .quality-control-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .quality-control-card {
+    padding: 1.5rem;
+  }
+  
+  .quality-control-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .quality-control-title {
+    font-size: 1.3rem;
+  }
+  
+  .quality-control-features ul {
+    grid-template-columns: 1fr;
+  }
+  
+  .quality-control-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .quality-stat {
+    padding: 1.5rem;
+  }
+  
+  .quality-stat-number {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quality-control-heading {
+    font-size: 2rem;
+  }
+  
+  .quality-control-card {
+    padding: 1.5rem;
+  }
+  
+  .quality-control-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .quality-control-btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .quality-control-section {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .quality-control-heading,
+  .quality-control-title,
+  .quality-control-description {
+    color: #000000 !important;
+  }
+  
+  .quality-control-card {
+    background: #ffffff !important;
+    border: 1px solid #cccccc !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .quality-control-section {
+    background: #000000 !important;
+  }
+  
+  .quality-control-heading {
+    color: #ffffff !important;
+    text-shadow: none !important;
+  }
+  
+  .quality-control-card {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+  }
+  
+  .quality-control-title {
+    color: #000000 !important;
+  }
+  
+  .quality-control-description {
+    color: #000000 !important;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .quality-control-card,
+  .quality-control-btn {
+    transition: none !important;
+  }
+  
+  .quality-control-card:hover,
+  .quality-control-btn:hover {
+    transform: none !important;
+  }
+}
