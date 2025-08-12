@@ -8,8 +8,8 @@ import './assets/vendor/bootstrap-icons/bootstrap-icons.css'
 import './assets/vendor/aos/aos.css'
 import './assets/vendor/glightbox/css/glightbox.min.css'
 import './assets/vendor/swiper/swiper-bundle.min.css'
-import './assets/img/favicon.png'
-import './assets/img/apple-touch-icon.png'
+// import './assets/img/favicon.png'
+// import './assets/img/apple-touch-icon.png'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Footer from './component/Footer';
 import Contact from './component/Contact';
@@ -20,13 +20,15 @@ import Product from './component/Product';
 import Products from './component/Products';
 import PotatoFlakes from './component/PotatoFlakes';
 import Milled from './component/Milled';
+import Admin from './component/Admin';
+import ProtectedRoute from './component/ProtectedRoute';
 
 function App() {
   return (
     <>
     
     <BrowserRouter>
-    <Header title = "SRAF - Home"/>
+    <Header title = "Shree Radhe Agro Foods - Home"/>
       <Routes>
         <Route exact path='/'element={
         <React.Fragment>
@@ -50,12 +52,17 @@ function App() {
           </React.Fragment>}></Route>
         <Route path='potatoFlakes' element={
           <React.Fragment>
-             <PotatoFlakes title="SRAF - Potato Flakes"/>
+             <PotatoFlakes title="Shree Radhe Agro Foods - Potato Flakes"/>
           </React.Fragment>}></Route>
         <Route path='milledProducts' element={
           <React.Fragment>
              <Milled/>
           </React.Fragment>}></Route>
+        <Route path='admin' element={
+          <ProtectedRoute>
+            <Admin/>
+          </ProtectedRoute>
+        }></Route>
       </Routes>
       <Footer/>
     </BrowserRouter>

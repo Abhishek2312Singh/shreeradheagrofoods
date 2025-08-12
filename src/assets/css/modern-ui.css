@@ -148,9 +148,22 @@ p, span, li, a {
   border-bottom: none;
 }
 
+/* Logo styling */
+.modern-header .logo {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
 .modern-header .logo img {
   transition: var(--transition);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  width: 120px !important;
+  height: 90px !important;
+  max-height: none !important;
+  transform: scale(0.9);
 }
 
 .modern-header .logo img:hover {
@@ -1055,4 +1068,176 @@ html {
   background: var(--white);
   color: var(--primary-color);
   transform: translateY(-2px);
+}
+
+/* Newsletter Section Styles */
+.newsletter-form .form-control {
+  border: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.newsletter-form .form-control:focus {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.newsletter-form .btn-warning {
+  background: var(--accent-color) !important;
+  border: none !important;
+  color: var(--white) !important;
+  font-weight: 600 !important;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0 !important;
+  padding: 1rem 2rem !important;
+  transition: var(--transition) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.newsletter-form .btn-warning:hover {
+  background: #7cb342 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.newsletter-form .input-group {
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Newsletter benefits icons */
+.newsletter-form .bg-warning {
+  background: var(--accent-color) !important;
+  transition: var(--transition);
+}
+
+.newsletter-form .bg-warning:hover {
+  transform: scale(1.1);
+  background: #7cb342 !important;
+}
+
+/* Newsletter section responsive */
+@media (max-width: 768px) {
+  .newsletter-form .col-md-8 {
+    width: 100%;
+  }
+  
+  .newsletter-form .input-group {
+    flex-direction: column;
+  }
+  
+  .newsletter-form .form-control,
+  .newsletter-form .btn-warning {
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter-form .btn-warning {
+    margin-bottom: 0;
+  }
+}
+
+/* Login Form Styles */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.login-form {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-hover);
+  animation: slideInUp 0.3s ease-out;
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-bg);
+}
+
+.login-header h4 {
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.btn-close:hover {
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
+
+.login-form .form-label {
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.login-form .form-control {
+  border: 2px solid var(--light-bg);
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  transition: var(--transition);
+}
+
+.login-form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(44, 85, 48, 0.25);
+}
+
+.login-form .btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+}
+
+.login-help {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--light-bg);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
