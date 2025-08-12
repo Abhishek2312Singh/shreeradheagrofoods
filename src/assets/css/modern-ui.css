@@ -21,8 +21,20 @@
   --font-body: 'Poppins', sans-serif;
 }
 
-/* Bootstrap Overrides */
-.text-primary {
+/* Bootstrap Overrides - Higher Specificity */
+.text-primary,
+h1.text-primary,
+h2.text-primary,
+h3.text-primary,
+h4.text-primary,
+h5.text-primary,
+h6.text-primary,
+.display-1.text-primary,
+.display-2.text-primary,
+.display-3.text-primary,
+.display-4.text-primary,
+.display-5.text-primary,
+.display-6.text-primary {
   color: var(--primary-color) !important;
 }
 
@@ -69,8 +81,23 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   color: var(--text-dark);
-  background-color: var(--white);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%), url('../img/menu/menu-item-4.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   font-weight: 400;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: -1;
 }
 
 /* Typography Enhancements */
@@ -78,6 +105,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;
+  color: var(--primary-color) !important;
 }
 
 h1 {
@@ -90,6 +118,149 @@ h2 {
 
 p, span, li, a {
   font-family: var(--font-body);
+}
+
+/* Process Cards */
+.process-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/washing.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.process-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.process-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.process-icon {
+  transition: var(--transition);
+}
+
+.process-card:hover .process-icon {
+  transform: scale(1.1);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/freshpotato_round.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+
+.testimonial-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.testimonial-rating {
+  font-size: 1.2rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.testimonial-author {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1rem;
+}
+
+/* Stats Section */
+.stat-card {
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  transition: var(--transition);
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.1);
+}
+
+.stat-number {
+  color: var(--white);
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* CTA Section */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, rgba(44, 85, 48, 0.95) 0%, rgba(74, 124, 89, 0.95) 100%), url('../img/menu/potato-flakes.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.cta-feature {
+  transition: var(--transition);
+}
+
+.cta-feature:hover {
+  transform: translateY(-5px);
+}
+
+.cta-icon {
+  transition: var(--transition);
+}
+
+.cta-feature:hover .cta-icon {
+  transform: scale(1.1);
 }
 
 /* Modern Header */
@@ -109,7 +280,9 @@ p, span, li, a {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--white);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-3.png');
+  background-size: cover;
+  background-position: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -119,6 +292,24 @@ p, span, li, a {
   transform: translateY(-10px);
   transition: var(--transition);
   z-index: 1000;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-nav .dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+
+.modern-nav .dropdown-menu > * {
+  position: relative;
+  z-index: 2;
 }
 
 .modern-nav .dropdown:hover .dropdown-menu {
@@ -262,11 +453,59 @@ p, span, li, a {
 
 /* Modern Hero Section */
 .modern-hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background: linear-gradient(135deg, rgba(44, 85, 48, 0.9) 0%, rgba(74, 124, 89, 0.9) 100%), url('../img/menu/potato.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--white);
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
+}
+
+/* Ensure all text in hero section is white */
+.modern-hero h1,
+.modern-hero h2,
+.modern-hero h3,
+.modern-hero h4,
+.modern-hero h5,
+.modern-hero h6,
+.modern-hero .display-1,
+.modern-hero .display-2,
+.modern-hero .display-3,
+.modern-hero .display-4,
+.modern-hero .display-5,
+.modern-hero .display-6,
+.modern-hero p,
+.modern-hero span,
+.modern-hero .lead,
+.modern-hero .small {
+  color: var(--white) !important;
+}
+
+/* Exception for specific accent elements that should maintain their colors */
+.modern-hero .text-warning {
+  color: var(--accent-color) !important;
+}
+
+.modern-hero .text-success {
+  color: var(--accent-color) !important;
+}
+
+/* Ensure all text elements in hero section are white by default */
+.modern-hero * {
+  color: var(--white) !important;
+}
+
+/* But allow specific accent colors to override */
+.modern-hero .text-warning,
+.modern-hero .text-success,
+.modern-hero .text-accent {
+  color: var(--accent-color) !important;
+}
+
+.modern-hero .btn {
+  color: inherit !important;
 }
 
 .modern-hero::before {
@@ -342,12 +581,30 @@ p, span, li, a {
 }
 
 .modern-product-card {
-  background: var(--white);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-1.png');
+  background-size: cover;
+  background-position: center;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: var(--transition);
   position: relative;
+}
+
+.modern-product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.modern-product-card > * {
+  position: relative;
+  z-index: 2;
 }
 
 .modern-product-card:hover {
@@ -386,7 +643,10 @@ p, span, li, a {
 
 /* Modern Quality Control Section */
 .modern-quality-section {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.9) 0%, rgba(44, 85, 48, 0.9) 100%), url('../img/menu/milled_bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--white);
   padding: 4rem 0;
   position: relative;
@@ -456,6 +716,7 @@ p, span, li, a {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, rgba(44, 85, 48, 0.8) 0%, rgba(74, 124, 89, 0.8) 100%), url('../img/menu/Cover.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -489,11 +750,30 @@ p, span, li, a {
 
 /* Modern Chairperson Card */
 .modern-chairperson-card {
-  background: var(--white);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/people/chairperson.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   margin: 3rem 0;
+  position: relative;
+}
+
+.modern-chairperson-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+
+.modern-chairperson-card > * {
+  position: relative;
+  z-index: 2;
 }
 
 .modern-chairperson-content {
@@ -718,15 +998,7 @@ p, span, li, a {
   background-size: cover;
 }
 
-/* Enhanced card animations */
-.modern-product-card {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modern-product-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
+/* Enhanced card animations - moved to main definition above */
 
 /* Process flow animations */
 .process-step {
@@ -919,14 +1191,6 @@ html {
   color: inherit;
 }
 
-/* Ensure images display properly */
-.modern-product-card img {
-  display: block;
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
 /* Fix button styling */
 .modern-btn-primary {
   background: var(--accent-color) !important;
@@ -991,6 +1255,58 @@ html {
   padding: 2rem 15px !important;
 }
 
+/* Values Section Background */
+.values-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/farmFresh.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.values-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.values-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* General white background sections with images */
+.bg-light {
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%), url('../img/menu/potato.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  position: relative !important;
+}
+
+.bg-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 249, 250, 0.9);
+  z-index: 1;
+}
+
+.bg-light .container,
+.bg-light .row,
+.bg-light .col {
+  position: relative;
+  z-index: 2;
+}
+
 .products-page .row {
   margin: 0 !important;
 }
@@ -1001,7 +1317,10 @@ html {
 
 /* About Page Specific Styles */
 .about-hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background: linear-gradient(135deg, rgba(44, 85, 48, 0.9) 0%, rgba(74, 124, 89, 0.9) 100%), url('../img/menu/freshpotato.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--white);
   padding: 6rem 0;
   position: relative;
@@ -1071,6 +1390,30 @@ html {
 }
 
 /* Newsletter Section Styles */
+.newsletter-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/potatoFlakes.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.newsletter-section .container {
+  position: relative;
+  z-index: 2;
+}
+
 .newsletter-form .form-control {
   border: none;
   border-radius: var(--border-radius) 0 0 var(--border-radius);
@@ -1147,12 +1490,30 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url('../img/menu/menu-item-2.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   backdrop-filter: blur(5px);
+}
+
+.login-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.login-overlay > * {
+  position: relative;
+  z-index: 2;
 }
 
 .login-form {
@@ -1240,4 +1601,205 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Additional Green Color Overrides for All Headings */
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+  color: var(--primary-color) !important;
+}
+
+/* Override main.css heading color */
+:root {
+  --heading-color: var(--primary-color) !important;
+}
+
+/* Override any Bootstrap blue colors */
+.text-primary,
+.text-info,
+.text-blue,
+[class*="text-"] {
+  color: var(--primary-color) !important;
+}
+
+/* Override Bootstrap utility classes */
+.text-primary,
+.text-info,
+.text-success,
+.text-warning,
+.text-danger,
+.text-light,
+.text-dark,
+.text-body,
+.text-muted,
+.text-white,
+.text-black-50,
+.text-white-50 {
+  color: var(--primary-color) !important;
+}
+
+/* Ensure all heading elements use green color */
+section h1, section h2, section h3, section h4, section h5, section h6,
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.container h1, .container h2, .container h3, .container h4, .container h5, .container h6 {
+  color: var(--primary-color) !important;
+}
+
+/* Final override for any remaining blue colors */
+* {
+  color: var(--primary-color) !important;
+}
+
+/* Exception for specific elements that should not be green */
+p, span, li, a, button, input, textarea, select, label {
+  color: inherit !important;
+}
+
+/* Ensure headings are always green EXCEPT when on green backgrounds */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+  color: var(--primary-color) !important;
+}
+
+/* Special styling for green background sections - ensure white text */
+.bg-gradient-primary,
+.bg-primary,
+.bg-success,
+.bg-info {
+  color: var(--white) !important;
+}
+
+.bg-gradient-primary h1,
+.bg-gradient-primary h2,
+.bg-gradient-primary h3,
+.bg-gradient-primary h4,
+.bg-gradient-primary h5,
+.bg-gradient-primary h6,
+.bg-gradient-primary .display-1,
+.bg-gradient-primary .display-2,
+.bg-gradient-primary .display-3,
+.bg-gradient-primary .display-4,
+.bg-gradient-primary .display-5,
+.bg-gradient-primary .display-6,
+.bg-primary h1,
+.bg-primary h2,
+.bg-primary h3,
+.bg-primary h4,
+.bg-primary h5,
+.bg-primary h6,
+.bg-primary .display-1,
+.bg-primary .display-2,
+.bg-primary .display-3,
+.bg-primary .display-4,
+.bg-primary .display-5,
+.bg-primary .display-6 {
+  color: var(--white) !important;
+}
+
+/* Ensure text-white class works properly */
+.text-white {
+  color: var(--white) !important;
+}
+
+/* CTA Section specific styling for better contrast */
+.bg-gradient-primary .cta-feature h5,
+.bg-gradient-primary .cta-feature p,
+.bg-gradient-primary .cta-feature span,
+.bg-gradient-primary .cta-feature .small {
+  color: var(--white) !important;
+}
+
+/* Ensure proper contrast for all text elements on green backgrounds */
+.bg-gradient-primary *,
+.bg-primary *,
+.bg-success *,
+.bg-info * {
+  color: var(--white) !important;
+}
+
+/* Enhanced background image styling */
+.modern-hero,
+.about-hero,
+.modern-quality-section,
+.bg-gradient-primary {
+  position: relative;
+}
+
+.modern-hero::before,
+.about-hero::before,
+.modern-quality-section::before,
+.bg-gradient-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.modern-hero .container,
+.about-hero .container,
+.modern-quality-section .container,
+.bg-gradient-primary .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Exception for buttons and interactive elements that should maintain their colors */
+.bg-gradient-primary .btn,
+.bg-primary .btn,
+.bg-success .btn,
+.bg-info .btn {
+  color: inherit !important;
+}
+
+.bg-gradient-primary .text-warning,
+.bg-primary .text-warning,
+.bg-success .text-warning,
+.bg-info .text-warning {
+  color: var(--accent-color) !important;
+}
+
+/* Footer Styling - Bright White Background */
+.footer {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+  border-top: 1px solid #e9ecef;
+}
+
+.footer h4 {
+  color: #212529 !important;
+}
+
+.footer .address p,
+.footer p {
+  color: #6c757d !important;
+}
+
+.footer .icon {
+  color: var(--accent-color) !important;
+}
+
+.footer .social-links a {
+  color: #6c757d !important;
+  border-color: #dee2e6 !important;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+}
+
+.footer .copyright {
+  border-top-color: #e9ecef !important;
+}
+
+.footer .copyright p {
+  color: #6c757d !important;
+}
+
+.footer .credits {
+  color: #6c757d !important;
 }

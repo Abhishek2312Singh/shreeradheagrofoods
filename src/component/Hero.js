@@ -13,37 +13,38 @@ function Hero() {
             <div className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
               <div className="fade-in-up">
                 <h1 className="display-4 fw-bold mb-4">
-                  Premium Quality<br />
-                  <span className="text-warning">Potato Products</span>
+                  Delectable and<br />
+                  <span className="text-warning">Nutritious Food</span>
                 </h1>
                 <p className="lead mb-4 opacity-75">
-                  Leading manufacturer of high-quality dried potato products, 
-                  serving global markets with premium flakes, powders, and milled products.
+                  Welcome to Shree Radhe Agro Foods, the leading potato-to-flakes producing company. 
+                  We have emerged as one of India's foremost manufacturers of premium potato products, 
+                  serving global markets with state-of-the-art infrastructure and unwavering commitment to quality.
                 </p>
                 
                 {/* Key Features */}
                 <div className="row mb-4">
                   <div className="col-6 mb-3">
                     <div className="d-flex align-items-center">
-                      <i className="bi bi-check-circle-fill text-success me-2 fs-5"></i>
-                      <span className="small">ISO Certified</span>
+                      <i className="bi bi-award-fill text-success me-2 fs-5"></i>
+                      <span className="small">Premium Quality</span>
                     </div>
                   </div>
                   <div className="col-6 mb-3">
                     <div className="d-flex align-items-center">
-                      <i className="bi bi-check-circle-fill text-success me-2 fs-5"></i>
-                      <span className="small">Export Quality</span>
+                      <i className="bi bi-globe text-success me-2 fs-5"></i>
+                      <span className="small">Global Export</span>
                     </div>
                   </div>
                   <div className="col-6 mb-3">
                     <div className="d-flex align-items-center">
-                      <i className="bi bi-check-circle-fill text-success me-2 fs-5"></i>
-                      <span className="small">24/7 Support</span>
+                      <i className="bi bi-shield-check text-success me-2 fs-5"></i>
+                      <span className="small">Food Grade Certified</span>
                     </div>
                   </div>
                   <div className="col-6 mb-3">
                     <div className="d-flex align-items-center">
-                      <i className="bi bi-check-circle-fill text-success me-2 fs-5"></i>
+                      <i className="bi bi-truck text-success me-2 fs-5"></i>
                       <span className="small">Fast Delivery</span>
                     </div>
                   </div>
@@ -80,7 +81,133 @@ function Hero() {
         </div>
       </section>
 
+      {/* What are Potato Flakes Section */}
+      <section className="py-5 bg-light">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              <div className="fade-in-up">
+                <h2 className="display-5 fw-bold text-primary mb-4">
+                  What are Potato Flakes?
+                </h2>
+                <p className="lead mb-4">
+                  Potato flakes are dehydrated and processed potato products made from cooked and mashed potatoes 
+                  that have been dried and ground into flakes. They are a convenient and quick way to prepare 
+                  mashed potatoes and are used in various food products including soups, stews, and baked goods.
+                </p>
+                <div className="row g-3">
+                  <div className="col-6">
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-clock text-warning me-2"></i>
+                      <span>Long Shelf Life</span>
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-lightning text-warning me-2"></i>
+                      <span>Easy Preparation</span>
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-heart text-warning me-2"></i>
+                      <span>Nutritious</span>
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-check-circle text-warning me-2"></i>
+                      <span>Consistent Quality</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="fade-in-up" data-aos-delay="100">
+                <img 
+                  src={banner} 
+                  className="img-fluid rounded-4 shadow-lg" 
+                  alt="Potato Flakes Process" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Manufacturing Process Section */}
+      <section className="py-5">
+        <div className="container">
+          <div className="text-center mb-5">
+            <h2 className="display-4 fw-bold text-primary mb-3">
+              Inside the Making of Perfect Potato Flakes
+            </h2>
+            <p className="lead text-muted">
+              At Shree Radhe Agro Foods, cutting-edge technology meets decades of expertise to create flawless potato flakes. 
+              Freshly harvested potatoes are cleaned, peeled, steamed, mashed, and dried under strict quality control.
+            </p>
+          </div>
+          
+          <div className="row g-4">
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-seed text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Agriculture</h5>
+                <p className="text-muted small">
+                  Our journey starts on trusted farms, where potatoes are grown with care using responsible farming practices.
+                </p>
+              </div>
+            </div>
+            
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-droplet text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Washing</h5>
+                <p className="text-muted small">
+                  Potatoes go through high-pressure water jets that remove dirt and impurities for spotless processing.
+                </p>
+              </div>
+            </div>
+            
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-fire text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Boiling</h5>
+                <p className="text-muted small">
+                  Peeled potatoes are steamed under high pressure to cook evenly while locking in nutrients.
+                </p>
+              </div>
+            </div>
+            
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-box text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Drying</h5>
+                <p className="text-muted small">
+                  Mashed potatoes are gently dried in advanced dryers to form golden flakes with consistent texture.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Chairperson Section */}
       <div className="container my-5">
@@ -97,15 +224,9 @@ function Hero() {
             <div className="col-md-8">
               <div className="modern-chairperson-content">
                 <div className="d-flex align-items-center mb-3">
-                  {/* <img 
-                    src={arrow} 
-                    className="me-3 pulse" 
-                    style={{ width: '40px', height: '40px' }} 
-                    alt="Arrow" 
-                  /> */}
                   <div>
-                                      <h5 className="modern-chairperson-title mb-1">Chairperson</h5>
-                  <p className="modern-chairperson-subtitle">Chairman, Shree Radhe Agro Foods</p>
+                    <h5 className="modern-chairperson-title mb-1">Chairperson</h5>
+                    <p className="modern-chairperson-subtitle">Chairman, Shree Radhe Agro Foods</p>
                   </div>
                 </div>
                 <p className="text-muted mb-4">
@@ -114,108 +235,18 @@ function Hero() {
                   Our commitment to excellence and innovation drives us to deliver
                   superior products that meet international standards.
                 </p>
-
-
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <section className="py-5 bg-primary text-white">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <div className="fade-in-up">
-                <div className="mb-4">
-                  <i className="bi bi-envelope-paper display-1 text-warning mb-3"></i>
-                                     <h2 className="display-5 fw-bold mb-3">Stay Updated with Shree Radhe Agro Foods</h2>
-                  <p className="lead opacity-75 mb-4">
-                    Subscribe to our newsletter for the latest industry insights, 
-                    product updates, and exclusive offers delivered to your inbox.
-                  </p>
-                </div>
-                
-                <div className="newsletter-form">
-                  <div className="row g-3 justify-content-center">
-                    <div className="col-md-8">
-                      <div className="input-group input-group-lg">
-                        <input 
-                          type="email" 
-                          className="form-control form-control-lg" 
-                          placeholder="Enter your email address"
-                          aria-label="Email address"
-                          aria-describedby="newsletter-submit"
-                        />
-                        <button 
-                          className="btn btn-warning btn-lg px-4" 
-                          type="button" 
-                          id="newsletter-submit"
-                        >
-                          <i className="bi bi-send me-2"></i>
-                          Subscribe
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-3">
-                    <p className="small opacity-75">
-                      <i className="bi bi-shield-check me-2"></i>
-                      We respect your privacy. Unsubscribe at any time.
-                    </p>
-                  </div>
-                </div>
 
-                {/* Newsletter Benefits */}
-                <div className="row mt-5 g-4">
-                  <div className="col-md-4">
-                    <div className="scale-in stagger-1">
-                      <div className="d-flex flex-column align-items-center">
-                        <div className="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '60px', height: '60px'}}>
-                          <i className="bi bi-lightning text-dark fs-4"></i>
-                        </div>
-                        <h6 className="fw-semibold">Latest Updates</h6>
-                        <p className="small opacity-75">Get notified about new products and innovations first</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="col-md-4">
-                    <div className="scale-in stagger-2">
-                      <div className="d-flex flex-column align-items-center">
-                        <div className="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '60px', height: '60px'}}>
-                          <i className="bi bi-gift text-dark fs-4"></i>
-                        </div>
-                        <h6 className="fw-semibold">Exclusive Offers</h6>
-                        <p className="small opacity-75">Access to special discounts and promotional deals</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="col-md-4">
-                    <div className="scale-in stagger-3">
-                      <div className="d-flex flex-column align-items-center">
-                        <div className="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '60px', height: '60px'}}>
-                          <i className="bi bi-graph-up text-dark fs-4"></i>
-                        </div>
-                        <h6 className="fw-semibold">Industry Insights</h6>
-                        <p className="small opacity-75">Stay informed about potato industry trends and news</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                         </div>
-           </div>
-         </div>
-       </section>
 
-       {/* Activities Section */}
-       <Activities />
-     </>
-   )
- }
+      {/* Activities Section */}
+      <Activities />
+    </>
+  )
+}
 
 export default Hero

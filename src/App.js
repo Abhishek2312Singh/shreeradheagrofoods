@@ -22,6 +22,8 @@ import PotatoFlakes from './component/PotatoFlakes';
 import Milled from './component/Milled';
 import Admin from './component/Admin';
 import ProtectedRoute from './component/ProtectedRoute';
+import ValuesSection from './component/ValuesSection';
+import CTASection from './component/CTASection';
 
 function App() {
   return (
@@ -33,8 +35,10 @@ function App() {
         <Route exact path='/'element={
         <React.Fragment>
           <Hero/>
+          <ValuesSection/>
           <PotatoToFlakes/>
           <Product/>
+          <CTASection/>
         </React.Fragment>
         } />
         <Route path='aboutus' element={
