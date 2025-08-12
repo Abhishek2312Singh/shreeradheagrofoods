@@ -1,4 +1,5 @@
 import React from 'react'
+import './Product.css'
 import bgImg from '../assets/img/menu/Cover.jpg'
 
 export default function Products() {
@@ -11,8 +12,8 @@ export default function Products() {
         backgroundImage: `url(${bgImg})`,
       }}>
         <div className="modern-cover-content">
-          <h1 className="modern-cover-title">Our Products</h1>
-          <p className="lead opacity-75">Discover our premium potato product range</p>
+          <h1 className="modern-cover-title text-white">Our Products</h1>
+          <p className="lead opacity-75 text-white">Discover our premium potato product range</p>
         </div>
       </div>
       
@@ -113,7 +114,7 @@ export default function Products() {
             <div className="col-lg-3 col-md-6 mb-4">
               <div className="text-center scale-in stagger-1 process-step">
                 <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
-                  <i className="bi bi-seed text-white fs-2"></i>
+                  <i className="bi bi-basket2-fill text-white fs-2"></i>
                 </div>
                 <h5>Raw Selection</h5>
                 <p className="text-muted small">Carefully selected premium potatoes with optimal starch content</p>
@@ -158,7 +159,7 @@ export default function Products() {
         <div className="container">
           <div className="modern-quality-content">
             <div className="text-center mb-5">
-              <h2 className="display-4 fw-bold text-white mb-3">Quality Control</h2>
+              <h2 className="quality-content display-4 fw-bold text-white mb-3">Quality Control</h2>
               <p className="lead text-white opacity-75">Our commitment to excellence at every step</p>
             </div>
             

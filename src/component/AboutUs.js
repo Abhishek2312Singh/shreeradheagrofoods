@@ -309,11 +309,11 @@ function AboutUs() {
                             Join thousands of satisfied customers worldwide who trust Shree Radhe Agro Foods for their potato product needs.
                         </p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center">
-                            <a href="/contact" className="btn btn-light-primary btn-lg hover-lift">
+                            <a href="/contact" className="btn btn-primary-light btn-lg hover-lift">
                                 <i className="bi bi-envelope text-white me-2"></i>
                                 Get in Touch
                             </a>
-                            <a href="/products" className="btn btn-outline-light btn-lg hover-lift">
+                            <a href="/products" className="btn btn-primary-light btn-lg hover-lift">
                                 <i className="bi bi-box me-2"></i>
                                 View Products
                             </a>
