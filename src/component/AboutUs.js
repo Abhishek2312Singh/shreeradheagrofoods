@@ -171,7 +171,7 @@ function AboutUs() {
                         <div className="col-lg-3 col-md-6">
                             <div className="text-center scale-in stagger-2 process-step">
                                 <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
-                                    <i className="bi bi-leaf text-white fs-2"></i> 
+                                    <i className="bi bi-recycle text-white fs-2"></i> 
                                 </div>
                                 <h5>Sustainability</h5>
                                 <p className="text-muted small">Committed to environmental responsibility and sustainable practices</p>
