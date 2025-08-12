@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import about1 from '../assets/img/menu/potato.jpg'
 import about from '../assets/img/about.jpg'
 import about2 from '../assets/img/about-2.jpg'
+import './AboutUs.css'
 
 function AboutUs() {
     useEffect(() => {
@@ -306,14 +307,14 @@ function AboutUs() {
                     <div className="fade-in-up">
                         <h2 className="display-5 fw-bold mb-4">Ready to Partner With Us?</h2>
                         <p className="lead mb-4 opacity-75">
-                            Join thousands of satisfied customers worldwide who trust Shree Radhe Agro Foods for their potato product needs.
+                            Be part of our family--your success is our story. 
                         </p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center">
                             <a href="/contact" className="btn btn-primary-light btn-lg hover-lift">
-                                <i className="bi bi-envelope text-white me-2" ></i>
+                                <i className="bi bi-envelope text-white me-2"></i>
                                 Get in Touch
                             </a>
-                            <a href="/products" className="btn btn-primary-light btn-lg hover-lift">
+                            <a href="/products" className="info btn btn-primary-light btn-lg hover-lift">
                                 <i className="bi bi-box me-2"></i>
                                 View Products
                             </a>
