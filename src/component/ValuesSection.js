@@ -49,7 +49,7 @@ function ValuesSection() {
                 </div>
               </div>
               
-              <Link to="about" className="btn btn-primary btn-lg text-white">
+              <Link to="aboutUs" className="btn btn-primary btn-lg text-white">
                 <i className="bi bi-arrow-right text-white me-2" ></i>
                 Learn More
               </Link>
