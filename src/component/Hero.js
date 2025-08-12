@@ -1,7 +1,7 @@
 import React from 'react'
 import banner from '../assets/img/menu/potato.jpg'
 import photo from '../assets/img/people/chairperson.jpg'
-import arrow from '../assets/img/menu/profile-down-arrow.svg'
+// import arrow from '../assets/img/menu/profile-down-arrow.svg'
 
 function Hero() {
   return (
@@ -52,15 +52,6 @@ function Hero() {
                   <a href="#manufacture" className="modern-btn modern-btn-primary hover-lift">
                     <i className="bi bi-info-circle me-2"></i>
                     Learn More
-                  </a>
-                  <a 
-                    href="https://www.youtube.com/watch?v=91QYV47fsBA" 
-                    target='_blank' 
-                    rel="noopener noreferrer"
-                    className="modern-btn modern-btn-outline hover-lift"
-                  >
-                    <i className="bi bi-play-circle me-2"></i>
-                    Watch Video
                   </a>
                 </div>
               </div>
