@@ -170,7 +170,7 @@ function AboutUs() {
                         <div className="col-lg-3 col-md-6">
                             <div className="text-center scale-in stagger-2 process-step">
                                 <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
-                                    <i className="bi bi-leaf text-white fs-2"></i>
+                                    <i className="bi bi-leaf text-white fs-2"></i> 
                                 </div>
                                 <h5>Sustainability</h5>
                                 <p className="text-muted small">Committed to environmental responsibility and sustainable practices</p>
@@ -269,7 +269,7 @@ function AboutUs() {
             </section>
 
             {/* Company Statistics */}
-            <section className="py-5">
+            {/* <section className="py-5">
                 <div className="container">
                     <div className="row text-center">
                         <div className="col-md-3 mb-4">
@@ -298,7 +298,7 @@ function AboutUs() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Call to Action */}
             <section className="py-5 bg-primary text-white">
@@ -309,8 +309,8 @@ function AboutUs() {
                             Join thousands of satisfied customers worldwide who trust Shree Radhe Agro Foods for their potato product needs.
                         </p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center">
-                            <a href="/contact" className="btn btn-light btn-lg hover-lift">
-                                <i className="bi bi-envelope me-2"></i>
+                            <a href="/contact" className="btn btn-light-primary btn-lg hover-lift">
+                                <i className="bi bi-envelope text-white me-2"></i>
                                 Get in Touch
                             </a>
                             <a href="/products" className="btn btn-outline-light btn-lg hover-lift">
