@@ -160,7 +160,7 @@ function AboutUs() {
                     <div className="row gy-4">
                         <div className="col-lg-3 col-md-6">
                             <div className="text-center scale-in stagger-1 process-step">
-                                <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                                <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
                                     <i className="bi bi-award text-white fs-2"></i>
                                 </div>
                                 <h5>Quality Excellence</h5>
