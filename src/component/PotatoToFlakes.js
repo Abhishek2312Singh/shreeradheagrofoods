@@ -13,8 +13,81 @@ function PotatoToFlakes() {
   return (
     <><section id="menu" className="menu section">
 
+        <section className="py-5">
+        <div className="container">
+          <div className="text-center mb-5">
+            <h2 className="display-4 fw-bold text-primary mb-3">
+              Uses of Potato Flakes
+            </h2>
+            <p className="lead text-muted">
+              Potato flakes are a versatile ingredient loved by both home cooks and the food industry. 
+              They’re easy to use, have a long shelf life, and bring the natural taste of potatoes to countless dishes.
+              <br/> "Potato flakes are more than just an ingredient — they’re a smart solution for taste, convenience, and innovation in food and beyond."
+            </p>
+          </div>
+          
+          <div className="row g-4">
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-tree text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Food Industry</h5>
+                <p className="text-muted small">
+                  Widely used in ready-to-eat meals, dehydrated mixes, and frozen foods for taste, stability, and convenience.
+                </p>
+              </div>
+            </div>
+            
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-droplet text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Everyday Cooking</h5>
+                <p className="text-muted small">
+                  Quickly prepare mashed potatoes, soups, and gravies, or use as a binder in cutlets, patties, and dumplings.
+                </p>
+              </div>
+            </div>
+            
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-fire text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Baking & Snacks</h5>
+                <p className="text-muted small">
+                  Adds softness and moisture to breads, biscuits, and pancakes, and is a key ingredient in crispy potato snacks.
+                </p>
+              </div>
+            </div>
+            
+            <div className="col-lg-3 col-md-6">
+              <div className="process-card text-center hover-lift">
+                <div className="process-icon mb-3">
+                  <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
+                    <i className="bi bi-box text-white fs-1"></i>
+                  </div>
+                </div>
+                <h5 className="fw-bold mb-2">Beyond the Kitchen</h5>
+                <p className="text-muted small">
+                 Nutritious additive for livestock and pet food. Also used in fermentation industries, and eco-friendly packaging as a sustainable resource.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <div className="container">
+        
         <div className="tab-content" >
 
           <div className="tab-pane fade active show" id="menu-starters">
