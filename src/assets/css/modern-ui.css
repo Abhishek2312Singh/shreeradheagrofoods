@@ -297,7 +297,7 @@ p, span, li, a {
 }
 
 .modern-nav .dropdown-menu::before {
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: 0;
   left: 0;

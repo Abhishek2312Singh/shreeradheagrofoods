@@ -162,8 +162,8 @@ function Header(props) {
                       to="potatoFlakes" 
                       onClick={() => { 
                         setActive('potatoFlakes')
-                        // setIsMobileMenuOpen(false)
-                        // closeAllDropdowns()
+                        setIsMobileMenuOpen(false)
+                        closeAllDropdowns()
                       }}
                     >
                       Potato Flakes
