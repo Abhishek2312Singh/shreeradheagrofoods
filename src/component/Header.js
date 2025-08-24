@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-// <<<<<<< HEAD
+
 import logo from '../assets/img/menu/logo.png'
-// =======
-// import logo from './logo1.png'
-// >>>>>>> 08883152fe08e36d8d775de26e7b74a8dba68d88
+
 
 function Header(props) {
   const [isActive, setActive] = useState('/')
@@ -102,8 +100,7 @@ function Header(props) {
         <div className="container position-relative d-flex align-items-center justify-content-between">
           
           <Link to="/" className="logo d-flex align-items-center me-auto me-xl-0">
-            <img src={logo} alt="Shri Radhe Agro Food Logo" style={{ width: "80px", height: "60px", objectFit: "contain" }} />
-            {/* <span className="ms-2 fw-bold text-primary">Shri Radhe Agro Food</span> */}
+            <img src={logo} alt="Shri Radhe Agro Food Logo" style={{ objectFit: "contain" }} />
           </Link>
           
           <nav id="navmenu" className={`navmenu modern-nav ${isMobileMenuOpen ? 'show' : ''}`}>
