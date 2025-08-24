@@ -31,7 +31,7 @@ function App() {
     <>
     
     <BrowserRouter>
-    <Header title = "Shree Radhe Agro Foods - Home"/>
+    <Header title = "Shri Radhe Agro Food - Home"/>
       <Routes>
         <Route exact path='/'element={
         <React.Fragment>
