@@ -174,10 +174,9 @@ export default function Products() {
               <h3 className="quality-control-title">Raw Material Quality Control</h3>
               <p className="quality-control-description">Before processing</p>
               <ul className="quality-control-features">
-                <li>Variety & maturity → Right potato type with proper starch content</li>
+                <li>Variety & maturity → Right potato type with proper dry matter</li>
                 <li>Visual inspection → No rot, sprouting, green skin (indicates solanine)</li>
                 <li>Size & uniformity → Helps in even drying</li>
-                <li>Moisture content → Usually 75–80% in fresh potatoes</li>
                 <li>Defect count → Foreign matter, stones, soil, or other plant debris</li>
               </ul>
             </div>
@@ -190,8 +189,8 @@ export default function Products() {
               <p className="quality-control-description">During manufacturing</p>
               <ul className="quality-control-features">
                 <li>Washing & peeling check → No dirt or peel residues</li>
-                <li>Blanching control → Time/temperature to inactivate enzymes</li>
-                <li>Drying parameters → Proper temperature and airflow to prevent case hardening</li>
+                <li>Blanching → Time/temperature to inactivate enzymes</li>
+                <li>Drying → Proper temperature and airflow to prevent case hardening</li>
                 <li>Moisture monitoring → Target final moisture for stability (6–8%)</li>
                 <li>Hygiene & sanitation → Prevent contamination</li>
               </ul>

@@ -57,8 +57,8 @@ function Header(props) {
         <div className="container position-relative d-flex align-items-center justify-content-between">
           
           <Link to="/" className="logo d-flex align-items-center me-auto me-xl-0">
-            <img src={logo} alt="Shree Radhe Agro Foods Logo" style={{ width: "80px", height: "60px", objectFit: "contain" }} />
-            {/* <span className="ms-2 fw-bold text-primary">Shree Radhe Agro Foods</span> */}
+            <img src={logo} alt="Shri Radhe Agro Food Logo" style={{ width: "80px", height: "60px", objectFit: "contain" }} />
+            {/* <span className="ms-2 fw-bold text-primary">Shri Radhe Agro Food</span> */}
           </Link>
           
           <nav id="navmenu" className={`navmenu modern-nav ${isMobileMenuOpen ? 'show' : ''}`}>

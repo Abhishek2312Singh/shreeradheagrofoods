@@ -57,7 +57,7 @@ function App() {
           </React.Fragment>}></Route>
         <Route path='potatoFlakes' element={
           <React.Fragment>
-             <PotatoFlakes title="Shree Radhe Agro Foods - Potato Flakes"/>
+             <PotatoFlakes title="Shri Radhe Agro Food - Potato Flakes"/>
           </React.Fragment>}></Route>
         <Route path='milledProducts' element={
           <React.Fragment>

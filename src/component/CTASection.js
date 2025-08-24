@@ -12,8 +12,7 @@ function CTASection() {
                 Ready to Experience Premium Quality?
               </h2>
               <p className="lead mb-5 opacity-75">
-                Join hundreds of satisfied customers worldwide who trust Shree Radhe Agro Foods 
-                for their potato product needs. Get in touch today and discover why we're the 
+                Get in touch today and discover why we're the 
                 preferred choice for premium potato flakes and milled products.
               </p>
               

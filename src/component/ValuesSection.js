@@ -11,7 +11,7 @@ function ValuesSection() {
                 Values and Sustainability
               </h2>
               <p className="lead mb-4">
-                At Shree Radhe Agro Foods, we pride ourselves on our commitment to creating value at every stage 
+                At Shri Radhe Agro Food, we pride ourselves on our commitment to creating value at every stage 
                 of the potato flakes production process. We believe in fostering close relationships with our farmers 
                 and work hand in hand with them to continually improve the quality of their crops.
               </p>

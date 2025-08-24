@@ -6,21 +6,21 @@ function TestimonialsSection() {
       id: 1,
       name: "Anil Bansal",
       company: "Food Industry Expert",
-      content: "It's rare to see a company grow across generations with such integrity. Shree Radhe Agro Foods has set a benchmark in every sector they've entered. Truly dependable and forward-thinking.",
+      content: "It's rare to see a company grow across generations with such integrity. Shri Radhe Agro Food has set a benchmark in every sector they've entered. Truly dependable and forward-thinking.",
       rating: 5
     },
     {
       id: 2,
       name: "Pooja Sharma",
       company: "Restaurant Chain Owner",
-      content: "We have partnered with Shree Radhe Agro Foods recently, and the quality of their potato flakes is excellent. They bring the same professionalism and commitment that made them leaders in the industry.",
+      content: "We have partnered with Shri Radhe Agro Food recently, and the quality of their potato flakes is excellent. They bring the same professionalism and commitment that made them leaders in the industry.",
       rating: 5
     },
     {
       id: 3,
       name: "Rajeev Mehra",
       company: "Food Manufacturer",
-      content: "Shree Radhe Agro Foods' legacy is truly inspiring. Their growth from a small unit to a diversified powerhouse reflects unmatched dedication and vision. We've trusted their products for years.",
+      content: "Shri Radhe Agro Food' legacy is truly inspiring. Their growth from a small unit to a diversified powerhouse reflects unmatched dedication and vision. We've trusted their products for years.",
       rating: 5
     }
   ]
