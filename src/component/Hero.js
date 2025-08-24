@@ -17,7 +17,7 @@ function Hero() {
                   <span className="text-warning">Nutritious Food</span>
                 </h1>
                 <p className="lead mb-4 opacity-75">
-                  Welcome to Shree Radhe Agro Foods, the leading potato-to-flakes producing company. 
+                  Welcome to Shri Radhe Agro Food, the leading potato-to-flakes producing company. 
                   We have emerged as one of India's foremost manufacturers of premium potato products, 
                   serving global markets with state-of-the-art infrastructure and unwavering commitment to quality.
                 </p>
@@ -83,7 +83,7 @@ function Hero() {
                 </h2>
                 <p className="lead mb-4">
                   Potato flakes are dehydrated and processed potato products made from cooked and mashed potatoes 
-                  that have been dried and ground into flakes. They are a convenient and quick way to prepare 
+                  that have been dried and ground into flakes. It is a convenient and quick way to prepare 
                   mashed potatoes and are used in various food products including soups, stews, and baked goods.
                 </p>
                 <div className="row g-3">
@@ -135,7 +135,7 @@ function Hero() {
               Inside the Making of Perfect Potato Flakes
             </h2>
             <p className="lead text-muted">
-              At Shree Radhe Agro Foods, cutting-edge technology meets decades of expertise to create flawless potato flakes. 
+              At Shri Radhe Agro Food, cutting-edge technology meets decades of expertise to create flawless potato flakes. 
               Freshly harvested potatoes are cleaned, peeled, steamed, mashed, and dried under strict quality control.
             </p>
           </div>
@@ -148,7 +148,7 @@ function Hero() {
                     <i className="bi bi-tree text-white fs-1"></i>
                   </div>
                 </div>
-                <h5 className="fw-bold mb-2">Agriculture</h5>
+                <h5 className="fw-bold mb-2">Potato Harvesting</h5>
                 <p className="text-muted small">
                   Our journey starts on trusted farms, where potatoes are grown with care using responsible farming practices.
                 </p>
@@ -217,7 +217,7 @@ function Hero() {
                 <div className="d-flex align-items-center mb-3">
                   <div>
                     <h5 className="modern-chairperson-title mb-1">Chairperson</h5>
-                    <p className="modern-chairperson-subtitle">Chairman, Shree Radhe Agro Foods</p>
+                    <p className="modern-chairperson-subtitle">Chairman, Shri Radhe Agro Food</p>
                   </div>
                 </div>
                 <p className="text-muted mb-4">

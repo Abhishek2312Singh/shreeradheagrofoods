@@ -21,7 +21,7 @@ const Milled = () => {
     </div>
     <div className="col-md-8">
       <div className="card-body">
-        <h3 className="card-title">Milled Products</h3>
+        <h3 className="card-title">Milled</h3>
         <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
