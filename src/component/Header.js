@@ -144,9 +144,10 @@ function Header(props) {
                   className={`${isActive === 'products' ? 'active' : ''}`}
                   onClick={(e) => { 
                     if (window.innerWidth <= 1199) {
-                      e.preventDefault()
-                      e.stopPropagation()
+                      // e.preventDefault()
+                      // e.stopPropagation()
                       toggleDropdown('products')
+                      setActive('products')
                     } else {
                       setActive('products')
                       setIsMobileMenuOpen(false)
