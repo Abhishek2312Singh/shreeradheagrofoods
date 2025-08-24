@@ -235,7 +235,7 @@ function Hero() {
 
 
       {/* Activities Section */}
-      <Activities />
+      {/* <Activities /> */}
     </>
   )
 }

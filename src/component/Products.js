@@ -90,7 +90,7 @@ export default function Products() {
                   </div>
                   <div className="d-flex justify-content-between align-items-center mb-3">
                     <span className="badge bg-info">Versatile</span>
-                    <span className="badge bg-primary">Industrial Grade</span>
+                    <span className="badge bg-warning">Industrial Grade</span>
                   </div>
                   <a href="/milledProducts" className="btn btn-primary modern-btn-primary w-100 hover-lift">
                     Learn More <i className="bi bi-arrow-right ms-2"></i>

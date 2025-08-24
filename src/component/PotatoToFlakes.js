@@ -93,7 +93,7 @@ function PotatoToFlakes() {
             </div>
           </div>
 
-          <div className="tab-pane fade" id="menu-breakfast">
+          <div className="tab-pane" id="menu-breakfast">
 
             <div className="tab-header text-center">
               <p>Menu</p>

@@ -339,6 +339,22 @@ p, span, li, a {
   border-bottom: none;
 }
 
+/* Dropdown arrow rotation */
+.modern-nav .dropdown .toggle-dropdown {
+  transition: transform 0.3s ease;
+}
+
+.modern-nav .dropdown .toggle-dropdown.rotate {
+  transform: rotate(180deg);
+}
+
+/* Mobile dropdown arrow rotation */
+@media (max-width: 1199px) {
+  .modern-nav .dropdown .toggle-dropdown.rotate {
+    transform: rotate(180deg);
+  }
+}
+
 /* Logo styling */
 .modern-header .logo {
   display: flex;
@@ -410,44 +426,324 @@ p, span, li, a {
 /* Mobile Navigation */
 @media (max-width: 1199px) {
   .modern-nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 300px;
-    height: 100vh;
-    background: var(--white);
-    flex-direction: column;
-    padding: 2rem;
-    transition: var(--transition);
-    z-index: 9999;
-    box-shadow: var(--shadow);
+    position: fixed !important;
+    top: 80px !important;
+    right: 0 !important;
+    width: 300px !important;
+    height: calc(100vh - 80px) !important;
+    background: var(--white) !important;
+    flex-direction: column !important;
+    padding: 2rem !important;
+    z-index: 9999 !important;
+    box-shadow: var(--shadow) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
   
   .modern-nav.show {
-    right: 0;
+    transform: translateX(0) !important;
   }
   
   .modern-nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 1rem;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 1rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
+  .modern-nav li {
+    width: 100% !important;
+  }
+  
+  .modern-nav a {
+    width: 100% !important;
+    padding: 1rem !important;
+    border-radius: var(--border-radius) !important;
+    transition: var(--transition) !important;
+    display: block !important;
+    cursor: pointer !important;
+  }
+  
+  .modern-nav a:hover {
+    background: rgba(44, 85, 48, 0.1) !important;
+  }
+  
+  /* Mobile dropdown menu */
   .modern-nav .dropdown-menu {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    background: rgba(44, 85, 48, 0.05);
-    margin-top: 0.5rem;
-    border-radius: var(--border-radius);
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: rgba(44, 85, 48, 0.05) !important;
+    margin-top: 0.5rem !important;
+    border-radius: var(--border-radius) !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.3s ease !important;
+    display: block !important;
+  }
+  
+  /* Show dropdown when parent has active class */
+  .modern-nav .dropdown.active .dropdown-menu {
+    max-height: 200px !important;
   }
   
   .modern-nav .dropdown-menu a {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+    border-bottom: 1px solid rgba(44, 85, 48, 0.1) !important;
+    cursor: pointer !important;
+  }
+  
+  .modern-nav .dropdown-menu a:last-child {
+    border-bottom: none !important;
+  }
+  
+  /* Ensure proper touch handling for mobile dropdowns */
+  .modern-nav .dropdown > a {
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  /* Ensure dropdown toggle works on mobile */
+  .modern-nav .dropdown.active > a {
+    background: rgba(44, 85, 48, 0.1) !important;
+  }
+  
+  /* Fix mobile header layout - reverse logo and contact button positions */
+  .modern-header .container {
+    flex-direction: row-reverse !important;
+  }
+  
+  .modern-header .logo {
+    order: 2 !important;
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+  }
+  
+  .modern-header .d-flex.align-items-center.gap-3 {
+    order: 1 !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Ensure proper spacing for mobile */
+  .modern-header .container > * {
+    flex-shrink: 0 !important;
+  }
+}
+
+/* Additional mobile responsiveness fixes */
+@media (max-width: 768px) {
+  .modern-nav {
+    width: 100%;
+    right: 0;
+    top: 70px; /* Smaller header height on mobile */
+    height: calc(100vh - 70px);
+  }
+  
+  .modern-nav.show {
+    transform: translateX(0);
+  }
+  
+  .modern-nav ul {
+    padding: 1rem 0;
+  }
+  
+  .modern-nav a {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Ensure proper touch handling */
+  .modern-nav a,
+  .mobile-nav-toggle {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent body scroll when mobile nav is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+  
+  /* Ensure smooth mobile navigation */
+  .modern-nav {
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .modern-nav.show {
+    transform: translateX(0);
+  }
+  
+  /* Fix mobile header layout for smaller screens */
+  .modern-header .container {
     padding: 0.5rem 1rem;
+  }
+  
+  .modern-header .logo img {
+    width: 60px !important;
+    height: 45px !important;
+  }
+  
+  .modern-header .btn {
     font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .mobile-nav-toggle {
+    font-size: 1.25rem;
+    padding: 0.4rem;
+  }
+  
+  /* Ensure proper mobile header spacing */
+  .modern-header .container > * {
+    margin: 0 0.25rem;
+  }
+  
+  .modern-header .logo {
+    margin: 0 0.5rem !important;
+  }
+  
+  .modern-header .d-flex.align-items-center.gap-3 {
+    margin: 0 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-nav {
+    padding: 1.5rem;
+    top: 60px; /* Even smaller header height */
+    height: calc(100vh - 60px);
+  }
+  
+  .modern-nav a {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Ensure mobile nav toggle is always visible */
+  .mobile-nav-toggle {
+    position: relative;
+    z-index: 10000;
+  }
+  
+  /* Further optimize mobile header */
+  .modern-header .container {
+    padding: 0.5rem;
+  }
+  
+  .modern-header .logo img {
+    width: 50px !important;
+    height: 38px !important;
+  }
+  
+  .modern-header .btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .mobile-nav-toggle {
+    font-size: 1.1rem;
+    padding: 0.3rem;
+  }
+  
+  /* Optimize mobile header spacing for very small screens */
+  .modern-header .container > * {
+    margin: 0 0.125rem;
+  }
+  
+  .modern-header .logo {
+    margin: 0 0.25rem !important;
+  }
+  
+  .modern-header .d-flex.align-items-center.gap-3 {
+    margin: 0 0.25rem !important;
+  }
+}
+
+/* Ensure proper z-index stacking */
+.modern-header {
+  z-index: 1000;
+}
+
+.modern-nav {
+  z-index: 9999;
+}
+
+.mobile-nav-toggle {
+  z-index: 10000;
+}
+
+/* Prevent any horizontal scrolling on mobile */
+@media (max-width: 1199px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  .modern-nav {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure mobile navigation is completely smooth */
+  .modern-nav {
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .modern-nav.show {
+    transform: translateX(0);
+  }
+  
+  /* Prevent any unwanted touch gestures */
+  .modern-nav {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Ensure proper mobile navigation behavior */
+  .modern-nav ul {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Ensure header elements don't overlap */
+  .modern-header .container {
+    position: relative;
+    z-index: 1001;
+  }
+  
+  /* Fix mobile header layout issues */
+  .modern-header .logo {
+    position: relative;
+    z-index: 1002;
+  }
+  
+  .modern-header .d-flex.align-items-center.gap-3 {
+    position: relative;
+    z-index: 1002;
+  }
+  
+  /* Ensure mobile nav doesn't cover header */
+  .modern-nav {
+    position: fixed;
+    top: 80px; /* Adjust based on actual header height */
+    right: 0;
+    width: 300px;
+    height: calc(100vh - 80px);
+    z-index: 9999;
   }
 }
 
@@ -2363,3 +2659,37 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
 }
 
 /* Quality Control Section - Moved to dedicated quality-control.css file */
+
+/* Basic mobile navigation styles */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  z-index: 10000;
+}
+
+.mobile-nav-toggle:hover {
+  background: rgba(44, 85, 48, 0.1);
+}
+
+/* Ensure mobile navigation is hidden by default on desktop */
+@media (min-width: 1200px) {
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+/* Show mobile navigation toggle on mobile */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    display: block !important;
+    position: relative !important;
+    z-index: 10000 !important;
+  }
+}
