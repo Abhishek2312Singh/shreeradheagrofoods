@@ -81,7 +81,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   color: var(--text-dark);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%), url('../img/menu/menu-item-4.png');
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%), url('../img/menu/menu-item-4.png'); */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -280,7 +280,7 @@ p, span, li, a {
   position: absolute;
   top: 100%;
   left: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-3.png');
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-3.png'); */
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -877,7 +877,7 @@ p, span, li, a {
 }
 
 .modern-product-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-1.png');
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-1.png'); */
   background-size: cover;
   background-position: center;
   border-radius: var(--border-radius);
@@ -1717,7 +1717,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url('../img/menu/menu-item-2.png');
+  /* background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url('../img/menu/menu-item-2.png'); */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -2225,7 +2225,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
 
 /* Enhanced Product Cards */
 .products-page .modern-product-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-1.png');
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%), url('../img/menu/menu-item-1.png'); */
   background-size: cover;
   background-position: center;
   border: none;

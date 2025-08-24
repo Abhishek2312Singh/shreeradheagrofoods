@@ -1,7 +1,7 @@
 import React from 'react'
 import banner from '../assets/img/menu/potato.jpg'
 import photo from '../assets/img/people/chairperson.jpg'
-import arrow from '../assets/img/menu/profile-down-arrow.svg'
+import banner1 from '../assets/img/menu/potatosBanner.avif'
 import Activities from './Activities'
 
 function Hero() {
@@ -117,7 +117,7 @@ function Hero() {
             <div className="col-lg-6">
               <div className="fade-in-up" data-aos-delay="100">
                 <img 
-                  src={banner} 
+                  src={banner1} 
                   className="img-fluid rounded-4 shadow-lg" 
                   alt="Potato Flakes Process" 
                 />
