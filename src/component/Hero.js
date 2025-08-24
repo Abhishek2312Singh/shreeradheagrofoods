@@ -145,7 +145,7 @@ function Hero() {
               <div className="process-card text-center hover-lift">
                 <div className="process-icon mb-3">
                   <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
-                    <i class="bi bi-tree text-white fs-1"></i>
+                    <i className="bi bi-tree text-white fs-1"></i>
                   </div>
                 </div>
                 <h5 className="fw-bold mb-2">Agriculture</h5>
