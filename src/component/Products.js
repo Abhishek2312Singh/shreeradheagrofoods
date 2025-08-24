@@ -67,7 +67,7 @@ export default function Products() {
             <div className="card h-100 modern-product-card hover-lift">
               <img src={require('../assets/img/menu/milled-product.png')} className="card-img-top" alt="Milled Products" />
               <div className="card-body d-flex flex-column">
-                <h3 className="card-title modern-product-title">Milled Products</h3>
+                <h3 className="card-title modern-product-title">Milled</h3>
                 <p className="card-text modern-product-description">
                   Finely milled potato products ideal for baking, 
                   thickening agents, and industrial applications. Perfect

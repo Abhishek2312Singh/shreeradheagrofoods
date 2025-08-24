@@ -116,7 +116,7 @@ function Header(props) {
                       to="milledProducts" 
                       onClick={() => { setActive('milledProducts'); setIsMobileMenuOpen(false) }}
                     >
-                      Milled Products
+                      Milled
                     </Link>
                   </li>
                 </ul>
