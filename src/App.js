@@ -63,11 +63,11 @@ function App() {
           <React.Fragment>
              <Milled/>
           </React.Fragment>}></Route>
-        <Route path='admin' element={
+        {/* <Route path='admin' element={
           <ProtectedRoute>
             <Admin/>
           </ProtectedRoute>
-        }></Route>
+        }></Route> */}
       </Routes>
       <Footer/>
     </BrowserRouter>

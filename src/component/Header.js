@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // <<<<<<< HEAD
 import logo from '../assets/img/menu/logo.png'
@@ -12,11 +12,34 @@ function Header(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [loginCredentials, setLoginCredentials] = useState({ username: '', password: '' })
+  const [openDropdown, setOpenDropdown] = useState(null)
   
   document.title = props.title
   
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
+    console.log('Toggle mobile menu clicked') // Debug log
+    const newState = !isMobileMenuOpen
+    setIsMobileMenuOpen(newState)
+    
+    // Prevent body scroll when mobile nav is open
+    if (newState) {
+      document.body.classList.add('nav-open')
+    } else {
+      document.body.classList.remove('nav-open')
+    }
+  }
+
+  const toggleDropdown = (dropdownName) => {
+    console.log('Toggle dropdown clicked:', dropdownName) // Debug log
+    if (openDropdown === dropdownName) {
+      setOpenDropdown(null)
+    } else {
+      setOpenDropdown(dropdownName)
+    }
+  }
+
+  const closeAllDropdowns = () => {
+    setOpenDropdown(null)
   }
 
   const handleLogin = (e) => {
@@ -44,12 +67,34 @@ function Header(props) {
   }
 
   // Check if user is logged in on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn')
     if (loginStatus === 'true') {
       setIsLoggedIn(true)
     }
   }, [])
+
+  // Cleanup effect for mobile navigation
+  useEffect(() => {
+    return () => {
+      // Remove nav-open class when component unmounts
+      document.body.classList.remove('nav-open')
+    }
+  }, [])
+
+  // Close mobile nav when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+    document.body.classList.remove('nav-open')
+    closeAllDropdowns()
+  }, [window.location.pathname])
+
+  // Close dropdowns when mobile menu is closed
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      closeAllDropdowns()
+    }
+  }, [isMobileMenuOpen])
 
   return (
     <>
@@ -93,20 +138,33 @@ function Header(props) {
                 </Link>
               </li>
               
-              <li className="dropdown">
+              <li className={`dropdown ${openDropdown === 'products' ? 'active' : ''}`}>
                 <Link 
                   to="products" 
                   className={`${isActive === 'products' ? 'active' : ''}`}
-                  onClick={() => { setActive('products'); setIsMobileMenuOpen(false) }}
+                  onClick={(e) => { 
+                    if (window.innerWidth <= 1199) {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      toggleDropdown('products')
+                    } else {
+                      setActive('products')
+                      setIsMobileMenuOpen(false)
+                    }
+                  }}
                 >
                   <span>Products</span> 
-                  <i className="bi bi-chevron-down toggle-dropdown ms-1"></i>
+                  <i className={`bi bi-chevron-down toggle-dropdown ms-1 ${openDropdown === 'products' ? 'rotate' : ''}`}></i>
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
                     <Link 
                       to="potatoFlakes" 
-                      onClick={() => { setActive('potatoFlakes'); setIsMobileMenuOpen(false) }}
+                      onClick={() => { 
+                        setActive('potatoFlakes')
+                        // setIsMobileMenuOpen(false)
+                        // closeAllDropdowns()
+                      }}
                     >
                       Potato Flakes
                     </Link>
@@ -114,7 +172,11 @@ function Header(props) {
                   <li>
                     <Link 
                       to="milledProducts" 
-                      onClick={() => { setActive('milledProducts'); setIsMobileMenuOpen(false) }}
+                      onClick={() => { 
+                        setActive('milledProducts')
+                        setIsMobileMenuOpen(false)
+                        closeAllDropdowns()
+                      }}
                     >
                       Milled
                     </Link>
@@ -122,7 +184,7 @@ function Header(props) {
                 </ul>
               </li>
 
-              {isLoggedIn && (
+              {/* {isLoggedIn && (
                 <li>
                   <Link 
                     to="admin" 
@@ -133,12 +195,12 @@ function Header(props) {
                     Admin
                   </Link>
                 </li>
-              )}
+              )} */}
             </ul>
           </nav>
 
           <div className="d-flex align-items-center gap-3">
-            {!isLoggedIn ? (
+            {/* {!isLoggedIn ? (
               <button 
                 className="btn btn-primary modern-btn-primary"
                 onClick={() => setShowLoginForm(!showLoginForm)}
@@ -154,23 +216,31 @@ function Header(props) {
                 <i className="bi bi-box-arrow-right me-2"></i>
                 Logout
               </button>
-            )}
+            )} */}
             <a className="btn btn-outline-primary modern-btn-outline" href="tel:+917701933308">
               <i className="bi bi-telephone-fill me-2"></i>
-              +91 7701933308
+              <span className="d-none d-sm-inline">+91 7701933308</span>
+              {/* <span className="d-inline d-sm-none">Call</span> */}
             </a>
             
             <button 
               className="mobile-nav-toggle d-xl-none bi bi-list"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
+              type="button"
             ></button>
+            
+            {/* Debug info - remove this after testing */}
+            {/* <div className="d-none d-md-block" style={{fontSize: '12px', color: 'red'}}>
+              Mobile Menu: {isMobileMenuOpen ? 'OPEN' : 'CLOSED'} | 
+              Dropdown: {openDropdown || 'NONE'}
+            </div> */}
           </div>
         </div>
       </header>
 
       {/* Login Form Modal */}
-      {showLoginForm && (
+      {/* {showLoginForm && (
         <div className="login-overlay" onClick={() => setShowLoginForm(false)}>
           <div className="login-form" onClick={(e) => e.stopPropagation()}>
             <div className="login-header">
@@ -218,7 +288,7 @@ function Header(props) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </>
   )
 }

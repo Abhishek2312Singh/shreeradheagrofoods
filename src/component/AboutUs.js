@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import about1 from '../assets/img/menu/potato.jpg'
-import about from '../assets/img/about.jpg'
+import about from '../assets/img/menu/potatosBanner.avif'
 import about2 from '../assets/img/about-2.jpg'
 import './AboutUs.css'
 
