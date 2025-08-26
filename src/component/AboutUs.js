@@ -29,7 +29,7 @@ function AboutUs() {
                                     <span className="fw-semibold">ISO Certified</span>
                                 </div>
                                 <div className="d-flex align-items-center me-4">
-                                    <i className="bi bi-globe text-info fs-3 me-2"></i>
+                                    <i className="bi bi-globe text-success fs-3 me-2"></i>
                                     <span className="fw-semibold">Global Export</span>
                                 </div>
                                 <div className="d-flex align-items-center">

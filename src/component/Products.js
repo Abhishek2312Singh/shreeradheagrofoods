@@ -204,8 +204,6 @@ export default function Products() {
               <p className="quality-control-description">After drying</p>
               <ul className="quality-control-features">
                 <li>Moisture content → Low enough to prevent spoilage</li>
-                <li>Color measurement → L*, a*, b* values for consistency</li>
-                <li>Flavor & aroma → No burnt, moldy, or foreign tastes</li>
                 <li>Texture → Crispness for chips, free-flowing powder for granules</li>
                 <li>Bulk density → Consistency in packing</li>
                 <li>Microbiological safety → Total plate count, yeast & mold, coliforms</li>
