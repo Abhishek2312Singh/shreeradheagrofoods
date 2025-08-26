@@ -31,7 +31,8 @@ function PotatoToFlakes() {
               <div className="process-card text-center hover-lift">
                 <div className="process-icon mb-3">
                   <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
-                    <i className="bi bi-tree text-white fs-1"></i>
+                    {/* <i className="bi bi-factory text-white fs-1"></i> */}
+                    <i class="fa-solid fa-industry" style={{fontSize:"35px"}}></i>
                   </div>
                 </div>
                 <h5 className="fw-bold mb-2">Food Industry</h5>
@@ -45,7 +46,8 @@ function PotatoToFlakes() {
               <div className="process-card text-center hover-lift">
                 <div className="process-icon mb-3">
                   <div className="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
-                    <i className="bi bi-droplet text-white fs-1"></i>
+                    {/* <i className="bi bi-droplet text-white fs-1"></i> */}
+                    <i class="fa-solid fa-utensils" style={{fontSize:"35px"}}></i>
                   </div>
                 </div>
                 <h5 className="fw-bold mb-2">Everyday Cooking</h5>
@@ -59,7 +61,8 @@ function PotatoToFlakes() {
               <div className="process-card text-center hover-lift">
                 <div className="process-icon mb-3">
                   <div className="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
-                    <i className="bi bi-fire text-white fs-1"></i>
+                    {/* <i className="bi bi-fire text-white fs-1"></i> */}
+                    <i class="fa-solid fa-cookie-bite" style={{fontSize:"35px"}}></i>
                   </div>
                 </div>
                 <h5 className="fw-bold mb-2">Baking & Snacks</h5>
@@ -73,7 +76,8 @@ function PotatoToFlakes() {
               <div className="process-card text-center hover-lift">
                 <div className="process-icon mb-3">
                   <div className="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style={{width: '80px', height: '80px'}}>
-                    <i className="bi bi-box text-white fs-1"></i>
+                    {/* <i className="bi bi-box text-white fs-1"></i> */}
+                    <i class="fa-solid fa-paw" style={{fontSize:"35px"}}></i>
                   </div>
                 </div>
                 <h5 className="fw-bold mb-2">Beyond the Kitchen</h5>

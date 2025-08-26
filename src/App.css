@@ -15,6 +15,9 @@
 .bi-flask::before {
     content: "\f350";
 }
+.bi-factory::before{
+  content: "f\225";
+}
 
 .App-header {
   background-color: #282c34;
