@@ -103,12 +103,13 @@ function Contact() {
             </div>
 
             <div className="col-md-6 ">
-              <input type="number" className="form-control" value={contact} onChange={(e)=>{
+              <input  type="text" 
+  inputMode="numeric"  pattern="[0-9]*"  className="form-control" value={contact} onChange={(e)=>{
                 setContact(e.target.value)}} name="contact" placeholder="Your Contact" required=""/>
             </div>
 
             <div className="col-md-12">
-              <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" placeholder="Your Email" required=""/>
+              <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" placeholder="Your Email" style={{color:'gray'}} required=""/>
             </div>
 
             <div className="col-md-12">
