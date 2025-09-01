@@ -1,0 +1,10 @@
+# Allow all search engines to crawl the site
+User-agent: *
+
+# Disallow any admin or private URLs (edit if needed)
+Disallow: /admin/
+Disallow: /login/
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://shriradheagrofoods.com/sitemap.xml
