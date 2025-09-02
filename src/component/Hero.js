@@ -2,7 +2,8 @@ import React from 'react'
 import banner from '../assets/img/menu/potato.jpg'
 import photo from '../assets/img/people/chairperson.jpg'
 import banner1 from '../assets/img/menu/potatosBanner.avif'
-import Activities from './Activities'
+// import Activities from './Activities'
+import {Link} from "react-router-dom"
 
 function Hero() {
   return (
@@ -51,10 +52,10 @@ function Hero() {
                 </div>
                 
                 <div className="d-flex flex-wrap gap-3" data-aos-delay="200">
-                  <a href="aboutUs" className="modern-btn modern-btn-primary hover-lift">
+                  <Link to="aboutus" className="modern-btn modern-btn-primary hover-lift">
                     <i className="bi bi-info-circle me-2"></i>
                     Learn More
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

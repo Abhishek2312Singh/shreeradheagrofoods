@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../assets/img/menu/logo.png'
 
@@ -7,6 +7,7 @@ import logo from '../assets/img/menu/logo.png'
 function Header(props) {
   const [isActive, setActive] = useState('/')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const location = useLocation()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [loginCredentials, setLoginCredentials] = useState({ username: '', password: '' })
@@ -14,21 +15,29 @@ function Header(props) {
   
   document.title = props.title
   
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (e) => {
     console.log('Toggle mobile menu clicked') // Debug log
+    
     const newState = !isMobileMenuOpen
     setIsMobileMenuOpen(newState)
     
     // Prevent body scroll when mobile nav is open
     if (newState) {
       document.body.classList.add('nav-open')
+      // Prevent iOS Safari bounce scrolling
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
     } else {
       document.body.classList.remove('nav-open')
+      // Restore normal scrolling
+      document.body.style.position = ''
+      document.body.style.width = ''
     }
   }
 
-  const toggleDropdown = (dropdownName) => {
+  const toggleDropdown = (dropdownName, e) => {
     console.log('Toggle dropdown clicked:', dropdownName) // Debug log
+    
     if (openDropdown === dropdownName) {
       setOpenDropdown(null)
     } else {
@@ -64,6 +73,11 @@ function Header(props) {
     }
   }
 
+  // Update active state when route changes
+  useEffect(() => {
+    setActive(location.pathname)
+  }, [location.pathname])
+
   // Check if user is logged in on component mount
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn')
@@ -84,8 +98,32 @@ function Header(props) {
   useEffect(() => {
     setIsMobileMenuOpen(false)
     document.body.classList.remove('nav-open')
+    // Restore normal scrolling
+    document.body.style.position = ''
+    document.body.style.width = ''
     closeAllDropdowns()
   }, [window.location.pathname])
+
+  // Add click outside handler for mobile nav
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // Close mobile nav when clicking outside
+      if (isMobileMenuOpen && !e.target.closest('.modern-nav') && !e.target.closest('.mobile-nav-toggle')) {
+        setIsMobileMenuOpen(false)
+        document.body.classList.remove('nav-open')
+        document.body.style.position = ''
+        document.body.style.width = ''
+        closeAllDropdowns()
+      }
+    }
+
+    // Add event listener
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [isMobileMenuOpen])
 
   // Close dropdowns when mobile menu is closed
   useEffect(() => {
@@ -117,9 +155,9 @@ function Header(props) {
 
               <li>
                 <Link 
-                  to="aboutus" 
-                  className={isActive === 'aboutus' ? 'active' : ''} 
-                  onClick={() => { setActive('aboutus'); setIsMobileMenuOpen(false) }}
+                  to="/aboutus" 
+                  className={isActive === '/aboutus' ? 'active' : ''} 
+                  onClick={() => { setActive('/aboutus'); setIsMobileMenuOpen(false) }}
                 >
                   About
                 </Link>
@@ -127,9 +165,9 @@ function Header(props) {
 
               <li>
                 <Link 
-                  to="contact" 
-                  className={isActive === 'contact' ? 'active' : ''} 
-                  onClick={() => { setActive('contact'); setIsMobileMenuOpen(false) }}
+                  to="/contact" 
+                  className={isActive === '/contact' ? 'active' : ''} 
+                  onClick={() => { setActive('/contact'); setIsMobileMenuOpen(false) }}
                 >
                   Contact
                 </Link>
@@ -137,16 +175,14 @@ function Header(props) {
               
               <li className={`dropdown ${openDropdown === 'products' ? 'active' : ''}`}>
                 <Link 
-                  to="products" 
-                  className={`${isActive === 'products' ? 'active' : ''}`}
+                  to="/products" 
+                  className={`${isActive === '/products' ? 'active' : ''}`}
                   onClick={(e) => { 
                     if (window.innerWidth <= 1199) {
-                      // e.preventDefault()
-                      // e.stopPropagation()
-                      toggleDropdown('products')
-                      setActive('products')
+                      toggleDropdown('products', e)
+                      setActive('/products')
                     } else {
-                      setActive('products')
+                      setActive('/products')
                       setIsMobileMenuOpen(false)
                     }
                   }}
@@ -157,9 +193,9 @@ function Header(props) {
                 <ul className="dropdown-menu">
                   <li>
                     <Link 
-                      to="potatoFlakes" 
+                      to="/potatoFlakes" 
                       onClick={() => { 
-                        setActive('potatoFlakes')
+                        setActive('/potatoFlakes')
                         setIsMobileMenuOpen(false)
                         closeAllDropdowns()
                       }}
@@ -169,9 +205,9 @@ function Header(props) {
                   </li>
                   <li>
                     <Link 
-                      to="milledProducts" 
+                      to="/milledProducts" 
                       onClick={() => { 
-                        setActive('milledProducts')
+                        setActive('/milledProducts')
                         setIsMobileMenuOpen(false)
                         closeAllDropdowns()
                       }}
@@ -186,8 +222,8 @@ function Header(props) {
                 <li>
                   <Link 
                     to="admin" 
-                    className={isActive === 'admin' ? 'active' : ''} 
-                    onClick={() => { setActive('admin'); setIsMobileMenuOpen(false) }}
+                    className={isActive === '/admin' ? 'active' : ''} 
+                    onClick={() => { setActive('/admin'); setIsMobileMenuOpen(false) }}
                   >
                     <i className="bi bi-gear-fill me-2"></i>
                     Admin

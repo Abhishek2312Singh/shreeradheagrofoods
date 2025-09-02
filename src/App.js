@@ -1,14 +1,11 @@
 import './App.css';
 import React  from 'react';
 import Header from './component/Header';
+import ScrollToTop from './component/ScrollToTop';
 import './assets/css/main.css'
-import './assets/vendor/bootstrap/css/bootstrap.min.css'
 import './assets/css/modern-ui.css'
 import './assets/css/quality-control.css'
-import './assets/vendor/bootstrap-icons/bootstrap-icons.css'
-import './assets/vendor/aos/aos.css'
-import './assets/vendor/glightbox/css/glightbox.min.css'
-import './assets/vendor/swiper/swiper-bundle.min.css'
+import './assets/css/mobile-nav-fixes.css'
 // import './assets/img/favicon.png'
 // import './assets/img/apple-touch-icon.png'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
@@ -31,7 +28,8 @@ function App() {
     <>
     
     <BrowserRouter>
-    <Header title = "Shri Radhe Agro Food - Home"/>
+    <ScrollToTop />
+    <Header title = "Shri Radhe Agro Food"/>
       <Routes>
         <Route exact path='/'element={
         <React.Fragment>

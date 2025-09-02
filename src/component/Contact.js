@@ -17,7 +17,7 @@ function Contact() {
       message,
     };
     try{
-      const response = await fetch("https://api.shriradheagrofoods.com:8080/userquery",{
+      const response = await fetch("https://api.shriradheagrofoods.com/",{
         method: "Post",
         headers: {
           "Content-type" : "application/json",
@@ -99,17 +99,17 @@ function Contact() {
           <div className="row gy-4">
 
             <div className="col-md-6">
-              <input type="text" name="name" className="form-control" value={userName} onChange={(e)=>{setUsername(e.target.value)}} placeholder="Your Name" required=""/>
+              <input type="text" name="name" className="form-control" value={userName} onChange={(e)=>{setUsername(e.target.value)}} placeholder="Your Name" required/>
             </div>
 
             <div className="col-md-6 ">
               <input  type="text" 
   inputMode="numeric"  pattern="[0-9]*"  className="form-control" value={contact} onChange={(e)=>{
-                setContact(e.target.value)}} name="contact" placeholder="Your Contact" required=""/>
+                setContact(e.target.value)}} name="contact" placeholder="Your Contact" required/>
             </div>
 
             <div className="col-md-12">
-              <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" placeholder="Your Email" style={{color:'gray'}} required=""/>
+              <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" placeholder="Your Email" style={{color:'gray'}} required/>
             </div>
 
             <div className="col-md-12">

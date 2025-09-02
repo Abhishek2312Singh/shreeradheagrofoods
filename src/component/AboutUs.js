@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import about1 from '../assets/img/menu/potato.jpg'
 import about from '../assets/img/menu/potatosBanner.avif'
 import about2 from '../assets/img/menu/potatoFlakes.jpg'
@@ -311,15 +312,14 @@ function AboutUs() {
                         </p>
                         <div className="d-flex flex-wrap gap-3 justify-content-center">
 
-                            <a href="/contact" className="btn btn-primary-light btn-lg hover-lift" style={{border: '2px solid white'}}>
+                            <Link to="/contact" className="btn btn-primary-light btn-lg hover-lift" style={{border: '2px solid white'}}>
                                 <i className="bi bi-envelope text-white me-2" ></i>
-
                                 Get in Touch
-                            </a>
-                            <a href="/products" className="info btn btn-primary-light btn-lg hover-lift">
+                            </Link>
+                            <Link to="/products" className="info btn btn-primary-light btn-lg hover-lift">
                                 <i className="bi bi-box me-2"></i>
                                 View Products
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Product.css'
 import bgImg from '../assets/img/menu/Cover.jpg'
 
@@ -55,9 +56,9 @@ export default function Products() {
                     <span className="badge bg-success">Premium Quality</span>
                     <span className="badge bg-warning">Export Grade</span>
                   </div>
-                  <a href="/potatoFlakes" className="btn btn-primary modern-btn-primary w-100 hover-lift">
+                  <Link to="/potatoFlakes" className="btn btn-primary modern-btn-primary w-100 hover-lift">
                     Learn More <i className="bi bi-arrow-right ms-2"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -92,9 +93,9 @@ export default function Products() {
                     <span className="badge bg-info">Versatile</span>
                     <span className="badge bg-warning">Industrial Grade</span>
                   </div>
-                  <a href="/milledProducts" className="btn btn-primary modern-btn-primary w-100 hover-lift">
+                  <Link to="/milledProducts" className="btn btn-primary modern-btn-primary w-100 hover-lift">
                     Learn More <i className="bi bi-arrow-right ms-2"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -248,9 +249,9 @@ export default function Products() {
           
           {/* Quality Control CTA */}
           <div className="quality-control-cta">
-            <a href="/contact" className="quality-control-btn">
+            <Link to="/contact" className="quality-control-btn">
               Get Quality Report <i className="bi bi-arrow-right ms-2"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
