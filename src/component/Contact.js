@@ -5,10 +5,72 @@ function Contact() {
   const [contact,setContact] = useState("")
   const [email,setEmail] = useState("")
   const [message,setMessage] = useState("")
+  const [emailError, setEmailError] = useState("")
+  const [isEmailValid, setIsEmailValid] = useState(false)
+  const [phoneError, setPhoneError] = useState("")
+  const [isPhoneValid, setIsPhoneValid] = useState(false)
 
+  // Email validation function
+  const validateEmail = (email) => {
+    // Simple validation: must contain @ and . characters
+    return email.includes('@') && email.includes('.');
+  };
+
+  // Phone validation function
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(phone);
+  };
+
+  // Handle email change (no validation on change, only on submit)
+  const handleEmailChange = (e) => {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    
+    // Clear error when user starts typing
+    if (emailError) {
+      setEmailError("");
+    }
+    
+    // Set validation status for visual feedback
+    if (emailValue === "") {
+      setIsEmailValid(false);
+    } else {
+      setIsEmailValid(validateEmail(emailValue));
+    }
+  };
+
+  // Handle phone change with validation
+  const handlePhoneChange = (e) => {
+    const phoneValue = e.target.value;
+    setContact(phoneValue);
+    
+    if (phoneValue === "") {
+      setPhoneError("");
+      setIsPhoneValid(false);
+    } else if (!validatePhone(phoneValue)) {
+      setPhoneError("Please enter a valid phone number");
+      setIsPhoneValid(false);
+    } else {
+      setPhoneError("");
+      setIsPhoneValid(true);
+    }
+  };
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
+
+    // Check if email is valid before submitting
+    if (!validateEmail(email) || email === "") {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+
+    // Check if phone is valid before submitting
+    if (!validatePhone(contact) || contact === "") {
+      setPhoneError("Enter a valid phone number");
+      return;
+    }
 
     const data = {
       userName,
@@ -35,7 +97,22 @@ function Contact() {
   };
 
   useEffect(()=>{
-            document.title="Shri Radhe Agro Food - Contact"
+    document.title="Contact Us - Shri Radhe Agro Foods";
+    
+    // Add meta tags for SEO
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Contact Shri Radhe Agro Foods for premium potato flakes and milled products. Located in Mathura, India. Call +91-7500054446 or email sragrofoods2021@gmail.com');
+    }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://shriradheagrofoods.com/contact';
   })
   return (
     <><section id="contact" className="contact section">
@@ -48,7 +125,13 @@ function Contact() {
       <div className="container" >
 
         <div className="mb-5">
-          <iframe style={{width: "100%", height: "400px"}} src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameBorder="0" allowFullScreen=""></iframe>
+          <iframe 
+            style={{width: "100%", height: "400px"}} 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" 
+            frameBorder="0" 
+            allowFullScreen=""
+            title="Shri Radhe Agro Foods Location Map"
+          ></iframe>
         </div>
 
         <div className="row gy-4">
@@ -58,7 +141,7 @@ function Contact() {
               <i className="icon bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
-                <p>C282, Vijay Nagar, Ghaziabad, 201009</p>
+                <p>Shahpur Gosna, NH-530B, Mathura - 281204</p>
               </div>
             </div>
           </div>
@@ -68,7 +151,7 @@ function Contact() {
               <i className="icon bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Call Us</h3>
-                <p>+91 7701933308</p>
+                <p>+91 7500054446</p>
               </div>
             </div>
           </div>
@@ -78,7 +161,7 @@ function Contact() {
               <i className="icon bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
-                <p>info@gmail.com</p>
+                <p>sragrofoods2021@gmail.com</p>
               </div>
             </div>
           </div>
@@ -103,13 +186,47 @@ function Contact() {
             </div>
 
             <div className="col-md-6 ">
-              <input  type="text" 
-  inputMode="numeric"  pattern="[0-9]*"  className="form-control" value={contact} onChange={(e)=>{
-                setContact(e.target.value)}} name="contact" placeholder="Your Contact" required/>
+              <input  
+                type="text" 
+                inputMode="numeric"  
+                pattern="[0-9]*"  
+                className={`form-control ${phoneError ? 'is-invalid' : isPhoneValid ? 'is-valid' : ''}`}
+                value={contact} 
+                onChange={handlePhoneChange}
+                name="contact" 
+                placeholder="Your Contact" 
+                maxLength="10"
+                required
+              />
+              {phoneError && (
+                <div className="invalid-feedback" style={{display: 'block', color: '#dc3545', fontSize: '0.875rem', marginTop: '0.25rem'}}>
+                  {phoneError}
+                </div>
+              )}
+              {isPhoneValid && !phoneError && (
+                <div className="valid-feedback" style={{display: 'block', color: '#198754', fontSize: '0.875rem', marginTop: '0.25rem'}}>
+                  ✓ Valid phone number
+                </div>
+              )}
+              
             </div>
 
             <div className="col-md-12">
-              <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" placeholder="Your Email" style={{color:'gray'}} required/>
+              <input 
+                type="email" 
+                className={`form-control ${emailError ? 'is-invalid' : isEmailValid ? 'is-valid' : ''}`}
+                value={email} 
+                onChange={handleEmailChange}
+                name="email" 
+                placeholder="Your Email" 
+                style={{color:'gray'}} 
+                required
+              />
+              {emailError && (
+                <div className="invalid-feedback" style={{display: 'block', color: '#dc3545', fontSize: '0.875rem', marginTop: '0.25rem'}}>
+                  {emailError}
+                </div>
+              )}
             </div>
 
             <div className="col-md-12">

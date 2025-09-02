@@ -217,7 +217,7 @@ function Hero() {
               <div className="modern-chairperson-content">
                 <div className="d-flex align-items-center mb-3">
                   <div>
-                    <h5 className="modern-chairperson-title mb-1">Chairperson</h5>
+                    <h5 className="modern-chairperson-title mb-1">Mr. Lalit Aggrawal</h5>
                     <p className="modern-chairperson-subtitle">Chairman, Shri Radhe Agro Food</p>
                   </div>
                 </div>

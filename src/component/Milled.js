@@ -1,23 +1,52 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import bgImg from '../assets/img/menu/milled_bg.webp'
 import product from '../assets/img/menu/milled-product.png'
+import LazyImage from './LazyImage'
+import useMobileDetection from '../hooks/useMobileDetection'
 
 const Milled = () => {
+  const { isMobile } = useMobileDetection();
+  
+  useEffect(() => {
+    document.title = "Milled Products - Shri Radhe Agro Foods";
+    
+    // Add meta tags for SEO
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'High-quality milled potato products for food industry. Premium dehydrated potato flour and processed products from Mathura, India.');
+    }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://shriradheagrofoods.com/milledProducts';
+  }, []);
   return (
     <div>
-      <div className='bg-container'  style={{
-        backgroundImage: `url(${bgImg})`,
-        objectFit: 'contain',
-        backgroundSize: 'cover',
-        height: '500px',
-        width: '100%'
-      }}>
-       <h1 className="cover-text" style={{color: 'white', position: 'absolute', top: '50%', left:'45%'}} >Milled Products</h1>
-    </div>
-    <div className="card" style={{width: "auto"}}>
+      <div 
+        className='bg-container'  
+        style={{
+          backgroundImage: `url(${bgImg})`,
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: isMobile ? 'scroll' : 'fixed'
+        }}
+      >
+        <h1 className="cover-text">Milled Products</h1>
+      </div>
+    <div className="card product-card" style={{width: "auto"}}>
   <div className="row g-0">
     <div className="col-md-4">
-      <img src={product} className="img-fluid rounded-start" style={{width: '300px',marginLeft:'40px'}} alt="..."/>
+      <LazyImage 
+        src={product} 
+        className="img-fluid rounded-start" 
+        style={{width: isMobile ? '100%' : '300px', marginLeft: isMobile ? '0' : '40px'}} 
+        alt="Milled Products"
+      />
     </div>
     <div className="col-md-8">
       <div className="card-body">

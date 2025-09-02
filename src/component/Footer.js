@@ -11,8 +11,8 @@ function Footer() {
           <i className="bi bi-geo-alt icon"></i>
           <div className="address">
             <h4>Address</h4>
-            <p>C282 Vijay Nagar</p>
-            <p>Ghaziabad, 201009</p>
+            <p>Shahpur Gosna, NH-530B,</p>
+            <p>Mathura - 281204</p>
             <p></p>
           </div>
 
@@ -23,8 +23,8 @@ function Footer() {
           <div>
             <h4>Contact</h4>
             <p>
-              <strong>Phone:</strong> <span>+91 7701933308</span><br/>
-              <strong>Email:</strong> <span>info@gmail.com</span><br/>
+              <strong>Phone:</strong> <span>+91 7500054446</span><br/>
+              <strong>Email:</strong> <span>sragrofoods2021@gmail.com</span><br/>
             </p>
           </div>
         </div>

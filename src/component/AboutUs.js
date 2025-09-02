@@ -7,7 +7,22 @@ import './AboutUs.css'
 
 function AboutUs() {
     useEffect(() => {
-        document.title = "Shri Radhe Agro Food - About Us"
+        document.title = "About Us - Shri Radhe Agro Foods";
+        
+        // Add meta tags for SEO
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', 'Learn about Shri Radhe Agro Foods - leading producer and exporter of premium potato flakes and milled products from Mathura, India. Quality, innovation, and global reach since 2021.');
+        }
+        
+        // Add canonical URL
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.rel = 'canonical';
+            document.head.appendChild(canonical);
+        }
+        canonical.href = 'https://shriradheagrofoods.com/aboutus';
     })
     
     return (

@@ -24,9 +24,9 @@ function CTASection() {
                     </div>
                     <h5 className="fw-bold mb-2">Call Us Now</h5>
                     <p className="small opacity-75 mb-3">Speak directly with our experts</p>
-                    <a href="tel:+917701933308" className="btn btn-warning btn-lg w-100">
+                    <a href="tel:+917500054446" className="btn btn-warning btn-lg w-100">
                       <i className="bi bi-telephone me-2"></i>
-                      +91 7701933308
+                      +91 7500054446
                     </a>
                   </div>
                 </div>

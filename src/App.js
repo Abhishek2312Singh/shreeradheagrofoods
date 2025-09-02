@@ -1,11 +1,12 @@
 import './App.css';
-import React  from 'react';
+import React, { useEffect } from 'react';
 import Header from './component/Header';
 import ScrollToTop from './component/ScrollToTop';
 import './assets/css/main.css'
 import './assets/css/modern-ui.css'
 import './assets/css/quality-control.css'
 import './assets/css/mobile-nav-fixes.css'
+import useMobileDetection from './hooks/useMobileDetection';
 // import './assets/img/favicon.png'
 // import './assets/img/apple-touch-icon.png'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
@@ -18,12 +19,31 @@ import Product from './component/Product';
 import Products from './component/Products';
 import PotatoFlakes from './component/PotatoFlakes';
 import Milled from './component/Milled';
-import Admin from './component/Admin';
-import ProtectedRoute from './component/ProtectedRoute';
+// import Admin from './component/Admin';
+// import ProtectedRoute from './component/ProtectedRoute';
 import ValuesSection from './component/ValuesSection';
 import CTASection from './component/CTASection';
 
 function App() {
+  const { isMobile } = useMobileDetection();
+
+  useEffect(() => {
+    // Load mobile-optimized CSS only on mobile devices
+    if (isMobile) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/src/assets/css/mobile-optimized.css';
+      link.id = 'mobile-optimized-css';
+      document.head.appendChild(link);
+    } else {
+      // Remove mobile CSS on desktop
+      const mobileCSS = document.getElementById('mobile-optimized-css');
+      if (mobileCSS) {
+        mobileCSS.remove();
+      }
+    }
+  }, [isMobile]);
+
   return (
     <>
     

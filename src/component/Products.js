@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Product.css'
 import bgImg from '../assets/img/menu/Cover.jpg'
 
 export default function Products() {
   console.log('Products component rendered') // Debug log
+  
+  useEffect(() => {
+    document.title = "Our Products - Shri Radhe Agro Foods";
+    
+    // Add meta tags for SEO
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Explore our premium potato product range including potato flakes and milled products. High-quality dehydrated potato products for industrial and commercial use from Mathura, India.');
+    }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://shriradheagrofoods.com/products';
+  }, []);
   
   return (
     <div className="products-page">

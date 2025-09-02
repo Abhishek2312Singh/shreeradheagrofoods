@@ -1,10 +1,32 @@
 # Allow all search engines to crawl the site
 User-agent: *
 
-# Disallow any admin or private URLs (edit if needed)
+# Allow crawling of all content
+Allow: /
+
+# Disallow any admin or private URLs
 Disallow: /admin/
 Disallow: /login/
 Disallow: /tmp/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /build/
+Disallow: /node_modules/
+
+# Allow specific file types
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
+
+# Crawl delay (optional - be respectful to server resources)
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://shriradheagrofoods.com/sitemap.xml

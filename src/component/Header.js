@@ -251,9 +251,9 @@ function Header(props) {
                 Logout
               </button>
             )} */}
-            <a className="btn btn-outline-primary modern-btn-outline" href="tel:+917701933308">
+            <a className="btn btn-outline-primary modern-btn-outline" href="tel:+917500054446">
               <i className="bi bi-telephone-fill me-2"></i>
-              <span className="d-none d-sm-inline">+91 7701933308</span>
+              <span className="d-none d-sm-inline">+91 7500054446</span>
               {/* <span className="d-inline d-sm-none">Call</span> */}
             </a>
             
