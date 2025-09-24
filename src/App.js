@@ -19,7 +19,7 @@ import Product from './component/Product';
 import Products from './component/Products';
 import PotatoFlakes from './component/PotatoFlakes';
 import Milled from './component/Milled';
-// import Admin from './component/Admin';
+import AdminDashboard from './component/AdminDashboard';
 // import ProtectedRoute from './component/ProtectedRoute';
 import ValuesSection from './component/ValuesSection';
 import CTASection from './component/CTASection';
@@ -81,11 +81,9 @@ function App() {
           <React.Fragment>
              <Milled/>
           </React.Fragment>}></Route>
-        {/* <Route path='admin' element={
-          <ProtectedRoute>
-            <Admin/>
-          </ProtectedRoute>
-        }></Route> */}
+        <Route path='admin' element={
+          <AdminDashboard/>
+        }></Route>
       </Routes>
       <Footer/>
     </BrowserRouter>

@@ -11,6 +11,9 @@ function Header(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [loginCredentials, setLoginCredentials] = useState({ username: '', password: '' })
+  const [isLoggingIn, setIsLoggingIn] = useState(false)
+  const [authToken, setAuthToken] = useState(null)
+  const [loginError, setLoginError] = useState('')
   const [openDropdown, setOpenDropdown] = useState(null)
   
   document.title = props.title
@@ -49,22 +52,73 @@ function Header(props) {
     setOpenDropdown(null)
   }
 
-  const handleLogin = (e) => {
+  // Function to send login credentials to server for validation
+  const handleLogin = async (e) => {
     e.preventDefault()
-    // Simple login check - in production, this should be proper authentication
-    if (loginCredentials.username === 'admin' && loginCredentials.password === 'admin123') {
-      setIsLoggedIn(true)
-      setShowLoginForm(false)
-      setLoginCredentials({ username: '', password: '' })
-      localStorage.setItem('isLoggedIn', 'true')
-    } else {
-      alert('Invalid credentials. Use: admin / admin123')
+    
+    // Clear previous error
+    setLoginError('')
+    
+    // Prevent multiple login attempts
+    if (isLoggingIn) {
+      return
+    }
+
+    setIsLoggingIn(true)
+
+    try {
+      // Send credentials to server for validation
+      const response = await fetch('http://localhost:80/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: loginCredentials.username,
+          password: loginCredentials.password
+        })
+      })
+
+      if (response.ok) {
+        const token = await response.text()
+        console.log('Received token:', token)
+        
+        // If server returns a token string, log the user in
+        if (token && token.trim() !== '') {
+          // Store the JWT token
+          setAuthToken(token)
+          localStorage.setItem('authToken', token)
+          localStorage.setItem('isLoggedIn', 'true')
+          
+          setIsLoggedIn(true)
+          setShowLoginForm(false)
+          setLoginCredentials({ username: '', password: '' })
+          setLoginError('')
+          
+          // Redirect to admin dashboard
+          window.location.href = '/admin'
+        } else {
+          // Show error if no token received
+          setLoginError('Invalid credentials. Please try again.')
+        }
+      } else {
+        // Handle HTTP error responses
+        const errorText = await response.text().catch(() => '')
+        setLoginError(errorText || `Login failed (${response.status})`)
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      setLoginError('Network error. Please check your connection and try again.')
+    } finally {
+      setIsLoggingIn(false)
     }
   }
 
   const handleLogout = () => {
     setIsLoggedIn(false)
+    setAuthToken(null)
     localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('authToken')
     // Force redirect to home if currently on admin page
     if (window.location.pathname === '/admin') {
       window.location.href = '/'
@@ -81,8 +135,10 @@ function Header(props) {
   // Check if user is logged in on component mount
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn')
-    if (loginStatus === 'true') {
+    const storedToken = localStorage.getItem('authToken')
+    if (loginStatus === 'true' && storedToken) {
       setIsLoggedIn(true)
+      setAuthToken(storedToken)
     }
   }, [])
 
@@ -218,7 +274,7 @@ function Header(props) {
                 </ul>
               </li>
 
-              {/* {isLoggedIn && (
+              {isLoggedIn && (
                 <li>
                   <Link 
                     to="admin" 
@@ -229,15 +285,18 @@ function Header(props) {
                     Admin
                   </Link>
                 </li>
-              )} */}
+              )}
             </ul>
           </nav>
 
           <div className="d-flex align-items-center gap-3">
-            {/* {!isLoggedIn ? (
+            {!isLoggedIn ? (
               <button 
                 className="btn btn-primary modern-btn-primary"
-                onClick={() => setShowLoginForm(!showLoginForm)}
+                onClick={() => {
+                  setShowLoginForm(!showLoginForm)
+                  setLoginError('')
+                }}
               >
                 <i className="bi bi-person-circle me-2"></i>
                 Login
@@ -250,7 +309,7 @@ function Header(props) {
                 <i className="bi bi-box-arrow-right me-2"></i>
                 Logout
               </button>
-            )} */}
+            )}
             <a className="btn btn-outline-primary modern-btn-outline" href="tel:+917500054446">
               <i className="bi bi-telephone-fill me-2"></i>
               <span className="d-none d-sm-inline">+91 7500054446</span>
@@ -274,17 +333,27 @@ function Header(props) {
       </header>
 
       {/* Login Form Modal */}
-      {/* {showLoginForm && (
+      {showLoginForm && (
         <div className="login-overlay" onClick={() => setShowLoginForm(false)}>
           <div className="login-form" onClick={(e) => e.stopPropagation()}>
             <div className="login-header">
               <h4>Admin Login</h4>
               <button 
-                className="btn-close"
+                className="login-close-btn"
                 onClick={() => setShowLoginForm(false)}
-              ></button>
+                type="button"
+                aria-label="Close login form"
+              >
+                ×
+              </button>
             </div>
             <form onSubmit={handleLogin}>
+              {loginError && (
+                <div className="alert alert-danger mb-3" role="alert">
+                  <i className="bi bi-exclamation-triangle me-2"></i>
+                  {loginError}
+                </div>
+              )}
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">Username</label>
                 <input
@@ -294,6 +363,7 @@ function Header(props) {
                   value={loginCredentials.username}
                   onChange={(e) => setLoginCredentials({...loginCredentials, username: e.target.value})}
                   required
+                  disabled={isLoggingIn}
                 />
               </div>
               <div className="mb-3">
@@ -305,24 +375,32 @@ function Header(props) {
                   value={loginCredentials.password}
                   onChange={(e) => setLoginCredentials({...loginCredentials, password: e.target.value})}
                   required
+                  disabled={isLoggingIn}
                 />
               </div>
               <div className="d-grid">
-                <button type="submit" className="btn btn-primary modern-login-btn">
-                  <i className="bi bi-box-arrow-in-right me-2"></i>
-                  Login
+                <button 
+                  type="submit" 
+                  className="btn btn-primary modern-login-btn"
+                  disabled={isLoggingIn}
+                >
+                  {isLoggingIn ? (
+                    <>
+                      <i className="bi bi-arrow-clockwise me-2"></i>
+                      Logging in...
+                    </>
+                  ) : (
+                    <>
+                      <i className="bi bi-box-arrow-in-right me-2"></i>
+                      Login
+                    </>
+                  )}
                 </button>
               </div>
             </form>
-            <div className="login-help mt-3">
-              <small className="text-muted">
-                <i className="bi bi-info-circle me-1"></i>
-                Use: admin / admin123
-              </small>
-            </div>
           </div>
         </div>
-      )} */}
+      )}
     </>
   )
 }

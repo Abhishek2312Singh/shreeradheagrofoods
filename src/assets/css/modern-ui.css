@@ -1773,9 +1773,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url('../img/menu/menu-item-2.png'); */
-  background-size: cover;
-  background-position: center;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1811,11 +1809,13 @@ html {
 
 .login-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--light-bg);
+  position: relative;
+  padding-right: 50px;
 }
 
 .login-header h4 {
@@ -1824,25 +1824,38 @@ html {
   font-weight: 600;
 }
 
-.btn-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+.login-close-btn {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
-  color: var(--text-light);
+  color: #333333;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: var(--transition);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
 }
 
-.btn-close:hover {
-  background: var(--light-bg);
-  color: var(--text-dark);
+.login-close-btn:hover {
+  background: #f5f5f5;
+  color: #000000;
+  border-color: #cccccc;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.login-close-btn:active {
+  transform: scale(0.95);
 }
 
 .login-form .form-label {

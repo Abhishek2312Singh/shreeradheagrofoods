@@ -79,7 +79,8 @@ function Contact() {
       message,
     };
     try{
-      const response = await fetch("https://api.shriradheagrofoods.com/",{
+      // const response = await fetch("https://api.shriradheagrofoods.com/",{
+      const response = await fetch("http://localhost:80/add",{
         method: "Post",
         headers: {
           "Content-type" : "application/json",
