@@ -3,7 +3,68 @@ import { useNavigate } from 'react-router-dom'
 
 function AdminDashboard() {
   const [loading, setLoading] = useState(true)
+  const [contactData, setContactData] = useState([])
+  const [loadingContacts, setLoadingContacts] = useState(false)
   const navigate = useNavigate()
+
+  // Function to check if JWT token is expired
+  const isTokenExpired = (token) => {
+    try {
+      if (!token) return true
+      
+      // Decode JWT token (basic decode without verification)
+      const payload = JSON.parse(atob(token.split('.')[1]))
+      const currentTime = Date.now() / 1000
+      
+      // Check if token has expired
+      if (payload.exp && payload.exp < currentTime) {
+        console.log('Token is expired')
+        return true
+      }
+      
+      return false
+    } catch (error) {
+      console.error('Error decoding token:', error)
+      return true // If we can't decode it, consider it expired
+    }
+  }
+
+  // Function to clear authentication data
+  const clearAuthData = () => {
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('isLoggedIn')
+    // Dispatch custom event to notify Header component
+    window.dispatchEvent(new CustomEvent('userLoggedOut'))
+  }
+
+  // Function to fetch contact form submissions
+  const fetchContactData = async () => {
+    setLoadingContacts(true)
+    try {
+      const token = localStorage.getItem('authToken')
+      const response = await fetch('http://localhost:80/getdata', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setContactData(data)
+        console.log('Contact data fetched:', data)
+      } else {
+        console.error('Failed to fetch contact data')
+        setContactData([])
+      }
+    } catch (error) {
+      console.error('Error fetching contact data:', error)
+      setContactData([])
+    } finally {
+      setLoadingContacts(false)
+    }
+  }
 
   useEffect(() => {
     console.log('AdminDashboard mounted')
@@ -20,17 +81,44 @@ function AdminDashboard() {
       return
     }
 
-    console.log('User is authenticated, showing dashboard')
+    // Check if token is expired
+    if (isTokenExpired(token)) {
+      console.log('Token is expired, logging out')
+      clearAuthData()
+      navigate('/')
+      return
+    }
+
+    console.log('User is authenticated with valid token, showing dashboard')
     // Set loading to false since we don't need to fetch user data
     setLoading(false)
+    
+    // Fetch contact form submissions
+    fetchContactData()
+
+    // Set up periodic token validation (check every 5 minutes)
+    const tokenCheckInterval = setInterval(() => {
+      const currentToken = localStorage.getItem('authToken')
+      if (!currentToken || isTokenExpired(currentToken)) {
+        console.log('Token expired during session, logging out')
+        clearAuthData()
+        navigate('/')
+        clearInterval(tokenCheckInterval)
+      }
+    }, 5 * 60 * 1000) // Check every 5 minutes
+
+    // Cleanup interval on component unmount
+    return () => {
+      clearInterval(tokenCheckInterval)
+    }
   }, [navigate])
 
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn')
-    localStorage.removeItem('authToken')
-    navigate('/')
-  }
+//   const handleLogout = () => {
+//     localStorage.removeItem('isLoggedIn')
+//     localStorage.removeItem('authToken')
+//     navigate('/')
+//   }
 
   if (loading) {
     return (
@@ -55,19 +143,19 @@ function AdminDashboard() {
               <i className="bi bi-gear-fill me-2"></i>
               Admin Dashboard
             </h1>
-            <button 
+            {/* <button 
               className="btn btn-outline-danger"
               onClick={handleLogout}
             >
               <i className="bi bi-box-arrow-right me-2"></i>
               Logout
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
 
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-12">
           <div className="card">
             <div className="card-header">
               <h5 className="card-title mb-0">
@@ -90,79 +178,110 @@ function AdminDashboard() {
             </div>
           </div>
         </div>
-
-        <div className="col-md-4">
-          <div className="card">
-            <div className="card-header">
-              <h5 className="card-title mb-0">
-                <i className="bi bi-speedometer2 me-2"></i>
-                Quick Actions
-              </h5>
-            </div>
-            <div className="card-body">
-              <div className="d-grid gap-2">
-                <button className="btn btn-primary">
-                  <i className="bi bi-plus-circle me-2"></i>
-                  Add New Item
-                </button>
-                <button className="btn btn-info">
-                  <i className="bi bi-eye me-2"></i>
-                  View Reports
-                </button>
-                <button className="btn btn-warning">
-                  <i className="bi bi-gear me-2"></i>
-                  Settings
-                </button>
-                <button className="btn btn-secondary">
-                  <i className="bi bi-people me-2"></i>
-                  Manage Users
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
+      {/* Contact Form Submissions Table */}
       <div className="row mt-4">
         <div className="col-12">
           <div className="card">
-            <div className="card-header">
+            <div className="card-header d-flex justify-content-between align-items-center">
               <h5 className="card-title mb-0">
-                <i className="bi bi-graph-up me-2"></i>
-                Dashboard Overview
+                <i className="bi bi-envelope me-2"></i>
+                Contact Form Submissions
               </h5>
+              <button 
+                className="btn btn-outline-primary btn-sm"
+                onClick={fetchContactData}
+                disabled={loadingContacts}
+              >
+                {loadingContacts ? (
+                  <>
+                    <i className="bi bi-arrow-clockwise me-1"></i>
+                    Refreshing...
+                  </>
+                ) : (
+                  <>
+                    <i className="bi bi-arrow-clockwise me-1"></i>
+                    Refresh
+                  </>
+                )}
+              </button>
             </div>
             <div className="card-body">
-              <div className="row">
-                <div className="col-md-3">
-                  <div className="text-center p-3 bg-light rounded">
-                    <i className="bi bi-box-seam text-primary" style={{ fontSize: '2rem' }}></i>
-                    <h4 className="mt-2">Products</h4>
-                    <p className="text-muted">Manage inventory</p>
+              {loadingContacts ? (
+                <div className="text-center py-4">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
+                  <p className="mt-2">Loading contact submissions...</p>
                 </div>
-                <div className="col-md-3">
-                  <div className="text-center p-3 bg-light rounded">
-                    <i className="bi bi-people text-success" style={{ fontSize: '2rem' }}></i>
-                    <h4 className="mt-2">Customers</h4>
-                    <p className="text-muted">View customer data</p>
-                  </div>
+              ) : contactData.length > 0 ? (
+                <div className="table-responsive">
+                  <table className="table table-striped table-hover">
+                    <thead className="table-dark">
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Message</th>
+                        <th>Submitted</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {contactData.map((contact, index) => (
+                        <tr key={contact.id || index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <strong>{contact.userName || 'N/A'}</strong>
+                          </td>
+                          <td>
+                            <a href={`mailto:${contact.email}`} className="text-decoration-none">
+                              {contact.email || 'N/A'}
+                            </a>
+                          </td>
+                          <td>
+                            <a href={`tel:${contact.contact}`} className="text-decoration-none">
+                              {contact.contact || 'N/A'}
+                            </a>
+                          </td>
+                          <td>
+                            <div 
+                              style={{ 
+                                maxWidth: '300px', 
+                                overflow: 'hidden', 
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap'
+                              }}
+                              title={contact.message}
+                            >
+                              {contact.message || 'N/A'}
+                            </div>
+                          </td>
+                          <td>
+                            {contact.createdAt ? new Date(contact.createdAt).toLocaleDateString() : 'N/A'}
+                          </td>
+                          <td>
+                            <button 
+                              className="btn btn-sm btn-outline-primary"
+                              onClick={() => alert(`Full Message:\n\n${contact.message}`)}
+                              title="View full message"
+                            >
+                              <i className="bi bi-eye"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-                <div className="col-md-3">
-                  <div className="text-center p-3 bg-light rounded">
-                    <i className="bi bi-receipt text-warning" style={{ fontSize: '2rem' }}></i>
-                    <h4 className="mt-2">Orders</h4>
-                    <p className="text-muted">Track orders</p>
-                  </div>
+              ) : (
+                <div className="text-center py-4">
+                  <i className="bi bi-inbox display-4 text-muted"></i>
+                  <p className="mt-3 text-muted">No contact form submissions found</p>
                 </div>
-                <div className="col-md-3">
-                  <div className="text-center p-3 bg-light rounded">
-                    <i className="bi bi-bar-chart text-info" style={{ fontSize: '2rem' }}></i>
-                    <h4 className="mt-2">Analytics</h4>
-                    <p className="text-muted">View reports</p>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

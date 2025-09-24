@@ -119,6 +119,8 @@ function Header(props) {
     setAuthToken(null)
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('authToken')
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('userLoggedOut'))
     // Force redirect to home if currently on admin page
     if (window.location.pathname === '/admin') {
       window.location.href = '/'
@@ -130,15 +132,99 @@ function Header(props) {
   // Update active state when route changes
   useEffect(() => {
     setActive(location.pathname)
-  }, [location.pathname])
+    
+    // Check authentication status when route changes
+    const loginStatus = localStorage.getItem('isLoggedIn')
+    const storedToken = localStorage.getItem('authToken')
+    
+    if (loginStatus === 'true' && storedToken) {
+      if (isTokenExpired(storedToken)) {
+        // Token is expired, clear auth data
+        localStorage.removeItem('isLoggedIn')
+        localStorage.removeItem('authToken')
+        setIsLoggedIn(false)
+        setAuthToken(null)
+        window.dispatchEvent(new CustomEvent('userLoggedOut'))
+      }
+    } else if (isLoggedIn) {
+      // If we think we're logged in but localStorage says otherwise
+      setIsLoggedIn(false)
+      setAuthToken(null)
+    }
+  }, [location.pathname, isLoggedIn])
+
+  // Function to check if JWT token is expired
+  const isTokenExpired = (token) => {
+    try {
+      if (!token) return true
+      
+      // Decode JWT token (basic decode without verification)
+      const payload = JSON.parse(atob(token.split('.')[1]))
+      const currentTime = Date.now() / 1000
+      
+      // Check if token has expired
+      if (payload.exp && payload.exp < currentTime) {
+        return true
+      }
+      
+      return false
+    } catch (error) {
+      return true // If we can't decode it, consider it expired
+    }
+  }
 
   // Check if user is logged in on component mount
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn')
     const storedToken = localStorage.getItem('authToken')
+    
     if (loginStatus === 'true' && storedToken) {
-      setIsLoggedIn(true)
-      setAuthToken(storedToken)
+      // Check if token is expired
+      if (isTokenExpired(storedToken)) {
+        // Token is expired, clear auth data
+        localStorage.removeItem('isLoggedIn')
+        localStorage.removeItem('authToken')
+        setIsLoggedIn(false)
+        setAuthToken(null)
+      } else {
+        // Token is valid
+        setIsLoggedIn(true)
+        setAuthToken(storedToken)
+      }
+    }
+  }, [])
+
+  // Listen for storage changes (when user logs out from another tab or component)
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'isLoggedIn' || e.key === 'authToken') {
+        const loginStatus = localStorage.getItem('isLoggedIn')
+        const storedToken = localStorage.getItem('authToken')
+        
+        if (!loginStatus || !storedToken || isTokenExpired(storedToken)) {
+          setIsLoggedIn(false)
+          setAuthToken(null)
+        } else {
+          setIsLoggedIn(true)
+          setAuthToken(storedToken)
+        }
+      }
+    }
+
+    // Listen for storage events
+    window.addEventListener('storage', handleStorageChange)
+    
+    // Also listen for custom events (for same-tab logout)
+    const handleCustomLogout = () => {
+      setIsLoggedIn(false)
+      setAuthToken(null)
+    }
+    
+    window.addEventListener('userLoggedOut', handleCustomLogout)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('userLoggedOut', handleCustomLogout)
     }
   }, [])
 
