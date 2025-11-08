@@ -11,6 +11,7 @@ import useMobileDetection from './hooks/useMobileDetection';
 // import './assets/img/apple-touch-icon.png'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Footer from './component/Footer';
+import DeveloperInfo from './component/DeveloperInfo';
 import Contact from './component/Contact';
 import PotatoToFlakes from './component/PotatoToFlakes';
 import Hero from './component/Hero';
@@ -83,6 +84,11 @@ function App() {
           </React.Fragment>}></Route>
         <Route path='admin' element={
           <AdminDashboard/>
+        }></Route>
+        <Route path='ali' element={
+          <div className="container py-5">
+            <DeveloperInfo />
+          </div>
         }></Route>
       </Routes>
       <Footer/>

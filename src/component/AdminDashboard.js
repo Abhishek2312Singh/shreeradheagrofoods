@@ -5,7 +5,69 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const [contactData, setContactData] = useState([])
   const [loadingContacts, setLoadingContacts] = useState(false)
+  const [showPasswordForm, setShowPasswordForm] = useState(false)
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  })
+  const [passwordStatus, setPasswordStatus] = useState({
+    message: '',
+    type: ''
+  })
+  const [passwordModalStatus, setPasswordModalStatus] = useState({
+    message: '',
+    type: ''
+  })
+  const [passwordSubmitting, setPasswordSubmitting] = useState(false)
+  const [expandedMessages, setExpandedMessages] = useState({})
   const navigate = useNavigate()
+
+  const extractMessage = (responseContent, defaultMessage) => {
+    if (!responseContent) {
+      return defaultMessage
+    }
+
+    let content = responseContent
+
+    if (typeof content === 'string') {
+      const trimmed = content.trim()
+      if (!trimmed) {
+        return defaultMessage
+      }
+
+      try {
+        const parsed = JSON.parse(trimmed)
+        if (parsed && typeof parsed === 'object') {
+          content = parsed
+        } else if (typeof parsed === 'string') {
+          return parsed.trim() || defaultMessage
+        } else {
+          return trimmed
+        }
+      } catch (error) {
+        return trimmed
+      }
+    }
+
+    if (content && typeof content === 'object') {
+      const possibleKeys = ['message', 'error', 'status', 'detail', 'info']
+      for (const key of possibleKeys) {
+        const value = content[key]
+        if (typeof value === 'string' && value.trim()) {
+          return value.trim()
+        }
+        if (value && typeof value === 'object') {
+          const nestedMessage = extractMessage(value, '')
+          if (nestedMessage) {
+            return nestedMessage
+          }
+        }
+      }
+    }
+
+    return defaultMessage
+  }
 
   // Function to check if JWT token is expired
   const isTokenExpired = (token) => {
@@ -64,6 +126,87 @@ function AdminDashboard() {
     } finally {
       setLoadingContacts(false)
     }
+  }
+
+  const handleOpenPasswordModal = () => {
+    setPasswordStatus({ message: '', type: '' })
+    setPasswordModalStatus({ message: '', type: '' })
+    setShowPasswordForm(true)
+  }
+
+  const handleClosePasswordModal = () => {
+    setShowPasswordForm(false)
+    setPasswordForm({
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: ''
+    })
+    setPasswordSubmitting(false)
+    setPasswordModalStatus({ message: '', type: '' })
+  }
+
+  const handlePasswordInputChange = (event) => {
+    const { name, value } = event.target
+    setPasswordForm((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmitPasswordChange = async (event) => {
+    event.preventDefault()
+    setPasswordStatus({ message: '', type: '' })
+    setPasswordModalStatus({ message: '', type: '' })
+
+    if (!passwordForm.currentPassword || !passwordForm.newPassword || !passwordForm.confirmPassword) {
+      setPasswordModalStatus({ message: 'Please fill out all fields.', type: 'danger' })
+      return
+    }
+
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setPasswordModalStatus({ message: 'New password and confirm password do not match.', type: 'danger' })
+      return
+    }
+
+    setPasswordSubmitting(true)
+
+    try {
+      const token = localStorage.getItem('authToken')
+      const response = await fetch('http://localhost:80/changePassword', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          currentPassword: passwordForm.currentPassword,
+          newPassword: passwordForm.newPassword,
+          confirmPassword: passwordForm.confirmPassword
+        })
+      })
+
+      const rawResponse = await response.text()
+      if (response.ok) {
+        const successMessage = extractMessage(rawResponse, 'Password updated successfully.')
+        setPasswordStatus({ message: successMessage, type: 'success' })
+        handleClosePasswordModal()
+      } else {
+        const errorMessage = extractMessage(rawResponse, 'Failed to update password.')
+        setPasswordModalStatus({ message: errorMessage, type: 'danger' })
+      }
+    } catch (error) {
+      console.error('Error updating password:', error)
+      setPasswordModalStatus({ message: 'An unexpected error occurred. Please try again later.', type: 'danger' })
+    } finally {
+      setPasswordSubmitting(false)
+    }
+  }
+
+  const toggleMessageExpansion = (messageKey) => {
+    setExpandedMessages((prev) => ({
+      ...prev,
+      [messageKey]: !prev[messageKey]
+    }))
   }
 
   useEffect(() => {
@@ -173,8 +316,20 @@ function AdminDashboard() {
                 <div className="col-md-6">
                   <p><strong>Status:</strong> <span className="badge bg-success">Active</span></p>
                   <p><strong>Last Access:</strong> Now</p>
+                  <button 
+                    className="btn btn-outline-warning btn-sm mt-3"
+                    onClick={handleOpenPasswordModal}
+                  >
+                    <i className="bi bi-key me-2"></i>
+                    Change Password
+                  </button>
                 </div>
               </div>
+              {passwordStatus.message && (
+                <div className={`alert alert-${passwordStatus.type} mt-3`} role="alert">
+                  {passwordStatus.message}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -225,8 +380,6 @@ function AdminDashboard() {
                         <th>Email</th>
                         <th>Contact</th>
                         <th>Message</th>
-                        <th>Submitted</th>
-                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -247,29 +400,31 @@ function AdminDashboard() {
                             </a>
                           </td>
                           <td>
-                            <div 
-                              style={{ 
-                                maxWidth: '300px', 
-                                overflow: 'hidden', 
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap'
-                              }}
-                              title={contact.message}
-                            >
-                              {contact.message || 'N/A'}
-                            </div>
-                          </td>
-                          <td>
-                            {contact.createdAt ? new Date(contact.createdAt).toLocaleDateString() : 'N/A'}
-                          </td>
-                          <td>
-                            <button 
-                              className="btn btn-sm btn-outline-primary"
-                              onClick={() => alert(`Full Message:\n\n${contact.message}`)}
-                              title="View full message"
-                            >
-                              <i className="bi bi-eye"></i>
-                            </button>
+                            {(() => {
+                              const message = contact.message ? contact.message : 'N/A'
+                              const messageKey = contact.id != null ? contact.id : `idx-${index}`
+                              const isLongMessage = message !== 'N/A' && message.length > 120
+                              const isExpanded = !!expandedMessages[messageKey]
+
+                              return (
+                                <div className="text-break">
+                                  <div>
+                                    {isLongMessage && !isExpanded
+                                      ? `${message.slice(0, 120)}...`
+                                      : message}
+                                  </div>
+                                  {isLongMessage && (
+                                    <button
+                                      type="button"
+                                      className="btn btn-link btn-sm ps-0"
+                                      onClick={() => toggleMessageExpansion(messageKey)}
+                                    >
+                                      {isExpanded ? 'Show less' : 'Show more'}
+                                    </button>
+                                  )}
+                                </div>
+                              )
+                            })()}
                           </td>
                         </tr>
                       ))}
@@ -286,8 +441,115 @@ function AdminDashboard() {
           </div>
         </div>
       </div>
+      {showPasswordForm && (
+        <>
+          <div 
+            className="modal fade show d-block"
+            tabIndex="-1"
+            role="dialog"
+            onClick={handleClosePasswordModal}
+          >
+            <div 
+              className="modal-dialog modal-dialog-centered"
+              role="document"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <form className="modal-content" onSubmit={handleSubmitPasswordChange}>
+                <div className="modal-header">
+                  <h5 className="modal-title">
+                    <i className="bi bi-shield-lock me-2"></i>
+                    Change Password
+                  </h5>
+                  <button 
+                    type="button" 
+                    className="btn-close" 
+                    aria-label="Close"
+                    onClick={handleClosePasswordModal}
+                    disabled={passwordSubmitting}
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <div className="mb-3">
+                    <label htmlFor="currentPassword" className="form-label">Current Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="currentPassword"
+                      name="currentPassword"
+                      value={passwordForm.currentPassword}
+                      onChange={handlePasswordInputChange}
+                      disabled={passwordSubmitting}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="newPassword" className="form-label">New Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="newPassword"
+                      name="newPassword"
+                      value={passwordForm.newPassword}
+                      onChange={handlePasswordInputChange}
+                      disabled={passwordSubmitting}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      value={passwordForm.confirmPassword}
+                      onChange={handlePasswordInputChange}
+                      disabled={passwordSubmitting}
+                      required
+                    />
+                  </div>
+                  {passwordModalStatus.message && (
+                    <div className={`alert alert-${passwordModalStatus.type}`} role="alert">
+                      {passwordModalStatus.message}
+                    </div>
+                  )}
+                </div>
+                <div className="modal-footer">
+                  <button 
+                    type="button" 
+                    className="btn btn-secondary"
+                    onClick={handleClosePasswordModal}
+                    disabled={passwordSubmitting}
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-warning"
+                    disabled={passwordSubmitting}
+                  >
+                    {passwordSubmitting ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Updating...
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-check2-circle me-2"></i>
+                        Update Password
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="modal-backdrop fade show"></div>
+        </>
+      )}
     </div>
   )
 }
 
 export default AdminDashboard
+

@@ -1,6 +1,7 @@
 import React from 'react'
 import banner from '../assets/img/menu/potato.jpg'
 import photo from '../assets/img/people/chairperson.jpg'
+import ceo from '../assets/img/people/IMG_8467.jpg'
 import banner1 from '../assets/img/menu/potatosBanner.avif'
 // import Activities from './Activities'
 import {Link} from "react-router-dom"
@@ -207,7 +208,7 @@ function Hero() {
           <div className="row g-0">
             <div className="col-md-4">
               <img 
-                src={photo} 
+                src={ceo} 
                 className="img-fluid h-100" 
                 style={{ height: '400px', objectFit: 'cover' }} 
                 alt="Chairperson" 
