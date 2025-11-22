@@ -85,7 +85,7 @@ function App() {
         <Route path='admin' element={
           <AdminDashboard/>
         }></Route>
-        <Route path='ali' element={
+        <Route path='developer' element={
           <div className="container py-5">
             <DeveloperInfo />
           </div>

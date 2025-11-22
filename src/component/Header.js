@@ -15,6 +15,11 @@ function Header(props) {
   const [authToken, setAuthToken] = useState(null)
   const [loginError, setLoginError] = useState('')
   const [openDropdown, setOpenDropdown] = useState(null)
+  const [showForgotPassword, setShowForgotPassword] = useState(false)
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('')
+  const [forgotPasswordError, setForgotPasswordError] = useState('')
+  const [forgotPasswordSuccess, setForgotPasswordSuccess] = useState('')
+  const [isSubmittingForgotPassword, setIsSubmittingForgotPassword] = useState(false)
   
   document.title = props.title
   
@@ -127,6 +132,66 @@ function Header(props) {
     } else {
       setActive('/')
     }
+  }
+
+  // Function to handle forgot password
+  const handleForgotPassword = async (e) => {
+    e.preventDefault()
+    
+    // Clear previous messages
+    setForgotPasswordError('')
+    setForgotPasswordSuccess('')
+    
+    if (!forgotPasswordEmail.trim()) {
+      setForgotPasswordError('Please enter your registered email address.')
+      return
+    }
+
+    setIsSubmittingForgotPassword(true)
+
+    try {
+      // Send forgot password request to server
+      const emailParam = encodeURIComponent(forgotPasswordEmail.trim())
+      const response = await fetch(`http://localhost:80/auth/forgotpassword?email=${emailParam}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+
+      const responseText = await response.text()
+      
+      if (response.ok) {
+        setForgotPasswordSuccess('Password reset instructions have been sent to your email address. Please check your inbox.')
+        setForgotPasswordEmail('')
+        // Auto-close after 5 seconds
+        setTimeout(() => {
+          setShowForgotPassword(false)
+          setForgotPasswordSuccess('')
+        }, 5000)
+      } else {
+        // Handle error responses
+        try {
+          const errorData = JSON.parse(responseText)
+          setForgotPasswordError(errorData.message || errorData.error || 'Failed to process forgot password request.')
+        } catch {
+          setForgotPasswordError(responseText || `Failed to process request (${response.status})`)
+        }
+      }
+    } catch (error) {
+      console.error('Forgot password error:', error)
+      setForgotPasswordError('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmittingForgotPassword(false)
+    }
+  }
+
+  // Function to toggle forgot password form
+  const toggleForgotPassword = () => {
+    setShowForgotPassword(!showForgotPassword)
+    setForgotPasswordError('')
+    setForgotPasswordSuccess('')
+    setForgotPasswordEmail('')
   }
 
   // Update active state when route changes
@@ -464,6 +529,18 @@ function Header(props) {
                   disabled={isLoggingIn}
                 />
               </div>
+              <div className="mb-3 text-end">
+                <button
+                  type="button"
+                  className="btn btn-link p-0 text-decoration-none"
+                  onClick={toggleForgotPassword}
+                  disabled={isLoggingIn}
+                  style={{ fontSize: '0.9rem' }}
+                >
+                  <i className="bi bi-question-circle me-1"></i>
+                  Forgot Password?
+                </button>
+              </div>
               <div className="d-grid">
                 <button 
                   type="submit" 
@@ -481,6 +558,83 @@ function Header(props) {
                       Login
                     </>
                   )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Forgot Password Modal */}
+      {showForgotPassword && (
+        <div className="login-overlay" onClick={toggleForgotPassword}>
+          <div className="login-form" onClick={(e) => e.stopPropagation()}>
+            <div className="login-header">
+              <h4>Forgot Password</h4>
+              <button 
+                className="login-close-btn"
+                onClick={toggleForgotPassword}
+                type="button"
+                aria-label="Close forgot password form"
+                disabled={isSubmittingForgotPassword}
+              >
+                ×
+              </button>
+            </div>
+            <form onSubmit={handleForgotPassword}>
+              {forgotPasswordError && (
+                <div className="alert alert-danger mb-3" role="alert">
+                  <i className="bi bi-exclamation-triangle me-2"></i>
+                  {forgotPasswordError}
+                </div>
+              )}
+              {forgotPasswordSuccess && (
+                <div className="alert alert-success mb-3" role="alert">
+                  <i className="bi bi-check-circle me-2"></i>
+                  {forgotPasswordSuccess}
+                </div>
+              )}
+              <div className="mb-3">
+                <label htmlFor="forgotPasswordEmail" className="form-label">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="forgotPasswordEmail"
+                  value={forgotPasswordEmail}
+                  onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                  placeholder="Enter your registered email"
+                  required
+                  disabled={isSubmittingForgotPassword}
+                />
+              </div>
+              <div className="d-grid gap-2">
+                <button 
+                  type="submit" 
+                  className="btn btn-primary modern-login-btn"
+                  disabled={isSubmittingForgotPassword}
+                >
+                  {isSubmittingForgotPassword ? (
+                    <>
+                      <i className="bi bi-arrow-clockwise me-2"></i>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <i className="bi bi-envelope me-2"></i>
+                      Send Reset Instructions
+                    </>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={toggleForgotPassword}
+                  disabled={isSubmittingForgotPassword}
+                >
+                  <i className="bi bi-arrow-left me-2"></i>
+                  Back to Login
                 </button>
               </div>
             </form>

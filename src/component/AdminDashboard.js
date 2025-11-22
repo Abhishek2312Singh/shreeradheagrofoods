@@ -373,7 +373,7 @@ function AdminDashboard() {
               ) : contactData.length > 0 ? (
                 <div className="table-responsive">
                   <table className="table table-striped table-hover">
-                    <thead className="table-dark">
+                    <thead className="table-light">
                       <tr>
                         <th>#</th>
                         <th>Name</th>

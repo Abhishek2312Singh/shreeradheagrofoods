@@ -6,7 +6,7 @@ function DeveloperInfo() {
   const developerDetails = useMemo(() => ({
     name: 'Abhishek Singh & Tanisha Nainwal',
     role: 'Full Stack Developer',
-    email: 'abhishekrbs.singh@gmail.com, tanisha.nainwal@gmail.com',
+    email: 'abhishekrbs.singh@gmail.com, tanishanainwal.5@gmail.com',
     phone: '7701933308, 8130495445',
     // portfolio: 'https://developerportfolio.example.com',
     // bio: 'Building reliable web experiences with React, Spring Boot, and scalable infrastructure.'
