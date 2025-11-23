@@ -24,6 +24,7 @@ import AdminDashboard from './component/AdminDashboard';
 // import ProtectedRoute from './component/ProtectedRoute';
 import ValuesSection from './component/ValuesSection';
 import CTASection from './component/CTASection';
+import ResetPassword from './component/ResetPassword';
 
 function App() {
   const { isMobile } = useMobileDetection();
@@ -89,6 +90,12 @@ function App() {
           <div className="container py-5">
             <DeveloperInfo />
           </div>
+        }></Route>
+        <Route path='resetpassword' element={
+          <ResetPassword/>
+        }></Route>
+        <Route path='auth/resetpassword' element={
+          <ResetPassword/>
         }></Route>
       </Routes>
       <Footer/>

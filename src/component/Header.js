@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../assets/img/menu/logo.png'
@@ -12,7 +12,6 @@ function Header(props) {
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [loginCredentials, setLoginCredentials] = useState({ username: '', password: '' })
   const [isLoggingIn, setIsLoggingIn] = useState(false)
-  const [authToken, setAuthToken] = useState(null)
   const [loginError, setLoginError] = useState('')
   const [openDropdown, setOpenDropdown] = useState(null)
   const [showForgotPassword, setShowForgotPassword] = useState(false)
@@ -20,6 +19,7 @@ function Header(props) {
   const [forgotPasswordError, setForgotPasswordError] = useState('')
   const [forgotPasswordSuccess, setForgotPasswordSuccess] = useState('')
   const [isSubmittingForgotPassword, setIsSubmittingForgotPassword] = useState(false)
+  const successShownRef = useRef(false)
   
   document.title = props.title
   
@@ -91,7 +91,6 @@ function Header(props) {
         // If server returns a token string, log the user in
         if (token && token.trim() !== '') {
           // Store the JWT token
-          setAuthToken(token)
           localStorage.setItem('authToken', token)
           localStorage.setItem('isLoggedIn', 'true')
           
@@ -121,7 +120,6 @@ function Header(props) {
 
   const handleLogout = () => {
     setIsLoggedIn(false)
-    setAuthToken(null)
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('authToken')
     // Dispatch custom event to notify other components
@@ -149,28 +147,60 @@ function Header(props) {
 
     setIsSubmittingForgotPassword(true)
 
-    try {
-      // Send forgot password request to server
-      const emailParam = encodeURIComponent(forgotPasswordEmail.trim())
-      const response = await fetch(`http://localhost:80/auth/forgotpassword?email=${emailParam}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
+    // Start the request (non-blocking)
+    const emailParam = encodeURIComponent(forgotPasswordEmail.trim())
+    const fetchPromise = fetch(`http://localhost:80/auth/forgotpassword?email=${emailParam}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
 
-      const responseText = await response.text()
-      
-      if (response.ok) {
-        setForgotPasswordSuccess('Password reset instructions have been sent to your email address. Please check your inbox.')
+    // Show immediate feedback after 2 seconds (optimistic UI)
+    const immediateFeedbackTimeout = setTimeout(() => {
+      if (!successShownRef.current) {
+        successShownRef.current = true
+        setForgotPasswordSuccess('Request received! If this email is registered, you will receive a password reset link shortly. Please check your inbox.')
         setForgotPasswordEmail('')
-        // Auto-close after 5 seconds
+        setIsSubmittingForgotPassword(false)
+        
+        // Close modal after showing success message
         setTimeout(() => {
           setShowForgotPassword(false)
           setForgotPasswordSuccess('')
-        }, 5000)
+          successShownRef.current = false
+        }, 3000)
+      }
+    }, 2000)
+
+    // Handle the actual response in the background
+    try {
+      const response = await fetchPromise
+      const responseText = await response.text()
+      
+      // Clear the immediate feedback timeout since we got a response
+      clearTimeout(immediateFeedbackTimeout)
+      
+      if (response.ok) {
+        // If we haven't shown success yet, show it now
+        if (!successShownRef.current) {
+          successShownRef.current = true
+          setForgotPasswordSuccess('Password reset instructions have been sent to your email address. Please check your inbox.')
+          setForgotPasswordEmail('')
+          setIsSubmittingForgotPassword(false)
+          setTimeout(() => {
+            setShowForgotPassword(false)
+            setForgotPasswordSuccess('')
+            successShownRef.current = false
+          }, 3000)
+        }
       } else {
-        // Handle error responses
+        // Handle error responses - clear success if shown
+        if (successShownRef.current) {
+          clearTimeout(immediateFeedbackTimeout)
+          successShownRef.current = false
+        }
+        setIsSubmittingForgotPassword(false)
         try {
           const errorData = JSON.parse(responseText)
           setForgotPasswordError(errorData.message || errorData.error || 'Failed to process forgot password request.')
@@ -179,10 +209,14 @@ function Header(props) {
         }
       }
     } catch (error) {
+      // Clear timeout if there's an error
+      clearTimeout(immediateFeedbackTimeout)
+      if (successShownRef.current) {
+        successShownRef.current = false
+      }
       console.error('Forgot password error:', error)
-      setForgotPasswordError('Network error. Please check your connection and try again.')
-    } finally {
       setIsSubmittingForgotPassword(false)
+      setForgotPasswordError('Network error. Please check your connection and try again.')
     }
   }
 
@@ -192,6 +226,7 @@ function Header(props) {
     setForgotPasswordError('')
     setForgotPasswordSuccess('')
     setForgotPasswordEmail('')
+    successShownRef.current = false
   }
 
   // Update active state when route changes
@@ -208,13 +243,11 @@ function Header(props) {
         localStorage.removeItem('isLoggedIn')
         localStorage.removeItem('authToken')
         setIsLoggedIn(false)
-        setAuthToken(null)
         window.dispatchEvent(new CustomEvent('userLoggedOut'))
       }
     } else if (isLoggedIn) {
       // If we think we're logged in but localStorage says otherwise
       setIsLoggedIn(false)
-      setAuthToken(null)
     }
   }, [location.pathname, isLoggedIn])
 
@@ -250,11 +283,9 @@ function Header(props) {
         localStorage.removeItem('isLoggedIn')
         localStorage.removeItem('authToken')
         setIsLoggedIn(false)
-        setAuthToken(null)
       } else {
         // Token is valid
         setIsLoggedIn(true)
-        setAuthToken(storedToken)
       }
     }
   }, [])
@@ -268,10 +299,8 @@ function Header(props) {
         
         if (!loginStatus || !storedToken || isTokenExpired(storedToken)) {
           setIsLoggedIn(false)
-          setAuthToken(null)
         } else {
           setIsLoggedIn(true)
-          setAuthToken(storedToken)
         }
       }
     }
@@ -282,7 +311,6 @@ function Header(props) {
     // Also listen for custom events (for same-tab logout)
     const handleCustomLogout = () => {
       setIsLoggedIn(false)
-      setAuthToken(null)
     }
     
     window.addEventListener('userLoggedOut', handleCustomLogout)
@@ -309,7 +337,7 @@ function Header(props) {
     document.body.style.position = ''
     document.body.style.width = ''
     closeAllDropdowns()
-  }, [window.location.pathname])
+  }, [location.pathname])
 
   // Add click outside handler for mobile nav
   useEffect(() => {
@@ -617,8 +645,8 @@ function Header(props) {
                 >
                   {isSubmittingForgotPassword ? (
                     <>
-                      <i className="bi bi-arrow-clockwise me-2"></i>
-                      Sending...
+                      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                      Processing request...
                     </>
                   ) : (
                     <>
