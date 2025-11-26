@@ -1,6 +1,5 @@
 import React from 'react'
 import banner from '../assets/img/menu/potato.jpg'
-import photo from '../assets/img/people/chairperson.jpg'
 import ceo from '../assets/img/people/IMG_8467.jpg'
 import banner1 from '../assets/img/menu/potatosBanner.avif'
 // import Activities from './Activities'
@@ -19,7 +18,7 @@ function Hero() {
                   <span className="text-warning">Nutritious Food</span>
                 </h1>
                 <p className="lead mb-4 opacity-75">
-                  Welcome to Shri Radhe Agro Food, the leading potato-to-flakes producing company. 
+                  Welcome to Shri Radhe Agro Foods, the leading potato-to-flakes producing company. 
                   We have emerged as one of India's foremost manufacturers of premium potato products, 
                   serving global markets with state-of-the-art infrastructure and unwavering commitment to quality.
                 </p>
@@ -137,7 +136,7 @@ function Hero() {
               Inside the Making of Perfect Potato Flakes
             </h2>
             <p className="lead text-muted">
-              At Shri Radhe Agro Food, cutting-edge technology meets decades of expertise to create flawless potato flakes. 
+              At Shri Radhe Agro Foods, cutting-edge technology meets decades of expertise to create flawless potato flakes. 
               Freshly harvested potatoes are cleaned, peeled, steamed, mashed, and dried under strict quality control.
             </p>
           </div>
@@ -219,7 +218,7 @@ function Hero() {
                 <div className="d-flex align-items-center mb-3">
                   <div>
                     <h5 className="modern-chairperson-title mb-1">Mr. Lalit Aggrawal</h5>
-                    <p className="modern-chairperson-subtitle">Chairman, Shri Radhe Agro Food</p>
+                    <p className="modern-chairperson-subtitle">Chairman, Shri Radhe Agro Foods</p>
                   </div>
                 </div>
                 <p className="text-muted mb-4">

@@ -8,6 +8,7 @@ function Contact() {
   const [emailError, setEmailError] = useState("")
   const [isEmailValid, setIsEmailValid] = useState(false)
   const [phoneError, setPhoneError] = useState("")
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' })
   const [isPhoneValid, setIsPhoneValid] = useState(false)
 
   // Email validation function
@@ -60,15 +61,36 @@ function Contact() {
   const handleSubmit = async (e)=>{
     e.preventDefault();
 
-    // Check if email is valid before submitting
-    if (!validateEmail(email) || email === "") {
-      setEmailError("Please enter a valid email address");
+    // Validate all fields are filled
+    if (!userName || userName.trim() === "") {
+      alert("Please enter your name");
+      return;
+    }
+
+    if (!contact || contact.trim() === "") {
+      setPhoneError("Please enter your contact number");
       return;
     }
 
     // Check if phone is valid before submitting
     if (!validatePhone(contact) || contact === "") {
       setPhoneError("Enter a valid phone number");
+      return;
+    }
+
+    // Check if email is valid before submitting
+    if (!email || email.trim() === "") {
+      setEmailError("Please enter your email address");
+      return;
+    }
+
+    if (!validateEmail(email) || email === "") {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+
+    if (!message || message.trim() === "") {
+      alert("Please enter your message");
       return;
     }
 
@@ -79,21 +101,44 @@ function Contact() {
       message,
     };
     try{
-      // const response = await fetch("https://api.shriradheagrofoods.com/",{
-      const response = await fetch("http://localhost:80/add",{
-        method: "Post",
+      const response = await fetch("https://api.shriradheagrofoods.com/add",{
+        method: "POST",
         headers: {
-          "Content-type" : "application/json",
+          "Content-Type": "application/json",
         },
+        credentials: 'omit',
+        mode: 'cors',
         body: JSON.stringify(data),
       });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        setSubmitStatus({
+          type: 'danger',
+          message: `Failed to send message. Error: ${response.status} - ${errorText || 'Please try again later.'}`
+        })
+        return;
+      }
+      
       const result = await response.text();
-      console.log(JSON.stringify(data))
-      console.log(result);
-      alert(result);
+      setSubmitStatus({
+        type: 'success',
+        message: result || 'Your message has been sent successfully.'
+      })
+      
+      // Clear form on success
+      setUsername("");
+      setContact("");
+      setEmail("");
+      setMessage("");
+      setEmailError("");
+      setPhoneError("");
     }
     catch(error){
-      console.error("Error:",error);
+      setSubmitStatus({
+        type: 'danger',
+        message: "Network error. Please check your connection and try again."
+      })
     }
   };
 
@@ -183,7 +228,15 @@ function Contact() {
           <div className="row gy-4">
 
             <div className="col-md-6">
-              <input type="text" name="name" className="form-control" value={userName} onChange={(e)=>{setUsername(e.target.value)}} placeholder="Your Name" required/>
+              <input 
+                type="text" 
+                name="name" 
+                className="form-control" 
+                value={userName} 
+                onChange={(e)=>{setUsername(e.target.value)}} 
+                placeholder="Your Name *" 
+                required
+              />
             </div>
 
             <div className="col-md-6 ">
@@ -195,7 +248,7 @@ function Contact() {
                 value={contact} 
                 onChange={handlePhoneChange}
                 name="contact" 
-                placeholder="Your Contact" 
+                placeholder="Your Contact *" 
                 maxLength="10"
                 required
               />
@@ -219,7 +272,7 @@ function Contact() {
                 value={email} 
                 onChange={handleEmailChange}
                 name="email" 
-                placeholder="Your Email" 
+                placeholder="Your Email *" 
                 style={{color:'gray'}} 
                 required
               />
@@ -231,14 +284,23 @@ function Contact() {
             </div>
 
             <div className="col-md-12">
-              <textarea className="form-control" name="message" value={message} onChange={(e)=>{setMessage(e.target.value)}} rows="6" placeholder="Message" required=""></textarea>
+              <textarea 
+                className="form-control" 
+                name="message" 
+                value={message} 
+                onChange={(e)=>{setMessage(e.target.value)}} 
+                rows="6" 
+                placeholder="Message *" 
+                required
+              ></textarea>
             </div>
 
             <div className="col-md-12 text-center">
-              <div className="loading">Loading</div>
-              <div className="error-message"></div>
-              <div className="sent-message">Your message has been sent. Thank you!</div>
-
+              {submitStatus.message && (
+                <div className={`alert alert-${submitStatus.type}`} role="alert">
+                  {submitStatus.message}
+                </div>
+              )}
               <button type="submit">Send Message</button>
             </div>
 

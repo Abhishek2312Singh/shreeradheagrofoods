@@ -24,8 +24,6 @@ function Header(props) {
   document.title = props.title
   
   const toggleMobileMenu = (e) => {
-    console.log('Toggle mobile menu clicked') // Debug log
-    
     const newState = !isMobileMenuOpen
     setIsMobileMenuOpen(newState)
     
@@ -44,8 +42,6 @@ function Header(props) {
   }
 
   const toggleDropdown = (dropdownName, e) => {
-    console.log('Toggle dropdown clicked:', dropdownName) // Debug log
-    
     if (openDropdown === dropdownName) {
       setOpenDropdown(null)
     } else {
@@ -73,11 +69,12 @@ function Header(props) {
 
     try {
       // Send credentials to server for validation
-      const response = await fetch('http://localhost:80/authenticate', {
+      const response = await fetch('http://api.shriradheagrofoods.com/authenticate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           username: loginCredentials.username,
           password: loginCredentials.password
@@ -86,7 +83,6 @@ function Header(props) {
 
       if (response.ok) {
         const token = await response.text()
-        console.log('Received token:', token)
         
         // If server returns a token string, log the user in
         if (token && token.trim() !== '') {
@@ -111,7 +107,6 @@ function Header(props) {
         setLoginError(errorText || `Login failed (${response.status})`)
       }
     } catch (error) {
-      console.error('Login error:', error)
       setLoginError('Network error. Please check your connection and try again.')
     } finally {
       setIsLoggingIn(false)
@@ -149,11 +144,12 @@ function Header(props) {
 
     // Start the request (non-blocking)
     const emailParam = encodeURIComponent(forgotPasswordEmail.trim())
-    const fetchPromise = fetch(`http://localhost:80/auth/forgotpassword?email=${emailParam}`, {
+    const fetchPromise = fetch(`https://api.shriradheagrofoods.com/auth/forgotpassword?email=${emailParam}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
+      credentials: 'omit'
     })
 
     // Show immediate feedback after 2 seconds (optimistic UI)
@@ -214,7 +210,6 @@ function Header(props) {
       if (successShownRef.current) {
         successShownRef.current = false
       }
-      console.error('Forgot password error:', error)
       setIsSubmittingForgotPassword(false)
       setForgotPasswordError('Network error. Please check your connection and try again.')
     }
@@ -373,7 +368,7 @@ function Header(props) {
         <div className="container position-relative d-flex align-items-center justify-content-between">
           
           <Link to="/" className="logo d-flex align-items-center me-auto me-xl-0">
-            <img src={logo} alt="Shri Radhe Agro Food Logo" style={{ objectFit: "contain" }} />
+            <img src={logo} alt="Shri Radhe Agro Foods Logo" style={{ objectFit: "contain" }} />
           </Link>
           
           <nav id="navmenu" className={`navmenu modern-nav ${isMobileMenuOpen ? 'show' : ''}`}>

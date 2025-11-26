@@ -51,7 +51,7 @@ function App() {
     
     <BrowserRouter>
     <ScrollToTop />
-    <Header title = "Shri Radhe Agro Food"/>
+    <Header title = "Shri Radhe Agro Foods"/>
       <Routes>
         <Route exact path='/'element={
         <React.Fragment>
@@ -77,7 +77,7 @@ function App() {
           </React.Fragment>}></Route>
         <Route path='potatoFlakes' element={
           <React.Fragment>
-             <PotatoFlakes title="Shri Radhe Agro Food - Potato Flakes"/>
+             <PotatoFlakes title="Shri Radhe Agro Foods - Potato Flakes"/>
           </React.Fragment>}></Route>
         <Route path='milledProducts' element={
           <React.Fragment>

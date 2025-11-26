@@ -4,8 +4,6 @@ import './Product.css'
 import bgImg from '../assets/img/menu/Cover.jpg'
 
 export default function Products() {
-  console.log('Products component rendered') // Debug log
-  
   useEffect(() => {
     document.title = "Our Products - Shri Radhe Agro Foods";
     

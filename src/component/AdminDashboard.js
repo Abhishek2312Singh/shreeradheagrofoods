@@ -79,15 +79,13 @@ function AdminDashboard() {
       const currentTime = Date.now() / 1000
       
       // Check if token has expired
-      if (payload.exp && payload.exp < currentTime) {
-        console.log('Token is expired')
+    if (payload.exp && payload.exp < currentTime) {
         return true
       }
       
       return false
-    } catch (error) {
-      console.error('Error decoding token:', error)
-      return true // If we can't decode it, consider it expired
+  } catch (error) {
+    return true // If we can't decode it, consider it expired
     }
   }
 
@@ -104,25 +102,23 @@ function AdminDashboard() {
     setLoadingContacts(true)
     try {
       const token = localStorage.getItem('authToken')
-      const response = await fetch('http://localhost:80/getdata', {
+      const response = await fetch('https://api.shriradheagrofoods.com/getdata', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
-        }
+        },
+        credentials: 'omit'
       })
 
-      if (response.ok) {
-        const data = await response.json()
-        setContactData(data)
-        console.log('Contact data fetched:', data)
+    if (response.ok) {
+      const data = await response.json()
+      setContactData(data)
       } else {
-        console.error('Failed to fetch contact data')
-        setContactData([])
+      setContactData([])
       }
     } catch (error) {
-      console.error('Error fetching contact data:', error)
-      setContactData([])
+    setContactData([])
     } finally {
       setLoadingContacts(false)
     }
@@ -172,12 +168,13 @@ function AdminDashboard() {
 
     try {
       const token = localStorage.getItem('authToken')
-      const response = await fetch('http://localhost:80/changePassword', {
+      const response = await fetch('https://api.shriradheagrofoods.com/changePassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
+        credentials: 'omit',
         body: JSON.stringify({
           currentPassword: passwordForm.currentPassword,
           newPassword: passwordForm.newPassword,
@@ -194,8 +191,7 @@ function AdminDashboard() {
         const errorMessage = extractMessage(rawResponse, 'Failed to update password.')
         setPasswordModalStatus({ message: errorMessage, type: 'danger' })
       }
-    } catch (error) {
-      console.error('Error updating password:', error)
+  } catch (error) {
       setPasswordModalStatus({ message: 'An unexpected error occurred. Please try again later.', type: 'danger' })
     } finally {
       setPasswordSubmitting(false)
@@ -210,29 +206,20 @@ function AdminDashboard() {
   }
 
   useEffect(() => {
-    console.log('AdminDashboard mounted')
     // Check if user is logged in
     const token = localStorage.getItem('authToken')
     const isLoggedIn = localStorage.getItem('isLoggedIn')
-    
-    console.log('Token:', token)
-    console.log('IsLoggedIn:', isLoggedIn)
-    
     if (!token || !isLoggedIn) {
-      console.log('No token or not logged in, redirecting to home')
       navigate('/')
       return
     }
 
     // Check if token is expired
     if (isTokenExpired(token)) {
-      console.log('Token is expired, logging out')
       clearAuthData()
       navigate('/')
       return
     }
-
-    console.log('User is authenticated with valid token, showing dashboard')
     // Set loading to false since we don't need to fetch user data
     setLoading(false)
     
@@ -243,7 +230,6 @@ function AdminDashboard() {
     const tokenCheckInterval = setInterval(() => {
       const currentToken = localStorage.getItem('authToken')
       if (!currentToken || isTokenExpired(currentToken)) {
-        console.log('Token expired during session, logging out')
         clearAuthData()
         navigate('/')
         clearInterval(tokenCheckInterval)

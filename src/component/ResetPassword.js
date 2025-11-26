@@ -72,11 +72,12 @@ function ResetPassword() {
       formData.append('newPassword', passwordForm.newPassword)
       formData.append('confirmPassword', passwordForm.confirmPassword)
       
-      const response = await fetch(`http://localhost:80/auth/resetpassword?token=${encodeURIComponent(token)}`, {
+      const response = await fetch(`https://api.shriradheagrofoods.com/auth/resetpassword?token=${encodeURIComponent(token)}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
+        credentials: 'omit',
         body: formData.toString()
       })
 
@@ -100,7 +101,6 @@ function ResetPassword() {
         }
       }
     } catch (error) {
-      console.error('Reset password error:', error)
       setError('Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)

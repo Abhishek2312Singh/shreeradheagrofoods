@@ -103,7 +103,7 @@ function PotatoToFlakes() {
             <div className="row gy-5">
 
               <div className="col-lg-4 menu-item">
-                <a  className="glightbox"><img src={dish1} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish1} className="glightbox" aria-label="View Fresh Potato image"><img src={dish1} className="menu-img img-fluid" alt="Fresh Potato"/></a>
                 <h4>Fresh Potato</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -111,7 +111,7 @@ function PotatoToFlakes() {
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish2} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish2} className="glightbox" aria-label="View Washing image"><img src={dish2} className="menu-img img-fluid" alt="Washing"/></a>
                 <h4>Washing</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -119,7 +119,7 @@ function PotatoToFlakes() {
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish3} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish3} className="glightbox" aria-label="View Peeling image"><img src={dish3} className="menu-img img-fluid" alt="Peeling"/></a>
                 <h4>Peeling</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -127,14 +127,14 @@ function PotatoToFlakes() {
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish4} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish4} className="glightbox" aria-label="View Cooking image"><img src={dish4} className="menu-img img-fluid" alt="Cooking"/></a>
                 <h4>Cooking</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
                 </p>
               </div>
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish5} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish5} className="glightbox" aria-label="View Mashing image"><img src={dish5} className="menu-img img-fluid" alt="Mashing"/></a>
                 <h4>Mashing</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -142,7 +142,7 @@ function PotatoToFlakes() {
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish6} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish6} className="glightbox" aria-label="View Drying image"><img src={dish6} className="menu-img img-fluid" alt="Drying"/></a>
                 <h4>Drying</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -150,14 +150,14 @@ function PotatoToFlakes() {
               </div>
 
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish7} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish7} className="glightbox" aria-label="View Potato Flakes image"><img src={dish7} className="menu-img img-fluid" alt="Potato Flakes"/></a>
                 <h4>Potato Flakes</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada
                 </p>
               </div>
               <div className="col-lg-4 menu-item">
-                <a className="glightbox"><img src={dish8} className="menu-img img-fluid" alt=""/></a>
+                <a href={dish8} className="glightbox" aria-label="View Milling image"><img src={dish8} className="menu-img img-fluid" alt="Milling"/></a>
                 <h4>Milling</h4>
                 <p className="ingredients">
                   Lorem, deren, trataro, filede, nerada

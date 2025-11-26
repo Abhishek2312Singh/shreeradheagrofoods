@@ -43,10 +43,10 @@ function Footer() {
         <div className="col-lg-3 col-md-6">
           <h4>Follow Us</h4>
           <div className="social-links d-flex">
-            <a href="#" className="twitter"><i className="bi bi-twitter-x"></i></a>
-            <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
-            <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
-            <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="twitter" aria-label="Twitter"><i className="bi bi-twitter-x"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="facebook" aria-label="Facebook"><i className="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="instagram" aria-label="Instagram"><i className="bi bi-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="linkedin" aria-label="LinkedIn"><i className="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -54,12 +54,20 @@ function Footer() {
     </div>
 
     <div className="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong className="px-1 sitename">Shri Radhe Agro Food</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong className="px-1 sitename">Shri Radhe Agro Foods</strong> <span>All Rights Reserved</span></p>
     </div>
 
   </footer>
 
-  <a href="#" id="scroll-top" className="scroll-top d-flex align-items-center justify-content-center"><i className="bi bi-arrow-up-short"></i></a>
+  <button 
+    type="button"
+    id="scroll-top" 
+    className="scroll-top d-flex align-items-center justify-content-center"
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    aria-label="Scroll to top"
+  >
+    <i className="bi bi-arrow-up-short"></i>
+  </button>
 
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

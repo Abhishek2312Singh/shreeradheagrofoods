@@ -106,7 +106,7 @@ function Admin() {
     const sampleActivities = [
       {
         id: 1,
-        title: 'Welcome to Shri Radhe Agro Food',
+        title: 'Welcome to Shri Radhe Agro Foods',
         description: 'We are excited to announce the launch of our new website showcasing our premium potato products and commitment to quality.',
         category: 'company-news',
         date: new Date().toISOString().split('T')[0],

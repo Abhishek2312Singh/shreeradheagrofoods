@@ -50,7 +50,7 @@ function Activities() {
       {
         id: 5,
         title: "Sustainability Award Recognition",
-        description: "Shri Radhe Agro Food has been recognized with the Green Business Award for our sustainable farming practices and eco-friendly processing methods. We're committed to environmental responsibility.",
+        description: "Shri Radhe Agro Foods has been recognized with the Green Business Award for our sustainable farming practices and eco-friendly processing methods. We're committed to environmental responsibility.",
         date: "2024-01-30",
         category: "achievements",
         image: "",
